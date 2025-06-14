@@ -15,7 +15,6 @@ import {
   Award,
   Target
 } from 'lucide-react';
-
 const Dashboard = () => {
   const [username] = useState('John Doe');
   const [isLoaded, setIsLoaded] = useState(false);
