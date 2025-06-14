@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   FileText,
   CheckCircle,
@@ -28,6 +29,7 @@ const Application = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const schemes = [
     {
@@ -172,6 +174,11 @@ const Application = () => {
     },
   };
 
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
   const filteredSchemes = schemes.filter(scheme => {
     try {
       const matchesSearch = scheme.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -184,290 +191,405 @@ const Application = () => {
     }
   });
 
-  const TabButton = ({ id, label, icon: Icon, active, onClick }) => (
-    <button
-      onClick={() => {
-        try {
-          onClick(id.toLowerCase());
-        } catch (err) {
-          setError('Error switching tabs. Please try again.');
-        }
-      }}
-      className={`flex items-center px-6 py-3.5 rounded-2xl font-medium text-sm transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+  };
+
+  const TabButton = ({ id, label, icon: Icon, active }) => (
+    <motion.button
+      onClick={() => setActiveTab(id.toLowerCase())}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className={`flex items-center px-5 py-2.5 rounded-full font-semibold text-sm transition-all duration-300 ${
         active 
-          ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-xl shadow-blue-500/30 border border-blue-200' 
-          : 'bg-white/70 text-slate-700 hover:bg-sky-50/80 hover:text-sky-700 hover:shadow-md border border-sky-100 backdrop-blur-sm'
+          ? 'bg-gradient-to-r from-blue-500 to-blue-500 text-white shadow-md' 
+          : 'bg-white/90 text-gray-700 hover:bg-blue-50 hover:text-blue-600 border border-gray-200'
       }`}
     >
-      <Icon className="w-5 h-5 mr-2.5" />
+      <Icon className="w-4 h-4 mr-2" />
       {label}
-    </button>
+    </motion.button>
+  );
+
+  const SkeletonCard = () => (
+    <motion.div
+      variants={itemVariants}
+      className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm animate-pulse"
+    >
+      <div className="h-5 bg-gray-200 rounded w-3/4 mb-3"></div>
+      <div className="h-3 bg-gray-200 rounded w-1/4 mb-2"></div>
+      <div className="h-4 bg-gray-200 rounded w-full mb-2"></div>
+      <div className="h-4 bg-gray-200 rounded w-5/6 mb-4"></div>
+      <div className="grid grid-cols-2 gap-3">
+        <div className="h-4 bg-gray-200 rounded"></div>
+        <div className="h-4 bg-gray-200 rounded"></div>
+        <div className="h-4 bg-gray-200 rounded"></div>
+        <div className="h-4 bg-gray-200 rounded"></div>
+      </div>
+      <div className="h-8 bg-gray-200 rounded-full mt-4"></div>
+    </motion.div>
   );
 
   const SchemeCard = ({ scheme }) => (
-    <div
-      className="bg-white/80 backdrop-blur-sm rounded-3xl p-7 border border-sky-100 shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 cursor-pointer group relative overflow-hidden"
-      onClick={() => {
-        try {
-          setSelectedScheme(scheme);
-        } catch (err) {
-          setError('Error selecting scheme. Please try again.');
-        }
-      }}
+    <motion.div
+      variants={itemVariants}
+      whileHover={{ scale: 1.02, y: -5 }}
+      className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg hover:shadow-xl cursor-pointer relative overflow-hidden group"
+      onClick={() => setSelectedScheme(scheme)}
     >
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-sky-50/50 to-blue-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-      
-      {/* Left border accent */}
-      <div className="absolute left-0 top-0 w-1.5 h-full bg-gradient-to-b from-sky-400 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-l-3xl"></div>
-      
-      <div className="relative z-10">
-        <div className="flex justify-between items-start mb-5">
-          <div className="flex-1">
-            <div className="flex items-center gap-3 flex-wrap mb-3">
-              <h3 className="text-xl font-bold text-slate-800 group-hover:text-sky-700 transition-colors duration-300">{scheme.name}</h3>
-              <span className="inline-block bg-gradient-to-r from-sky-100 to-blue-100 text-sky-800 px-3 py-1.5 rounded-full text-xs font-semibold border border-sky-200">
-                {scheme.category}
-              </span>
-              <div className="flex items-center gap-1">
-                <Star className="w-4 h-4 text-amber-400 fill-current" />
-                <span className="text-sm font-medium text-slate-600">{scheme.rating}</span>
-              </div>
-            </div>
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-blue-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      <div className="relative">
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="text-lg font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">{scheme.name}</h3>
+          <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-medium">
+            {scheme.category}
+          </span>
+        </div>
+        <div className="flex items-center gap-2 mb-3">
+          <Star className="w-4 h-4 text-yellow-400 fill-current" />
+          <span className="text-sm text-gray-600">{scheme.rating}</span>
+        </div>
+        <p className="text-gray-600 text-sm mb-4 line-clamp-2">{scheme.description}</p>
+        <div className="grid grid-cols-2 gap-2 mb-4">
+          <div className="flex items-center text-xs text-gray-600 bg-green-50 p-2 rounded-lg">
+            <DollarSign className="w-3 h-3 mr-1 text-green-500" />
+            {scheme.amount}
+          </div>
+          <div className="flex items-center text-xs text-gray-600 bg-blue-50 p-2 rounded-lg">
+            <Users className="w-3 h-3 mr-1 text-blue-500" />
+            {scheme.applicants}
+          </div>
+          <div className="flex items-center text-xs text-gray-600 bg-yellow-50 p-2 rounded-lg">
+            <Calendar className="w-3 h-3 mr-1 text-yellow-500" />
+            {scheme.deadline}
+          </div>
+          <div className="flex items-center text-xs text-gray-600 bg-red-50 p-2 rounded-lg">
+            <MapPin className="w-3 h-3 mr-1 text-red-500" />
+            {scheme.location}
           </div>
         </div>
-        
-        <p className="text-slate-600 text-sm mb-5 leading-relaxed">{scheme.description}</p>
-        
-        <div className="grid grid-cols-2 gap-4 mb-6">
-          <div className="flex items-center text-sm text-slate-600 bg-sky-50/50 p-3 rounded-xl">
-            <DollarSign className="w-4 h-4 mr-2 text-emerald-500" />
-            <span className="font-medium">{scheme.amount}</span>
-          </div>
-          <div className="flex items-center text-sm text-slate-600 bg-sky-50/50 p-3 rounded-xl">
-            <Users className="w-4 h-4 mr-2 text-blue-500" />
-            <span className="font-medium">{scheme.applicants}</span>
-          </div>
-          <div className="flex items-center text-sm text-slate-600 bg-sky-50/50 p-3 rounded-xl">
-            <Calendar className="w-4 h-4 mr-2 text-amber-500" />
-            <span className="font-medium">{scheme.deadline}</span>
-          </div>
-          <div className="flex items-center text-sm text-slate-600 bg-sky-50/50 p-3 rounded-xl">
-            <MapPin className="w-4 h-4 mr-2 text-rose-500" />
-            <span className="font-medium">{scheme.location}</span>
-          </div>
-        </div>
-        
-        <button className="w-full bg-gradient-to-r from-sky-500 to-blue-600 text-white py-3.5 px-4 rounded-2xl font-semibold text-sm flex items-center justify-center hover:from-sky-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl group/btn">
+        <motion.button
+          whileHover={{ x: 5 }}
+          className="w-full bg-gradient-to-r from-blue-500 to-blue-500 text-white py-2 rounded-lg flex items-center justify-center text-sm font-medium"
+        >
           View Details
-          <ChevronRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300" />
-        </button>
+          <ChevronRight className="w-4 h-4 ml-1" />
+        </motion.button>
       </div>
-    </div>
+    </motion.div>
   );
 
-  const DetailSection = ({ title, icon: Icon, items, color }) => {
-    const colorClasses = {
-      green: {
-        iconBg: 'bg-emerald-100',
-        iconColor: 'text-emerald-600',
-        numberBg: 'bg-emerald-50',
-        numberColor: 'text-emerald-600',
-        borderColor: 'border-emerald-200',
-        hoverBg: 'hover:bg-emerald-50'
-      },
-      blue: {
-        iconBg: 'bg-sky-100',
-        iconColor: 'text-sky-600',
-        numberBg: 'bg-sky-50',
-        numberColor: 'text-sky-600',
-        borderColor: 'border-sky-200',
-        hoverBg: 'hover:bg-sky-50'
-      },
-      purple: {
-        iconBg: 'bg-purple-100',
-        iconColor: 'text-purple-600',
-        numberBg: 'bg-purple-50',
-        numberColor: 'text-purple-600',
-        borderColor: 'border-purple-200',
-        hoverBg: 'hover:bg-purple-50'
-      },
-      yellow: {
-        iconBg: 'bg-amber-100',
-        iconColor: 'text-amber-600',
-        numberBg: 'bg-amber-50',
-        numberColor: 'text-amber-600',
-        borderColor: 'border-amber-200',
-        hoverBg: 'hover:bg-amber-50'
-      },
-      indigo: {
-        iconBg: 'bg-indigo-100',
-        iconColor: 'text-indigo-600',
-        numberBg: 'bg-indigo-50',
-        numberColor: 'text-indigo-600',
-        borderColor: 'border-indigo-200',
-        hoverBg: 'hover:bg-indigo-50'
-      },
-      teal: {
-        iconBg: 'bg-teal-100',
-        iconColor: 'text-teal-600',
-        numberBg: 'bg-teal-50',
-        numberColor: 'text-teal-600',
-        borderColor: 'border-teal-200',
-        hoverBg: 'hover:bg-teal-50'
-      },
-      red: {
-        iconBg: 'bg-red-100',
-        iconColor: 'text-red-600',
-        numberBg: 'bg-red-50',
-        numberColor: 'text-red-600',
-        borderColor: 'border-red-200',
-        hoverBg: 'hover:bg-red-50'
-      }
-    };
-
-    const colors = colorClasses[color] || colorClasses.blue;
-
-    return (
-      <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-sky-100 shadow-lg hover:shadow-2xl transition-all duration-500">
-        <div className="flex items-center mb-7">
-          <div className={`p-4 rounded-2xl ${colors.iconBg} mr-4 shadow-sm`}>
-            <Icon className={`w-7 h-7 ${colors.iconColor}`} />
-          </div>
-          <h3 className="text-2xl font-bold text-slate-800">{title}</h3>
+  const DocumentSection = ({ title, icon: Icon, items }) => (
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg"
+    >
+      <div className="flex items-center mb-6">
+        <div className="p-3 rounded-full bg-green-100 mr-3">
+          <Icon className="w-6 h-6 text-green-600" />
         </div>
-        
-        <div className="space-y-4">
-          {items.map((item, index) => (
-            <div key={index} className={`flex items-start p-4 bg-slate-50/70 rounded-2xl ${colors.hoverBg} transition-colors duration-300 border ${colors.borderColor}/30`}>
-              <div className={`w-8 h-8 rounded-full ${colors.numberBg} ${colors.numberColor} flex items-center justify-center text-sm font-bold mr-4 mt-0.5 flex-shrink-0 shadow-sm border ${colors.borderColor}`}>
-                {index + 1}
-              </div>
-              <p className="text-slate-700 text-sm leading-relaxed">{item}</p>
-            </div>
-          ))}
-        </div>
+        <h3 className="text-2xl font-bold text-gray-800">{title}</h3>
       </div>
-    );
-  };
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {items.map((item, index) => (
+          <motion.div
+            key={index}
+            variants={itemVariants}
+            className="flex items-center p-4 bg-green-50 rounded-xl shadow-sm border border-green-100"
+          >
+            <div className="w-8 h-8 rounded-full bg-green-200 text-green-600 flex items-center justify-center text-sm font-semibold mr-4">
+              {index + 1}
+            </div>
+            <p className="text-gray-700 text-sm font-medium">{item}</p>
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
+  );
+
+  const EligibilitySection = ({ title, icon: Icon, items }) => (
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg"
+    >
+      <div className="flex items-center mb-6">
+        <div className="p-3 rounded-full bg-blue-100 mr-3">
+          <Icon className="w-6 h-6 text-blue-600" />
+        </div>
+        <h3 className="text-2xl font-bold text-gray-800">{title}</h3>
+      </div>
+      <div className="space-y-4">
+        {items.map((item, index) => (
+          <motion.div
+            key={index}
+            variants={itemVariants}
+            className="flex items-center p-4 bg-blue-50 rounded-xl shadow-sm border border-blue-100"
+          >
+            <CheckCircle className="w-6 h-6 text-blue-600 mr-4" />
+            <p className="text-gray-700 text-sm font-medium">{item}</p>
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
+  );
+
+const SubmissionSection = ({ title, icon: Icon, items }) => (
+  <motion.div
+    variants={containerVariants}
+    initial="hidden"
+    animate="visible"
+    className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg"
+  >
+    <div className="flex items-center mb-6">
+      <div className="p-3 rounded-full bg-blue-100 mr-3">
+        <Icon className="w-6 h-6 text-blue-600" />
+      </div>
+      <h3 className="text-2xl font-bold text-gray-800">{title}</h3>
+    </div>
+    <div className="space-y-4">
+      {items.map((item, index) => (
+        <motion.div
+          key={index}
+          variants={itemVariants}
+          className="flex items-center p-4 bg-blue-50 rounded-xl shadow-sm border border-blue-100"
+        >
+          <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm font-semibold mr-4">
+            {index + 1}
+          </div>
+          <p className="text-gray-700 text-sm font-medium">{item}</p>
+        </motion.div>
+      ))}
+    </div>
+  </motion.div>
+);
+
+
+
+  const TipsSection = ({ title, icon: Icon, items }) => (
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg"
+    >
+      <div className="flex items-center mb-6">
+        <div className="p-3 rounded-full bg-yellow-100 mr-3">
+          <Icon className="w-6 h-6 text-yellow-600" />
+        </div>
+        <h3 className="text-2xl font-bold text-gray-800">{title}</h3>
+      </div>
+      <div className="space-y-4">
+        {items.map((item, index) => (
+          <motion.div
+            key={index}
+            variants={itemVariants}
+            className="flex items-start p-4 bg-yellow-50 rounded-xl shadow-sm border border-yellow-100"
+          >
+            <Lightbulb className="w-6 h-6 text-yellow-600 mr-4" />
+            <p className="text-gray-700 text-sm font-medium">{item}</p>
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
+  );
+
+  const StepGuideSection = ({ title, icon: Icon, items }) => (
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg"
+    >
+      <div className="flex items-center mb-6">
+        <div className="p-3 rounded-full bg-teal-100 mr-3">
+          <Icon className="w-6 h-6 text-teal-600" />
+        </div>
+        <h3 className="text-2xl font-bold text-gray-800">{title}</h3>
+      </div>
+      <div className="relative">
+        {items.map((item, index) => (
+          <motion.div
+            key={index}
+            variants={itemVariants}
+            className="relative mb-8 last:mb-0"
+          >
+            <div className="flex items-start">
+              <div className="relative flex-shrink-0">
+                <div className="w-12 h-12 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold text-lg">
+                  {index + 1}
+                </div>
+                {index < items.length - 1 && (
+                  <div className="absolute top-12 left-6 w-0.5 h-[calc(100%-3rem)] bg-teal-200"></div>
+                )}
+              </div>
+              <div className="ml-6 mt-2">
+                <p className="text-gray-700 text-base font-medium">{item}</p>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
+  );
+
+  const PostSubmissionSection = ({ title, icon: Icon, items }) => (
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg"
+    >
+      <div className="flex items-center mb-6">
+        <div className="p-3 rounded-full bg-cyan-100 mr-3">
+          <Icon className="w-6 h-6 text-cyan-600" />
+        </div>
+        <h3 className="text-2xl font-bold text-gray-800">{title}</h3>
+      </div>
+      <div className="space-y-4">
+        {items.map((item, index) => (
+          <motion.div
+            key={index}
+            variants={itemVariants}
+            className="flex items-start p-4 bg-cyan-50 rounded-xl shadow-sm border border-cyan-100"
+          >
+            <Info className="w-6 h-6 text-cyan-600 mr-4" />
+            <p className="text-gray-700 text-sm font-medium">{item}</p>
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
+  );
 
   const DosAndDontsSection = ({ dos, donts }) => (
-    <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-sky-100 shadow-lg hover:shadow-2xl transition-all duration-500">
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg"
+    >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
-          <div className="flex items-center mb-7">
-            <div className="p-4 rounded-2xl bg-emerald-100 mr-4 shadow-sm">
-              <CheckCircle className="w-7 h-7 text-emerald-600" />
+          <div className="flex items-center mb-6">
+            <div className="p-3 rounded-full bg-green-100 mr-3">
+              <CheckCircle className="w-6 h-6 text-green-600" />
             </div>
-            <h3 className="text-2xl font-bold text-slate-800">Do's</h3>
+            <h3 className="text-2xl font-bold text-gray-800">Do's</h3>
           </div>
-          
           <div className="space-y-4">
             {dos.map((item, index) => (
-              <div key={index} className="flex items-start p-4 bg-emerald-50/70 rounded-2xl hover:bg-emerald-100/70 transition-colors duration-300 border border-emerald-200/30">
-                <div className="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm font-bold mr-4 mt-0.5 flex-shrink-0 shadow-sm border border-emerald-200">
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="flex items-start p-4 bg-green-50 rounded-xl shadow-sm border border-green-100"
+              >
+                <div className="w-8 h-8 rounded-full bg-green-200 text-green-600 flex items-center justify-center text-sm font-semibold mr-4">
                   {index + 1}
                 </div>
-                <p className="text-slate-700 text-sm leading-relaxed">{item}</p>
-              </div>
+                <p className="text-gray-700 text-sm font-medium">{item}</p>
+              </motion.div>
             ))}
           </div>
         </div>
-        
         <div>
-          <div className="flex items-center mb-7">
-            <div className="p-4 rounded-2xl bg-red-100 mr-4 shadow-sm">
-              <AlertTriangle className="w-7 h-7 text-red-600" />
+          <div className="flex items-center mb-6">
+            <div className="p-3 rounded-full bg-red-100 mr-3">
+              <AlertTriangle className="w-6 h-6 text-red-600" />
             </div>
-            <h3 className="text-2xl font-bold text-slate-800">Don'ts</h3>
+            <h3 className="text-2xl font-bold text-gray-800">Don'ts</h3>
           </div>
-          
           <div className="space-y-4">
             {donts.map((item, index) => (
-              <div key={index} className="flex items-start p-4 bg-red-50/70 rounded-2xl hover:bg-red-100/70 transition-colors duration-300 border border-red-200/30">
-                <div className="w-8 h-8 rounded-full bg-red-50 text-red-600 flex items-center justify-center text-sm font-bold mr-4 mt-0.5 flex-shrink-0 shadow-sm border border-red-200">
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="flex items-start p-4 bg-red-50 rounded-xl shadow-sm border border-red-100"
+              >
+                <div className="w-8 h-8 rounded-full bg-red-200 text-red-600 flex items-center justify-center text-sm font-semibold mr-4">
                   {index + 1}
                 </div>
-                <p className="text-slate-700 text-sm leading-relaxed">{item}</p>
-              </div>
+                <p className="text-gray-700 text-sm font-medium">{item}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sky-50 via-blue-50/30 to-indigo-50">
-      {error && (
-        <div className="fixed top-6 right-6 bg-gradient-to-r from-red-500 to-red-600 text-white px-6 py-4 rounded-2xl shadow-2xl z-50 flex items-center animate-bounce border border-red-400">
-          <AlertTriangle className="w-5 h-5 mr-3" />
-          {error}
-          <button onClick={() => setError(null)} className="ml-4 text-white font-bold text-lg hover:scale-110 transition-transform duration-200">
-            ×
-          </button>
-        </div>
-      )}
-      
-      <div className="max-w-7xl mx-auto px-6 py-10">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4 bg-gradient-to-r from-sky-600 to-blue-700 bg-clip-text text-transparent">
-            Government Schemes Portal
-          </h1>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Discover and access comprehensive information about government schemes designed to empower citizens
-          </p>
-        </div>
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 font-sans">
+      <AnimatePresence>
+        {error && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg z-50 flex items-center"
+          >
+            <AlertTriangle className="w-5 h-5 mr-2" />
+            {error}
+            <button onClick={() => setError(null)} className="ml-3 text-lg">×</button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-        {/* Navigation Tabs */}
-        <div className="bg-white/60 backdrop-blur-md rounded-3xl p-6 shadow-xl border border-white/20 mb-10">
+      <div className="max-w-7xl mx-auto px-4 py-12">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="bg-white rounded-3xl p-4 shadow-xl border border-gray-200 mb-12"
+        >
           <div className="flex flex-wrap gap-3 justify-center">
-            <TabButton id="browse" label="Browse Schemes" icon={Search} active={activeTab === 'browse'} onClick={setActiveTab} />
-            <TabButton id="documents" label="Required Documents" icon={FileText} active={activeTab === 'documents'} onClick={setActiveTab} />
-            <TabButton id="eligibility" label="Eligibility Criteria" icon={CheckCircle} active={activeTab === 'eligibility'} onClick={setActiveTab} />
-            <TabButton id="submission" label="Submission Guidelines" icon={Upload} active={activeTab === 'submission'} onClick={setActiveTab} />
-            <TabButton id="tips" label="Smart Tips" icon={Lightbulb} active={activeTab === 'tips'} onClick={setActiveTab} />
-            <TabButton id="guide" label="Application Guide" icon={List} active={activeTab === 'guide'} onClick={setActiveTab} />
-            <TabButton id="post-submission" label="Post-Submission Info" icon={Info} active={activeTab === 'post-submission'} onClick={setActiveTab} />
-            <TabButton id="dos-donts" label="Do's & Don'ts" icon={AlertTriangle} active={activeTab === 'dos-donts'} onClick={setActiveTab} />
+            {[
+              { id: 'browse', label: 'Browse Schemes', icon: Search },
+              { id: 'documents', label: 'Required Documents', icon: FileText },
+              { id: 'eligibility', label: 'Eligibility Criteria', icon: CheckCircle },
+              { id: 'submission', label: 'Submission Guidelines', icon: Upload },
+              { id: 'tips', label: 'Smart Tips', icon: Lightbulb },
+              { id: 'guide', label: 'Application Guide', icon: List },
+              { id: 'post-submission', label: 'Post-Submission Info', icon: Info },
+              { id: 'dos-donts', label: "Do's & Don'ts", icon: AlertTriangle },
+            ].map(tab => (
+              <TabButton key={tab.id} {...tab} active={activeTab === tab.id} />
+            ))}
           </div>
-        </div>
+        </motion.div>
 
-        <div className="content-container">
+        <motion.div variants={containerVariants} initial="hidden" animate="visible">
           {activeTab === 'browse' && (
             <div className="space-y-8">
-              {/* Search and Filter */}
-              <div className="bg-white/60 backdrop-blur-md rounded-3xl p-6 shadow-xl border border-white/20">
+              <div className="bg-white rounded-3xl p-6 shadow-xl border border-gray-200">
                 <div className="flex flex-col md:flex-row gap-4">
                   <div className="relative flex-1">
-                    <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
+                    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                     <input
                       type="text"
                       placeholder="Search schemes by name or description..."
                       value={searchTerm}
-                      onChange={(e) => {
-                        try {
-                          setSearchTerm(e.target.value);
-                        } catch (err) {
-                          setError('Error updating search term. Please try again.');
-                        }
-                      }}
-                      className="w-full pl-14 pr-6 py-4 border border-sky-100 rounded-2xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-sky-500/20 focus:border-sky-400 transition-all duration-300 shadow-sm"
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all text-gray-700"
                     />
                   </div>
-                  <div className="relative min-w-[200px]">
-                    <Filter className="absolute left-5 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
+                  <div className="relative min-w-[180px]">
+                    <Filter className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                     <select
                       value={selectedCategory}
-                      onChange={(e) => {
-                        try {
-                          setSelectedCategory(e.target.value);
-                        } catch (err) {
-                          setError('Error selecting category. Please try again.');
-                        }
-                      }}
-                      className="w-full pl-14 pr-10 py-4 border border-sky-100 rounded-2xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-sky-500/20 focus:border-sky-400 transition-all duration-300 appearance-none cursor-pointer shadow-sm"
+                      onChange={(e) => setSelectedCategory(e.target.value)}
+                      className="w-full pl-12 pr-8 py-3 border border-gray-200 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all appearance-none text-gray-700"
                     >
                       {categories.map(category => (
                         <option key={category} value={category}>
@@ -478,154 +600,162 @@ const Application = () => {
                   </div>
                 </div>
               </div>
-              
-              {/* Schemes Grid */}
-              <div className="grid gap-8">
-                {filteredSchemes.length > 0 ? (
+              <motion.div
+                variants={containerVariants}
+                className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+              >
+                {isLoading ? (
+                  Array(6).fill().map((_, i) => <SkeletonCard key={i} />)
+                ) : filteredSchemes.length > 0 ? (
                   filteredSchemes.map(scheme => <SchemeCard key={scheme.id} scheme={scheme} />)
                 ) : (
-                  <div className="text-center py-16 bg-white/60 backdrop-blur-sm rounded-3xl border border-sky-100 shadow-lg">
-                    <Search className="w-20 h-20 mx-auto mb-6 text-slate-300" />
-                    <h3 className="text-xl font-semibold text-slate-600 mb-2">No schemes found</h3>
-                    <p className="text-slate-500">Try adjusting your search criteria or category filter.</p>
-                  </div>
+                  <motion.div
+                    variants={itemVariants}
+                    className="col-span-full text-center py-16 bg-white rounded-3xl border border-gray-200 shadow-lg"
+                  >
+                    <Search className="w-16 h-16 mx-auto mb-4 text-gray-300" />
+                    <h3 className="text-xl font-semibold text-gray-600 mb-2">No schemes found</h3>
+                    <p className="text-gray-500">Try adjusting your search or category filter.</p>
+                  </motion.div>
                 )}
-              </div>
+              </motion.div>
             </div>
           )}
-          
           {activeTab === 'documents' && (
-            <DetailSection title="Required Documents" icon={FileText} items={schemeDetails.requiredDocuments} color="green" />
+            <DocumentSection title="Required Documents" icon={FileText} items={schemeDetails.requiredDocuments} />
           )}
           {activeTab === 'eligibility' && (
-            <DetailSection title="Eligibility Criteria" icon={CheckCircle} items={schemeDetails.eligibilityCriteria} color="blue" />
+            <EligibilitySection title="Eligibility Criteria" icon={CheckCircle} items={schemeDetails.eligibilityCriteria} />
           )}
           {activeTab === 'submission' && (
-            <DetailSection title="Submission Guidelines" icon={Upload} items={schemeDetails.submissionFormat} color="purple" />
+            <SubmissionSection title="Submission Guidelines" icon={Upload} items={schemeDetails.submissionFormat} />
           )}
           {activeTab === 'tips' && (
-            <DetailSection title="Smart Tips" icon={Lightbulb} items={schemeDetails.smartTips} color="yellow" />
+            <TipsSection title="Smart Tips" icon={Lightbulb} items={schemeDetails.smartTips} />
           )}
           {activeTab === 'guide' && (
-            <DetailSection title="Step-by-Step Application Guide" icon={List} items={schemeDetails.stepByStepGuide} color="indigo" />
+            <StepGuideSection title="Step-by-Step Application Guide" icon={List} items={schemeDetails.stepByStepGuide} />
           )}
           {activeTab === 'post-submission' && (
-            <DetailSection title="Post-Submission Information" icon={Info} items={schemeDetails.postSubmissionInfo} color="teal" />
+            <PostSubmissionSection title="Post-Submission Information" icon={Info} items={schemeDetails.postSubmissionInfo} />
           )}
           {activeTab === 'dos-donts' && (
             <DosAndDontsSection dos={schemeDetails.dosAndDonts.dos} donts={schemeDetails.dosAndDonts.donts} />
           )}
-        </div>
-      </div>
+        </motion.div>
 
-      {/* Scheme Detail Modal */}
-      {selectedScheme && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center p-6 z-50">
-          <div className="bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-sky-100">
-            <div className="p-8">
-              <div className="flex justify-between items-start mb-6">
-                <div className="flex-1">
-                  <h2 className="text-3xl font-bold text-slate-800 mb-2">{selectedScheme.name}</h2>
-                  <div className="flex items-center gap-4">
-                    <span className="bg-gradient-to-r from-sky-100 to-blue-100 text-sky-800 px-4 py-2 rounded-full text-sm font-semibold border border-sky-200">
-                      {selectedScheme.category}
-                    </span>
-                    <div className="flex items-center gap-2">
-                      <Star className="w-5 h-5 text-amber-400 fill-current" />
-                      <span className="text-lg font-semibold text-slate-700">{selectedScheme.rating}</span>
+        <AnimatePresence>
+          {selectedScheme && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+            >
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.95, opacity: 0 }}
+                className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-gray-200"
+              >
+                <div className="p-6">
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <h2 className="text-2xl font-bold text-gray-800 mb-2">{selectedScheme.name}</h2>
+                      <div className="flex items-center gap-3">
+                        <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium">
+                          {selectedScheme.category}
+                        </span>
+                        <div className="flex items-center gap-1">
+                          <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                          <span className="text-sm font-medium text-gray-600">{selectedScheme.rating}</span>
+                        </div>
+                      </div>
                     </div>
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={() => setSelectedScheme(null)}
+                      className="text-gray-400 hover:text-gray-600 text-2xl font-bold"
+                    >
+                      ×
+                    </motion.button>
                   </div>
-                </div>
-                <button
-                  className="text-slate-400 hover:text-slate-600 text-3xl font-bold transition-colors duration-200 p-2 hover:bg-slate-100 rounded-full"
-                  onClick={() => {
-                    try {
-                      setSelectedScheme(null);
-                    } catch (err) {
-                      setError('Error closing modal. Please try again.');
-                    }
-                  }}
-                >
-                  ×
-                </button>
-              </div>
-              
-              <div className="mb-8 p-6 bg-sky-50/50 rounded-2xl border border-sky-100">
-                <p className="text-slate-700 text-lg leading-relaxed">{selectedScheme.description}</p>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div className="bg-white/80 p-5 rounded-2xl border border-sky-100 shadow-sm">
-                  <div className="flex items-center mb-3">
-                    <DollarSign className="w-5 h-5 text-emerald-500 mr-2" />
-                    <label className="text-sm font-semibold text-slate-500">Amount</label>
-                  </div>
-                  <p className="text-slate-800 font-semibold text-lg">{selectedScheme.amount}</p>
-                </div>
-                <div className="bg-white/80 p-5 rounded-2xl border border-sky-100 shadow-sm">
-                  <div className="flex items-center mb-3">
-                    <Calendar className="w-5 h-5 text-amber-500 mr-2" />
-                    <label className="text-sm font-semibold text-slate-500">Deadline</label>
-                  </div>
-                  <p className="text-slate-800 font-semibold text-lg">{selectedScheme.deadline}</p>
-                </div>
-                <div className="bg-white/80 p-5 rounded-2xl border border-sky-100 shadow-sm">
-                  <div className="flex items-center mb-3">
-                    <Users className="w-5 h-5 text-blue-500 mr-2" />
-                    <label className="text-sm font-semibold text-slate-500">Applicants</label>
-                  </div>
-                  <p className="text-slate-800 font-semibold text-lg">{selectedScheme.applicants}</p>
-                </div>
-                <div className="bg-white/80 p-5 rounded-2xl border border-sky-100 shadow-sm">
-                  <div className="flex items-center mb-3">
-                    <MapPin className="w-5 h-5 text-rose-500 mr-2" />
-                    <label className="text-sm font-semibold text-slate-500">Coverage</label>
-                  </div>
-                  <p className="text-slate-800 font-semibold text-lg">{selectedScheme.location}</p>
-                </div>
-              </div>
-              
-              <div className="mb-8 p-6 bg-blue-50/50 rounded-2xl border border-blue-100">
-                <div className="flex items-center mb-3">
-                  <CheckCircle className="w-5 h-5 text-blue-500 mr-2" />
-                  <label className="text-sm font-semibold text-slate-500">Eligibility Requirements</label>
-                </div>
-                <p className="text-slate-700 leading-relaxed">{selectedScheme.eligibility}</p>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="flex-1 bg-gradient-to-r from-sky-500 to-blue-600 text-white py-4 px-6 rounded-2xl font-semibold hover:from-sky-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center group">
-                  <Globe className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
-                  Apply Now
-                </button>
-                <button className="flex-1 bg-white/80 border border-sky-200 text-slate-700 py-4 px-6 rounded-2xl font-semibold flex items-center justify-center hover:bg-sky-50 hover:text-sky-700 hover:border-sky-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 group">
-                  <Download className="w-5 h-5 mr-2 group-hover:translate-y-0.5 transition-transform duration-300" />
-                  Download Guidelines
-                </button>
-              </div>
-              
-              <div className="mt-6 p-4 bg-gradient-to-r from-sky-50 to-blue-50 rounded-2xl border border-sky-100">
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-600">
-                  <div className="flex items-center gap-4">
-                    <div className="flex items-center">
-                      <Phone className="w-4 h-4 mr-1.5 text-sky-500" />
-                      <span>Helpline: 1800-XXX-XXXX</span>
+                  <motion.div variants={itemVariants} className="space-y-4">
+                    <div className="p-4 bg-gray-50 rounded-2xl">
+                      <p className="text-gray-700 text-sm">{selectedScheme.description}</p>
                     </div>
-                    <div className="flex items-center">
-                      <Mail className="w-4 h-4 mr-1.5 text-sky-500" />
-                      <span>support@gov.in</span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div className="p-3 bg-white rounded-xl border border-gray-200">
+                        <div className="flex items-center gap-2 mb-1">
+                          <DollarSign className="w-4 h-4 text-green-500" />
+                          <span className="text-xs text-gray-500">Amount</span>
+                        </div>
+                        <p className="text-gray-800 font-semibold text-sm">{selectedScheme.amount}</p>
+                      </div>
+                      <div className="p-3 bg-white rounded-xl border border-gray-200">
+                        <div className="flex items-center gap-2 mb-1">
+                          <Calendar className="w-4 h-4 text-yellow-500" />
+                          <span className="text-xs text-gray-500">Deadline</span>
+                        </div>
+                        <p className="text-gray-800 font-semibold text-sm">{selectedScheme.deadline}</p>
+                      </div>
+                      <div className="p-3 bg-white rounded-xl border border-gray-200">
+                        <div className="flex items-center gap-2 mb-1">
+                          <Users className="w-4 h-4 text-blue-500" />
+                          <span className="text-xs text-gray-500">Applicants</span>
+                        </div>
+                        <p className="text-gray-800 font-semibold text-sm">{selectedScheme.applicants}</p>
+                      </div>
+                      <div className="p-3 bg-white rounded-xl border border-gray-200">
+                        <div className="flex items-center gap-2 mb-1">
+                          <MapPin className="w-4 h-4 text-red-500" />
+                          <span className="text-xs text-gray-500">Coverage</span>
+                        </div>
+                        <p className="text-gray-800 font-semibold text-sm">{selectedScheme.location}</p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex items-center text-xs text-slate-500">
-                    <Clock className="w-3 h-3 mr-1" />
-                    <span>24/7 Support Available</span>
-                  </div>
+                    <div className="p-4 bg-blue-50 rounded-2xl">
+                      <div className="flex items-center gap-2 mb-2">
+                        <CheckCircle className="w-4 h-4 text-blue-500" />
+                        <span className="text-xs text-gray-500">Eligibility</span>
+                      </div>
+                      <p className="text-gray-700 text-sm">{selectedScheme.eligibility}</p>
+                    </div>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="flex-1 bg-gradient-to-r from-blue-500 to-blue-500 text-white py-2.5 rounded-xl flex items-center justify-center text-sm font-medium"
+                      >
+                        <Globe className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
+                        Apply Now
+                      </motion.button>
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="flex-1 bg-white border border-gray-200 text-gray-700 py-2.5 rounded-xl flex items-center justify-center text-sm font-medium hover:bg-blue-50 hover:text-blue-600"
+                      >
+                        <Download className="w-4 h-4 mr-2 group-hover:translate-y-0.5 transition-transform" />
+                        Download Guidelines
+                      </motion.button>
+                    </div>
+                    <div className="p-3 bg-gradient-to-r from-blue-50 to-blue-50 rounded-xl text-xs text-gray-600">
+                      <div className="flex flex-col sm:flex-row justify-between gap-2">
+                        <div className="flex gap-4">
+                          <span><Phone className="w-3 h-3 inline mr-1 text-blue-500" /> Helpline: 1800-XXX-XXXX</span>
+                          <span><Mail className="w-3 h-3 inline mr-1 text-blue-500" /> support@gov.in</span>
+                        </div>
+                        <span><Clock className="w-3 h-3 inline mr-1 text-blue-500" /> 24/7 Support</span>
+                      </div>
+                    </div>
+                  </motion.div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 };

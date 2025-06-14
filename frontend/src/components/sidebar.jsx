@@ -20,7 +20,7 @@ const Sidebar = ({ isOpen, onClose }) => {
     { icon: <CheckCircle className="w-5 h-5" />, label: 'Application', path: '/application' },
     { icon: <MessageCircle className="w-5 h-5" />, label: 'Chatbot', path: '/chatbot' },
     { icon: <HelpCircle className="w-5 h-5" />, label: 'Assistance', path: '/assistance' },
-    { icon: <User className="w-5 h-5" />, label: 'Profile', path: '/profileform' }
+    { icon: <User className="w-5 h-5" />, label: 'Profile', path: '/profile' }
   ];
 
   const handleNavigation = (path) => {
