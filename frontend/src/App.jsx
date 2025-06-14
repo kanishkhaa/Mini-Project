@@ -6,6 +6,7 @@ import Application from './pages/application';
 import ProfileForm from './pages/profileform';
 import Landing from './pages/landing';
 import Profile from './pages/profile'; // Assuming you have a Profile page
+import Scheme from './pages/scheme';
 import Sidebar from './components/sidebar'; // Adjust path as needed
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path='/application' element={<Application />} />
           <Route path='/profileform' element={<ProfileForm />} />
           <Route path='/profile' element={<Profile />} />
+          <Route path='/scheme' element={<Scheme />} />
           {/* Add more routes as needed */}
         </Routes>
       </div>
