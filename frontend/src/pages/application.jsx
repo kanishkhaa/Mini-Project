@@ -14,6 +14,12 @@ import {
   Clock,
   DollarSign,
   Users,
+  Star,
+  Calendar,
+  MapPin,
+  Phone,
+  Mail,
+  Globe,
 } from 'lucide-react';
 
 const Application = () => {
@@ -28,34 +34,53 @@ const Application = () => {
       id: 1,
       name: 'Soil Health Card',
       category: 'Agriculture',
-      description: 'Providing farmers with nutrient management',
+      description: 'Providing farmers with comprehensive nutrient management solutions to improve soil quality and increase crop yield',
       eligibility: 'Small and marginal farmers with cultivable land',
       amount: '₹6,000 per year',
       deadline: '2025-12-31',
       applicants: '12M+',
       status: 'Active',
+      rating: 4.8,
+      location: 'Pan India',
     },
     {
       id: 2,
       name: 'Startup India Initiative',
       category: 'Business',
-      description: 'Support for startups and entrepreneurs',
+      description: 'Comprehensive support ecosystem for startups and entrepreneurs to foster innovation and business growth',
       eligibility: 'Innovative startups with DPIIT recognition',
       amount: 'Up to ₹10 Lakhs',
       deadline: '2025-10-15',
       applicants: '500K+',
       status: 'Active',
+      rating: 4.6,
+      location: 'Pan India',
     },
     {
       id: 3,
       name: 'Beti Bachao Beti Padhao',
       category: 'Education',
-      description: 'Promotes girls’ education and empowerment',
+      description: 'Promotes girls\' education and empowerment through comprehensive support and awareness programs',
       eligibility: 'Girl child and women empowerment initiatives',
       amount: 'Varies by component',
       deadline: '2025-11-30',
       applicants: '2M+',
       status: 'Active',
+      rating: 4.9,
+      location: 'Pan India',
+    },
+    {
+      id: 4,
+      name: 'Ayushman Bharat',
+      category: 'Healthcare',
+      description: 'National health protection scheme providing cashless healthcare services to vulnerable families',
+      eligibility: 'Families identified through SECC database',
+      amount: 'Up to ₹5 Lakhs per family',
+      deadline: '2025-12-31',
+      applicants: '50M+',
+      status: 'Active',
+      rating: 4.7,
+      location: 'Pan India',
     },
   ];
 
@@ -78,7 +103,7 @@ const Application = () => {
       'Age between 18-60 years',
       'Annual family income within specified limit',
       'Not a beneficiary of similar schemes',
-      'Valid bank account in applicant’s name',
+      'Valid bank account in applicant\'s name',
       'Complete address proof required',
       'Meets scheme-specific educational qualifications',
     ],
@@ -135,14 +160,14 @@ const Application = () => {
         'Contact the helpline for any clarifications',
       ],
       donts: [
-        'Don’t submit incomplete or illegible forms',
-        'Don’t provide false or mismatched information',
-        'Don’t miss the submission deadline',
-        'Don’t apply without meeting eligibility criteria',
-        'Don’t lose the acknowledgment receipt',
-        'Don’t use invalid or expired documents',
-        'Don’t ignore status updates or verification requests',
-        'Don’t share sensitive information on unofficial platforms',
+        'Don\'t submit incomplete or illegible forms',
+        'Don\'t provide false or mismatched information',
+        'Don\'t miss the submission deadline',
+        'Don\'t apply without meeting eligibility criteria',
+        'Don\'t lose the acknowledgment receipt',
+        'Don\'t use invalid or expired documents',
+        'Don\'t ignore status updates or verification requests',
+        'Don\'t share sensitive information on unofficial platforms',
       ],
     },
   };
@@ -168,16 +193,20 @@ const Application = () => {
           setError('Error switching tabs. Please try again.');
         }
       }}
-      className={`tab-button ${active ? 'active' : ''}`}
+      className={`flex items-center px-6 py-3.5 rounded-2xl font-medium text-sm transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
+        active 
+          ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-xl shadow-blue-500/30 border border-blue-200' 
+          : 'bg-white/70 text-slate-700 hover:bg-sky-50/80 hover:text-sky-700 hover:shadow-md border border-sky-100 backdrop-blur-sm'
+      }`}
     >
-      <Icon className="icon" />
+      <Icon className="w-5 h-5 mr-2.5" />
       {label}
     </button>
   );
 
   const SchemeCard = ({ scheme }) => (
     <div
-      className="scheme-card"
+      className="bg-white/80 backdrop-blur-sm rounded-3xl p-7 border border-sky-100 shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 cursor-pointer group relative overflow-hidden"
       onClick={() => {
         try {
           setSelectedScheme(scheme);
@@ -186,90 +215,180 @@ const Application = () => {
         }
       }}
     >
-      <div className="card-header">
-        <div className="card-title-container">
-          <div className="title-category">
-            <h3 className="card-title">{scheme.name}</h3>
-            <span className="category-tag">{scheme.category}</span>
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-sky-50/50 to-blue-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      
+      {/* Left border accent */}
+      <div className="absolute left-0 top-0 w-1.5 h-full bg-gradient-to-b from-sky-400 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-l-3xl"></div>
+      
+      <div className="relative z-10">
+        <div className="flex justify-between items-start mb-5">
+          <div className="flex-1">
+            <div className="flex items-center gap-3 flex-wrap mb-3">
+              <h3 className="text-xl font-bold text-slate-800 group-hover:text-sky-700 transition-colors duration-300">{scheme.name}</h3>
+              <span className="inline-block bg-gradient-to-r from-sky-100 to-blue-100 text-sky-800 px-3 py-1.5 rounded-full text-xs font-semibold border border-sky-200">
+                {scheme.category}
+              </span>
+              <div className="flex items-center gap-1">
+                <Star className="w-4 h-4 text-amber-400 fill-current" />
+                <span className="text-sm font-medium text-slate-600">{scheme.rating}</span>
+              </div>
+            </div>
           </div>
         </div>
+        
+        <p className="text-slate-600 text-sm mb-5 leading-relaxed">{scheme.description}</p>
+        
+        <div className="grid grid-cols-2 gap-4 mb-6">
+          <div className="flex items-center text-sm text-slate-600 bg-sky-50/50 p-3 rounded-xl">
+            <DollarSign className="w-4 h-4 mr-2 text-emerald-500" />
+            <span className="font-medium">{scheme.amount}</span>
+          </div>
+          <div className="flex items-center text-sm text-slate-600 bg-sky-50/50 p-3 rounded-xl">
+            <Users className="w-4 h-4 mr-2 text-blue-500" />
+            <span className="font-medium">{scheme.applicants}</span>
+          </div>
+          <div className="flex items-center text-sm text-slate-600 bg-sky-50/50 p-3 rounded-xl">
+            <Calendar className="w-4 h-4 mr-2 text-amber-500" />
+            <span className="font-medium">{scheme.deadline}</span>
+          </div>
+          <div className="flex items-center text-sm text-slate-600 bg-sky-50/50 p-3 rounded-xl">
+            <MapPin className="w-4 h-4 mr-2 text-rose-500" />
+            <span className="font-medium">{scheme.location}</span>
+          </div>
+        </div>
+        
+        <button className="w-full bg-gradient-to-r from-sky-500 to-blue-600 text-white py-3.5 px-4 rounded-2xl font-semibold text-sm flex items-center justify-center hover:from-sky-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl group/btn">
+          View Details
+          <ChevronRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300" />
+        </button>
       </div>
-      <p className="description">{scheme.description}</p>
-      <div className="info-grid">
-        <div className="info-item">
-          <DollarSign className="info-icon green" />
-          {scheme.amount}
-        </div>
-        <div className="info-item">
-          <Users className="info-icon blue" />
-          {scheme.applicants}
-        </div>
-        <div className="info-item">
-          <Clock className="info-icon red" />
-          {scheme.deadline}
-        </div>
-        <div className="info-item">
-          <CheckCircle className="info-icon green" />
-          {scheme.status}
-        </div>
-      </div>
-      <button className="details-button">
-        View Details
-        <ChevronRight className="chevron" />
-      </button>
     </div>
   );
 
-  const DetailSection = ({ title, icon: Icon, items, color }) => (
-    <div className="detail-section">
-      <div className="section-header">
-        <div className={`icon-container ${color}`}>
-          <Icon className="section-icon" />
-        </div>
-        <h3 className="section-title">{title}</h3>
-      </div>
-      <div className="items-container">
-        {items.map((item, index) => (
-          <div key={index} className="item">
-            <div className={`item-number ${color}`}>{index + 1}</div>
-            <p className="item-text">{item}</p>
+  const DetailSection = ({ title, icon: Icon, items, color }) => {
+    const colorClasses = {
+      green: {
+        iconBg: 'bg-emerald-100',
+        iconColor: 'text-emerald-600',
+        numberBg: 'bg-emerald-50',
+        numberColor: 'text-emerald-600',
+        borderColor: 'border-emerald-200',
+        hoverBg: 'hover:bg-emerald-50'
+      },
+      blue: {
+        iconBg: 'bg-sky-100',
+        iconColor: 'text-sky-600',
+        numberBg: 'bg-sky-50',
+        numberColor: 'text-sky-600',
+        borderColor: 'border-sky-200',
+        hoverBg: 'hover:bg-sky-50'
+      },
+      purple: {
+        iconBg: 'bg-purple-100',
+        iconColor: 'text-purple-600',
+        numberBg: 'bg-purple-50',
+        numberColor: 'text-purple-600',
+        borderColor: 'border-purple-200',
+        hoverBg: 'hover:bg-purple-50'
+      },
+      yellow: {
+        iconBg: 'bg-amber-100',
+        iconColor: 'text-amber-600',
+        numberBg: 'bg-amber-50',
+        numberColor: 'text-amber-600',
+        borderColor: 'border-amber-200',
+        hoverBg: 'hover:bg-amber-50'
+      },
+      indigo: {
+        iconBg: 'bg-indigo-100',
+        iconColor: 'text-indigo-600',
+        numberBg: 'bg-indigo-50',
+        numberColor: 'text-indigo-600',
+        borderColor: 'border-indigo-200',
+        hoverBg: 'hover:bg-indigo-50'
+      },
+      teal: {
+        iconBg: 'bg-teal-100',
+        iconColor: 'text-teal-600',
+        numberBg: 'bg-teal-50',
+        numberColor: 'text-teal-600',
+        borderColor: 'border-teal-200',
+        hoverBg: 'hover:bg-teal-50'
+      },
+      red: {
+        iconBg: 'bg-red-100',
+        iconColor: 'text-red-600',
+        numberBg: 'bg-red-50',
+        numberColor: 'text-red-600',
+        borderColor: 'border-red-200',
+        hoverBg: 'hover:bg-red-50'
+      }
+    };
+
+    const colors = colorClasses[color] || colorClasses.blue;
+
+    return (
+      <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-sky-100 shadow-lg hover:shadow-2xl transition-all duration-500">
+        <div className="flex items-center mb-7">
+          <div className={`p-4 rounded-2xl ${colors.iconBg} mr-4 shadow-sm`}>
+            <Icon className={`w-7 h-7 ${colors.iconColor}`} />
           </div>
-        ))}
+          <h3 className="text-2xl font-bold text-slate-800">{title}</h3>
+        </div>
+        
+        <div className="space-y-4">
+          {items.map((item, index) => (
+            <div key={index} className={`flex items-start p-4 bg-slate-50/70 rounded-2xl ${colors.hoverBg} transition-colors duration-300 border ${colors.borderColor}/30`}>
+              <div className={`w-8 h-8 rounded-full ${colors.numberBg} ${colors.numberColor} flex items-center justify-center text-sm font-bold mr-4 mt-0.5 flex-shrink-0 shadow-sm border ${colors.borderColor}`}>
+                {index + 1}
+              </div>
+              <p className="text-slate-700 text-sm leading-relaxed">{item}</p>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   const DosAndDontsSection = ({ dos, donts }) => (
-    <div className="dos-donts-section">
-      <div className="dos-donts-container">
-        <div className="dos">
-          <div className="section-header">
-            <div className="icon-container green">
-              <CheckCircle className="section-icon green" />
+    <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-sky-100 shadow-lg hover:shadow-2xl transition-all duration-500">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <div className="flex items-center mb-7">
+            <div className="p-4 rounded-2xl bg-emerald-100 mr-4 shadow-sm">
+              <CheckCircle className="w-7 h-7 text-emerald-600" />
             </div>
-            <h3 className="section-title">Do's</h3>
+            <h3 className="text-2xl font-bold text-slate-800">Do's</h3>
           </div>
-          <div className="items-container">
+          
+          <div className="space-y-4">
             {dos.map((item, index) => (
-              <div key={index} className="item">
-                <div className="item-number green">{index + 1}</div>
-                <p className="item-text">{item}</p>
+              <div key={index} className="flex items-start p-4 bg-emerald-50/70 rounded-2xl hover:bg-emerald-100/70 transition-colors duration-300 border border-emerald-200/30">
+                <div className="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm font-bold mr-4 mt-0.5 flex-shrink-0 shadow-sm border border-emerald-200">
+                  {index + 1}
+                </div>
+                <p className="text-slate-700 text-sm leading-relaxed">{item}</p>
               </div>
             ))}
           </div>
         </div>
-        <div className="donts">
-          <div className="section-header">
-            <div className="icon-container red">
-              <AlertTriangle className="section-icon red" />
+        
+        <div>
+          <div className="flex items-center mb-7">
+            <div className="p-4 rounded-2xl bg-red-100 mr-4 shadow-sm">
+              <AlertTriangle className="w-7 h-7 text-red-600" />
             </div>
-            <h3 className="section-title">Dont's</h3>
+            <h3 className="text-2xl font-bold text-slate-800">Don'ts</h3>
           </div>
-          <div className="items-container">
+          
+          <div className="space-y-4">
             {donts.map((item, index) => (
-              <div key={index} className="item">
-                <div className="item-number red">{index + 1}</div>
-                <p className="item-text">{item}</p>
+              <div key={index} className="flex items-start p-4 bg-red-50/70 rounded-2xl hover:bg-red-100/70 transition-colors duration-300 border border-red-200/30">
+                <div className="w-8 h-8 rounded-full bg-red-50 text-red-600 flex items-center justify-center text-sm font-bold mr-4 mt-0.5 flex-shrink-0 shadow-sm border border-red-200">
+                  {index + 1}
+                </div>
+                <p className="text-slate-700 text-sm leading-relaxed">{item}</p>
               </div>
             ))}
           </div>
@@ -279,720 +398,53 @@ const Application = () => {
   );
 
   return (
-    <div className="app-container">
-      <style jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
-        .app-container {
-          min-height: 100vh;
-          background: linear-gradient(135deg, #e6f0ff 0%, #f0f7ff 100%);
-          font-family: 'Poppins', sans-serif;
-          font-size: 1rem;
-          padding: 0;
-          margin: 0;
-          color: #1a202c;
-          position: relative;
-          overflow-x: hidden;
-        }
-
-        .error-notification {
-          position: fixed;
-          top: 1.5rem;
-          right: 1.5rem;
-          background: #ef4444;
-          color: white;
-          padding: 1rem 1.5rem;
-          border-radius: 0.75rem;
-          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-          z-index: 1000;
-          display: flex;
-          align-items: center;
-          animation: slide-in 0.4s ease-out;
-        }
-
-        .error-notification button {
-          margin-left: 1rem;
-          color: white;
-          font-weight: 600;
-          font-size: 1.125rem;
-          background: none;
-          border: none;
-          cursor: pointer;
-          transition: transform 0.2s ease;
-        }
-
-        .error-notification button:hover {
-          transform: scale(1.2);
-        }
-
-        header {
-          background: linear-gradient(90deg, #1e3a8a, #3b82f6);
-          color: white;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-          position: sticky;
-          top: 0;
-          z-index: 10;
-        }
-
-        .header-content {
-          max-width: 85rem;
-          margin: 0 auto;
-          padding: 1.5rem 2rem;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        }
-
-        .header-title {
-          font-family: 'Poppins', sans-serif;
-          font-size: 2rem;
-          font-weight: 700;
-          color: #ffffff;
-        }
-
-        .header-text {
-          font-size: 1rem;
-          color: #dbeafe;
-          font-weight: 400;
-        }
-
-        .main-content {
-          max-width: 85rem;
-          margin: 0 auto;
-          padding: 2rem;
-        }
-
-        .tab-container {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 1rem;
-          background: rgba(255, 255, 255, 0.95);
-          border-radius: 0.75rem;
-          padding: 1.25rem;
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-          margin-bottom: 2.5rem;
-          backdrop-filter: blur(10px);
-        }
-
-        .tab-button {
-          display: flex;
-          align-items: center;
-          padding: 0.875rem 1.75rem;
-          border-radius: 0.5rem;
-          font-family: 'Poppins', sans-serif;
-          font-size: 0.9375rem;
-          font-weight: 500;
-          color: #374151;
-          background: #f3f4f6;
-          cursor: pointer;
-          transition: all 0.3s ease;
-        }
-
-        .tab-button:hover {
-          background: #dbeafe;
-          color: #1e3a8a;
-          box-shadow: 0 0 12px rgba(30, 58, 138, 0.2);
-          transform: translateY(-2px);
-        }
-
-        .tab-button.active {
-          background: linear-gradient(90deg, #1e3a8a, #3b82f6);
-          color: white;
-          box-shadow: 0 0 12px rgba(30, 58, 138, 0.4);
-        }
-
-        .icon {
-          width: 1.25rem;
-          height: 1.25rem;
-          margin-right: 0.625rem;
-        }
-
-        .search-container {
-          background: rgba(255, 255, 255, 0.95);
-          border-radius: 0.75rem;
-          padding: 1.75rem;
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-          margin-bottom: 2.5rem;
-          backdrop-filter: blur(10px);
-        }
-
-        .search-grid {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-        }
-
-        @media (min-width: 768px) {
-          .search-grid {
-            flex-direction: row;
-            gap: 1.5rem;
-          }
-        }
-
-        .input-container {
-          position: relative;
-          flex: 1;
-        }
-
-        .search-icon,
-        .filter-icon {
-          position: absolute;
-          left: 1rem;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 1.25rem;
-          height: 1.25rem;
-          color: #9ca3af;
-        }
-
-        input,
-        select {
-          width: 100%;
-          padding: 0.875rem 1rem 0.875rem 2.75rem;
-          border: 1px solid #d1d5db;
-          border-radius: 0.5rem;
-          background: white;
-          font-size: 0.9375rem;
-          color: #1a202c;
-          transition: all 0.3s ease;
-        }
-
-        input:focus,
-        select:focus {
-          outline: none;
-          border-color: #3b82f6;
-          box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
-        }
-
-        select {
-          appearance: none;
-        }
-
-        .schemes-grid {
-          display: flex;
-          flex-direction: column;
-          gap: 1.75rem;
-        }
-
-        .scheme-card {
-          background: white;
-          border-radius: 0.75rem;
-          padding: 1.75rem;
-          border: 1px solid #e5e7eb;
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-          cursor: pointer;
-          transition: all 0.3s ease;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .scheme-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 8px 24px rgba(30, 58, 138, 0.2);
-          border-color: #3b82f6;
-        }
-
-        .scheme-card::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 4px;
-          height: 100%;
-          background: #3b82f6;
-          opacity: 0;
-          transition: opacity 0.3s ease;
-        }
-
-        .scheme-card:hover::before {
-          opacity: 1;
-        }
-
-        .card-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          margin-bottom: 1rem;
-        }
-
-        .card-title-container {
-          flex: 1;
-        }
-
-        .title-category {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          flex-wrap: wrap;
-        }
-
-        .card-title {
-          font-family: 'Poppins', sans-serif;
-          font-size: 1.5rem;
-          font-weight: 600;
-          color: #1a202c;
-          margin: 0;
-        }
-
-        .category-tag {
-          display: inline-block;
-          background: #dbeafe;
-          color: #1e3a8a;
-          padding: 0.375rem 0.875rem;
-          border-radius: 9999px;
-          font-size: 0.8125rem;
-          font-weight: 500;
-        }
-
-        .description {
-          color: #4b5563;
-          font-size: 0.9375rem;
-          margin-bottom: 1rem;
-        }
-
-        .info-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 1rem;
-          margin-bottom: 1rem;
-        }
-
-        .info-item {
-          display: flex;
-          align-items: center;
-          font-size: 0.875rem;
-          color: #4b5563;
-        }
-
-        .info-icon {
-          width: 1rem;
-          height: 1rem;
-          margin-right: 0.5rem;
-        }
-
-        .info-icon.green {
-          color: #10b981;
-        }
-
-        .info-icon.blue {
-          color: #3b82f6;
-        }
-
-        .info-icon.red {
-          color: #ef4444;
-        }
-
-        .details-button {
-          width: 100%;
-          background: linear-gradient(90deg, #1e3a8a, #3b82f6);
-          color: white;
-          padding: 0.75rem 1rem;
-          border-radius: 0.5rem;
-          font-size: 0.9375rem;
-          font-weight: 500;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: all 0.3s ease;
-        }
-
-        .details-button:hover {
-          background: linear-gradient(90deg, #3b82f6, #1e3a8a);
-          box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
-        }
-
-        .chevron {
-          width: 1rem;
-          height: 1rem;
-          margin-left: 0.5rem;
-        }
-
-        .detail-section {
-          background: white;
-          border-radius: 0.75rem;
-          padding: 1.75rem;
-          border: 1px solid #e5e7eb;
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-          transition: all 0.3s ease;
-        }
-
-        .detail-section:hover {
-          box-shadow: 0 8px 24px rgba(30, 58, 138, 0.2);
-        }
-
-        .section-header {
-          display: flex;
-          align-items: center;
-          margin-bottom: 1.25rem;
-        }
-
-        .icon-container {
-          padding: 0.75rem;
-          border-radius: 9999px;
-          margin-right: 0.75rem;
-        }
-
-        .icon-container.green {
-          background: rgba(16, 185, 129, 0.1);
-        }
-
-        .icon-container.blue {
-          background: rgba(59, 130, 246, 0.1);
-        }
-
-        .icon-container.purple {
-          background: rgba(139, 92, 246, 0.1);
-        }
-
-        .icon-container.yellow {
-          background: rgba(245, 158, 11, 0.1);
-        }
-
-        .icon-container.indigo {
-          background: rgba(99, 102, 241, 0.1);
-        }
-
-        .icon-container.teal {
-          background: rgba(20, 184, 166, 0.1);
-        }
-
-        .icon-container.red {
-          background: rgba(239, 68, 68, 0.1);
-        }
-
-        .section-icon {
-          width: 1.25rem;
-          height: 1.25rem;
-        }
-
-        .section-icon.green {
-          color: #10b981;
-        }
-
-        .section-icon.blue {
-          color: #3b82f6;
-        }
-
-        .section-icon.purple {
-          color: #8b5cf6;
-        }
-
-        .section-icon.yellow {
-          color: #f59e0b;
-        }
-
-        .section-icon.indigo {
-          color: #6366f1;
-        }
-
-        .section-icon.teal {
-          color: #14b8a6;
-        }
-
-        .section-icon.red {
-          color: #ef4444;
-        }
-
-        .section-title {
-          font-family: 'Poppins', sans-serif;
-          font-size: 1.5rem;
-          font-weight: 600;
-          color: #1a202c;
-        }
-
-        .items-container {
-          display: flex;
-          flex-direction: column;
-          gap: 0.75rem;
-        }
-
-        .item {
-          display: flex;
-          align-items: flex-start;
-          padding: 0.75rem;
-          background: #f9fafb;
-          border-radius: 0.5rem;
-          transition: background 0.2s ease;
-        }
-
-        .item:hover {
-          background: #dbeafe;
-        }
-
-        .item-number {
-          width: 1.5rem;
-          height: 1.5rem;
-          border-radius: 9999px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 0.8125rem;
-          font-weight: 600;
-          margin-right: 0.75rem;
-          margin-top: 0.125rem;
-          flex-shrink: 0;
-        }
-
-        .item-number.green {
-          background: rgba(16, 185, 129, 0.1);
-          color: #10b981;
-        }
-
-        .item-number.blue {
-          background: rgba(59, 130, 246, 0.1);
-          color: #3b82f6;
-        }
-
-        .item-number.purple {
-          background: rgba(139, 92, 246, 0.1);
-          color: #8b5cf6;
-        }
-
-        .item-number.yellow {
-          background: rgba(245, 158, 11, 0.1);
-          color: #f59e0b;
-        }
-
-        .item-number.indigo {
-          background: rgba(99, 102, 241, 0.1);
-          color: #6366f1;
-        }
-
-        .item-number.teal {
-          background: rgba(20, 184, 166, 0.1);
-          color: #14b8a6;
-        }
-
-        .item-number.red {
-          background: rgba(239, 68, 68, 0.1);
-          color: #ef4444;
-        }
-
-        .item-text {
-          font-size: 0.9375rem;
-          color: #4b5563;
-          line-height: 1.5;
-        }
-
-        .dos-donts-section {
-          background: white;
-          border-radius: 0.75rem;
-          padding: 1.75rem;
-          border: 1px solid #e5e7eb;
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-          transition: all 0.3s ease;
-        }
-
-        .dos-donts-section:hover {
-          box-shadow: 0 8px 24px rgba(30, 58, 138, 0.2);
-        }
-
-        .dos-donts-container {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 1.5rem;
-        }
-
-        @media (min-width: 768px) {
-          .dos-donts-container {
-            grid-template-columns: 1fr 1fr;
-          }
-        }
-
-        .dos, .donts {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-        }
-
-        .modal-overlay {
-          position: fixed;
-          inset: 0;
-          background: rgba(0, 0, 0, 0.6);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 1.5rem;
-          z-index: 50;
-        }
-
-        .modal {
-          background: white;
-          border-radius: 0.75rem;
-          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-          max-width: 40rem;
-          width: 100%;
-          max-height: 85vh;
-          overflow-y: auto;
-          border: 1px solid #e5e7eb;
-          animation: fade-in 0.4s ease-out;
-        }
-
-        .modal-content {
-          padding: 1.75rem;
-        }
-
-        .modal-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          margin-bottom: 1rem;
-        }
-
-        .modal-title {
-          font-family: 'Poppins', sans-serif;
-          font-size: 1.5rem;
-          font-weight: 600;
-          color: #1a202c;
-        }
-
-        .close-button {
-          color: #9ca3af;
-          font-size: 1.25rem;
-          font-weight: 600;
-          background: none;
-          border: none;
-          cursor: pointer;
-          transition: color 0.2s ease;
-        }
-
-        .close-button:hover {
-          color: #4b5563;
-        }
-
-        .modal-description {
-          color: #4b5563;
-          font-size: 0.9375rem;
-          margin-bottom: 1rem;
-        }
-
-        .modal-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 1rem;
-          margin-bottom: 1rem;
-        }
-
-        .modal-item label {
-          display: block;
-          font-size: 0.8125rem;
-          font-weight: 500;
-          color: #4b5563;
-          margin-bottom: 0.25rem;
-        }
-
-        .modal-item p {
-          font-size: 0.9375rem;
-          color: #4b5563;
-        }
-
-        .modal-buttons {
-          display: flex;
-          gap: 1rem;
-          padding-top: 1rem;
-        }
-
-        .apply-button {
-          flex: 1;
-          background: linear-gradient(90deg, #1e3a8a, #3b82f6);
-          color: white;
-          padding: 0.75rem 1rem;
-          border-radius: 0.5rem;
-          font-size: 0.9375rem;
-          font-weight: 500;
-          transition: all 0.3s ease;
-        }
-
-        .apply-button:hover {
-          background: linear-gradient(90deg, #3b82f6, #1e3a8a);
-          box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
-        }
-
-        .download-button {
-          flex: 1;
-          background: #f3f4f6;
-          color: #4b5563;
-          padding: 0.75rem 1rem;
-          border-radius: 0.5rem;
-          font-size: 0.9375rem;
-          font-weight: 500;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: all 0.3s ease;
-        }
-
-        .download-button:hover {
-          background: #dbeafe;
-          box-shadow: 0 0 12px rgba(59, 130, 246, 0.2);
-        }
-
-        .download-icon {
-          width: 1rem;
-          height: 1rem;
-          margin-right: 0.5rem;
-        }
-
-        .no-results {
-          color: #4b5563;
-          text-align: center;
-          font-size: 1rem;
-          padding: 2rem;
-        }
-
-        @keyframes slide-in {
-          from {
-            transform: translateY(20px);
-            opacity: 0;
-          }
-          to {
-            transform: translateY(0);
-            opacity: 1;
-          }
-        }
-
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-      `}</style>
+    <div className="min-h-screen bg-gradient-to-br from-sky-50 via-blue-50/30 to-indigo-50">
       {error && (
-        <div className="error-notification">
+        <div className="fixed top-6 right-6 bg-gradient-to-r from-red-500 to-red-600 text-white px-6 py-4 rounded-2xl shadow-2xl z-50 flex items-center animate-bounce border border-red-400">
+          <AlertTriangle className="w-5 h-5 mr-3" />
           {error}
-          <button onClick={() => setError(null)}>×</button>
+          <button onClick={() => setError(null)} className="ml-4 text-white font-bold text-lg hover:scale-110 transition-transform duration-200">
+            ×
+          </button>
         </div>
       )}
-      <header>
-        <div className="header-content">
-          <h1 className="header-title">Government Schemes Portal</h1>
-          <div className="header-text">Discover and apply for suitable schemes</div>
+      
+      <div className="max-w-7xl mx-auto px-6 py-10">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4 bg-gradient-to-r from-sky-600 to-blue-700 bg-clip-text text-transparent">
+            Government Schemes Portal
+          </h1>
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            Discover and access comprehensive information about government schemes designed to empower citizens
+          </p>
         </div>
-      </header>
-      <div className="main-content">
-        <div className="tab-container">
-          <TabButton id="browse" label="Browse Schemes" icon={Search} active={activeTab === 'browse'} onClick={setActiveTab} />
-          <TabButton id="documents" label="Required Documents" icon={FileText} active={activeTab === 'documents'} onClick={setActiveTab} />
-          <TabButton id="eligibility" label="Eligibility Criteria" icon={CheckCircle} active={activeTab === 'eligibility'} onClick={setActiveTab} />
-          <TabButton id="submission" label="Submission Guidelines" icon={Upload} active={activeTab === 'submission'} onClick={setActiveTab} />
-          <TabButton id="tips" label="Smart Tips" icon={Lightbulb} active={activeTab === 'tips'} onClick={setActiveTab} />
-          <TabButton id="guide" label="Application Guide" icon={List} active={activeTab === 'guide'} onClick={setActiveTab} />
-          <TabButton id="post-submission" label="Post-Submission Info" icon={Info} active={activeTab === 'post-submission'} onClick={setActiveTab} />
-          <TabButton id="dos-donts" label="Do's & Don'ts" icon={AlertTriangle} active={activeTab === 'dos-donts'} onClick={setActiveTab} />
+
+        {/* Navigation Tabs */}
+        <div className="bg-white/60 backdrop-blur-md rounded-3xl p-6 shadow-xl border border-white/20 mb-10">
+          <div className="flex flex-wrap gap-3 justify-center">
+            <TabButton id="browse" label="Browse Schemes" icon={Search} active={activeTab === 'browse'} onClick={setActiveTab} />
+            <TabButton id="documents" label="Required Documents" icon={FileText} active={activeTab === 'documents'} onClick={setActiveTab} />
+            <TabButton id="eligibility" label="Eligibility Criteria" icon={CheckCircle} active={activeTab === 'eligibility'} onClick={setActiveTab} />
+            <TabButton id="submission" label="Submission Guidelines" icon={Upload} active={activeTab === 'submission'} onClick={setActiveTab} />
+            <TabButton id="tips" label="Smart Tips" icon={Lightbulb} active={activeTab === 'tips'} onClick={setActiveTab} />
+            <TabButton id="guide" label="Application Guide" icon={List} active={activeTab === 'guide'} onClick={setActiveTab} />
+            <TabButton id="post-submission" label="Post-Submission Info" icon={Info} active={activeTab === 'post-submission'} onClick={setActiveTab} />
+            <TabButton id="dos-donts" label="Do's & Don'ts" icon={AlertTriangle} active={activeTab === 'dos-donts'} onClick={setActiveTab} />
+          </div>
         </div>
+
         <div className="content-container">
           {activeTab === 'browse' && (
-            <>
-              <div className="search-container">
-                <div className="search-grid">
-                  <div className="input-container">
-                    <Search className="search-icon" />
+            <div className="space-y-8">
+              {/* Search and Filter */}
+              <div className="bg-white/60 backdrop-blur-md rounded-3xl p-6 shadow-xl border border-white/20">
+                <div className="flex flex-col md:flex-row gap-4">
+                  <div className="relative flex-1">
+                    <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
                     <input
                       type="text"
-                      placeholder="Search schemes..."
+                      placeholder="Search schemes by name or description..."
                       value={searchTerm}
                       onChange={(e) => {
                         try {
@@ -1001,10 +453,11 @@ const Application = () => {
                           setError('Error updating search term. Please try again.');
                         }
                       }}
+                      className="w-full pl-14 pr-6 py-4 border border-sky-100 rounded-2xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-sky-500/20 focus:border-sky-400 transition-all duration-300 shadow-sm"
                     />
                   </div>
-                  <div className="input-container">
-                    <Filter className="filter-icon" />
+                  <div className="relative min-w-[200px]">
+                    <Filter className="absolute left-5 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
                     <select
                       value={selectedCategory}
                       onChange={(e) => {
@@ -1014,6 +467,7 @@ const Application = () => {
                           setError('Error selecting category. Please try again.');
                         }
                       }}
+                      className="w-full pl-14 pr-10 py-4 border border-sky-100 rounded-2xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-sky-500/20 focus:border-sky-400 transition-all duration-300 appearance-none cursor-pointer shadow-sm"
                     >
                       {categories.map(category => (
                         <option key={category} value={category}>
@@ -1024,15 +478,22 @@ const Application = () => {
                   </div>
                 </div>
               </div>
-              <div className="schemes-grid">
+              
+              {/* Schemes Grid */}
+              <div className="grid gap-8">
                 {filteredSchemes.length > 0 ? (
                   filteredSchemes.map(scheme => <SchemeCard key={scheme.id} scheme={scheme} />)
                 ) : (
-                  <p className="no-results">No schemes found.</p>
+                  <div className="text-center py-16 bg-white/60 backdrop-blur-sm rounded-3xl border border-sky-100 shadow-lg">
+                    <Search className="w-20 h-20 mx-auto mb-6 text-slate-300" />
+                    <h3 className="text-xl font-semibold text-slate-600 mb-2">No schemes found</h3>
+                    <p className="text-slate-500">Try adjusting your search criteria or category filter.</p>
+                  </div>
                 )}
               </div>
-            </>
+            </div>
           )}
+          
           {activeTab === 'documents' && (
             <DetailSection title="Required Documents" icon={FileText} items={schemeDetails.requiredDocuments} color="green" />
           )}
@@ -1056,14 +517,27 @@ const Application = () => {
           )}
         </div>
       </div>
+
+      {/* Scheme Detail Modal */}
       {selectedScheme && (
-        <div className="modal-overlay">
-          <div className="modal">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h2 className="modal-title">{selectedScheme.name}</h2>
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center p-6 z-50">
+          <div className="bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-sky-100">
+            <div className="p-8">
+              <div className="flex justify-between items-start mb-6">
+                <div className="flex-1">
+                  <h2 className="text-3xl font-bold text-slate-800 mb-2">{selectedScheme.name}</h2>
+                  <div className="flex items-center gap-4">
+                    <span className="bg-gradient-to-r from-sky-100 to-blue-100 text-sky-800 px-4 py-2 rounded-full text-sm font-semibold border border-sky-200">
+                      {selectedScheme.category}
+                    </span>
+                    <div className="flex items-center gap-2">
+                      <Star className="w-5 h-5 text-amber-400 fill-current" />
+                      <span className="text-lg font-semibold text-slate-700">{selectedScheme.rating}</span>
+                    </div>
+                  </div>
+                </div>
                 <button
-                  className="close-button"
+                  className="text-slate-400 hover:text-slate-600 text-3xl font-bold transition-colors duration-200 p-2 hover:bg-slate-100 rounded-full"
                   onClick={() => {
                     try {
                       setSelectedScheme(null);
@@ -1075,36 +549,77 @@ const Application = () => {
                   ×
                 </button>
               </div>
-              <div className="modal-body">
-                <p className="modal-description">{selectedScheme.description}</p>
-                <div className="modal-grid">
-                  <div className="modal-item">
-                    <label>Category</label>
-                    <p>{selectedScheme.category}</p>
+              
+              <div className="mb-8 p-6 bg-sky-50/50 rounded-2xl border border-sky-100">
+                <p className="text-slate-700 text-lg leading-relaxed">{selectedScheme.description}</p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div className="bg-white/80 p-5 rounded-2xl border border-sky-100 shadow-sm">
+                  <div className="flex items-center mb-3">
+                    <DollarSign className="w-5 h-5 text-emerald-500 mr-2" />
+                    <label className="text-sm font-semibold text-slate-500">Amount</label>
                   </div>
-                  <div className="modal-item">
-                    <label>Amount</label>
-                    <p>{selectedScheme.amount}</p>
-                  </div>
-                  <div className="modal-item">
-                    <label>Deadline</label>
-                    <p>{selectedScheme.deadline}</p>
-                  </div>
-                  <div className="modal-item">
-                    <label>Applicants</label>
-                    <p>{selectedScheme.applicants}</p>
-                  </div>
+                  <p className="text-slate-800 font-semibold text-lg">{selectedScheme.amount}</p>
                 </div>
-                <div className="modal-item">
-                  <label>Eligibility</label>
-                  <p>{selectedScheme.eligibility}</p>
+                <div className="bg-white/80 p-5 rounded-2xl border border-sky-100 shadow-sm">
+                  <div className="flex items-center mb-3">
+                    <Calendar className="w-5 h-5 text-amber-500 mr-2" />
+                    <label className="text-sm font-semibold text-slate-500">Deadline</label>
+                  </div>
+                  <p className="text-slate-800 font-semibold text-lg">{selectedScheme.deadline}</p>
                 </div>
-                <div className="modal-buttons">
-                  <button className="apply-button">Apply Now</button>
-                  <button className="download-button">
-                    <Download className="download-icon" />
-                    Download Guidelines
-                  </button>
+                <div className="bg-white/80 p-5 rounded-2xl border border-sky-100 shadow-sm">
+                  <div className="flex items-center mb-3">
+                    <Users className="w-5 h-5 text-blue-500 mr-2" />
+                    <label className="text-sm font-semibold text-slate-500">Applicants</label>
+                  </div>
+                  <p className="text-slate-800 font-semibold text-lg">{selectedScheme.applicants}</p>
+                </div>
+                <div className="bg-white/80 p-5 rounded-2xl border border-sky-100 shadow-sm">
+                  <div className="flex items-center mb-3">
+                    <MapPin className="w-5 h-5 text-rose-500 mr-2" />
+                    <label className="text-sm font-semibold text-slate-500">Coverage</label>
+                  </div>
+                  <p className="text-slate-800 font-semibold text-lg">{selectedScheme.location}</p>
+                </div>
+              </div>
+              
+              <div className="mb-8 p-6 bg-blue-50/50 rounded-2xl border border-blue-100">
+                <div className="flex items-center mb-3">
+                  <CheckCircle className="w-5 h-5 text-blue-500 mr-2" />
+                  <label className="text-sm font-semibold text-slate-500">Eligibility Requirements</label>
+                </div>
+                <p className="text-slate-700 leading-relaxed">{selectedScheme.eligibility}</p>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button className="flex-1 bg-gradient-to-r from-sky-500 to-blue-600 text-white py-4 px-6 rounded-2xl font-semibold hover:from-sky-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center group">
+                  <Globe className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
+                  Apply Now
+                </button>
+                <button className="flex-1 bg-white/80 border border-sky-200 text-slate-700 py-4 px-6 rounded-2xl font-semibold flex items-center justify-center hover:bg-sky-50 hover:text-sky-700 hover:border-sky-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 group">
+                  <Download className="w-5 h-5 mr-2 group-hover:translate-y-0.5 transition-transform duration-300" />
+                  Download Guidelines
+                </button>
+              </div>
+              
+              <div className="mt-6 p-4 bg-gradient-to-r from-sky-50 to-blue-50 rounded-2xl border border-sky-100">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-600">
+                  <div className="flex items-center gap-4">
+                    <div className="flex items-center">
+                      <Phone className="w-4 h-4 mr-1.5 text-sky-500" />
+                      <span>Helpline: 1800-XXX-XXXX</span>
+                    </div>
+                    <div className="flex items-center">
+                      <Mail className="w-4 h-4 mr-1.5 text-sky-500" />
+                      <span>support@gov.in</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center text-xs text-slate-500">
+                    <Clock className="w-3 h-3 mr-1" />
+                    <span>24/7 Support Available</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1114,4 +629,5 @@ const Application = () => {
     </div>
   );
 };
+
 export default Application;
