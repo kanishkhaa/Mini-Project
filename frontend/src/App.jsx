@@ -8,6 +8,7 @@ import Profile from './pages/profile';
 import Sidebar from './components/sidebar';
 import LoginPage from './pages/loginpage';
 import SignupPage from './pages/signup';
+import Scheme from './pages/scheme';
 
 function App() {
   const location = useLocation();
@@ -31,6 +32,8 @@ function App() {
           <Route path='/profile' element={<Profile />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/signup' element={<SignupPage />} />
+          <Route path='/scheme' element={<Scheme />} />
+          {/* Add more routes as needed */}
         </Routes>
       </div>
     </div>
