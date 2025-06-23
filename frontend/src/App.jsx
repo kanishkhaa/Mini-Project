@@ -8,6 +8,7 @@ import Landing from './pages/landing';
 import Profile from './pages/profile'; // Assuming you have a Profile page
 import Scheme from './pages/scheme';
 import Sidebar from './components/sidebar'; // Adjust path as needed
+import AccessibilityDialog from './pages/accessibility';
 
 function App() {
   const location = useLocation();
@@ -34,6 +35,9 @@ function App() {
           {/* Add more routes as needed */}
         </Routes>
       </div>
+
+      {/* Accessibility Dialog - shown on all pages except landing */}
+      {!isLandingPage && <AccessibilityDialog />}
     </div>
   );
 }
