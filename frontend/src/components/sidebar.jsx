@@ -16,11 +16,12 @@ const Sidebar = ({ isOpen, onClose }) => {
 
   const navigationItems = [
     { icon: <Home className="w-5 h-5" />, label: 'Dashboard', path: '/dashboard' },
-    { icon: <FileText className="w-5 h-5" />, label: 'Schemes', path: '/schemes' },
+    { icon: <FileText className="w-5 h-5" />, label: 'Schemes', path: '/scheme' },
     { icon: <CheckCircle className="w-5 h-5" />, label: 'Application', path: '/application' },
-    { icon: <MessageCircle className="w-5 h-5" />, label: 'Chatbot', path: '/chatbot' },
-    { icon: <HelpCircle className="w-5 h-5" />, label: 'Assistance', path: '/assistance' },
+     
+    { icon: <HelpCircle className="w-5 h-5" />, label: 'Eligibility Checker', path: '/eligibility' },
     { icon: <User className="w-5 h-5" />, label: 'Profile', path: '/profile' }
+
   ];
 
   const handleNavigation = (path) => {
