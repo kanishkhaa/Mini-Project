@@ -9,8 +9,9 @@ import Sidebar from './components/sidebar';
 import LoginPage from './pages/loginpage';
 import SignupPage from './pages/signup';
 import Scheme from './pages/scheme';
-
-function App() {
+import Eligibility from './pages/eligibility';
+function App() 
+{
   const location = useLocation();
 
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path='/login' element={<LoginPage />} />
           <Route path='/signup' element={<SignupPage />} />
           <Route path='/scheme' element={<Scheme />} />
+          <Route path='/eligibility' element={<Eligibility />} />
           {/* Add more routes as needed */}
         </Routes>
       </div>
