@@ -1,0 +1,57 @@
+{
+  "scheme_name": "Financial Assistance to Disabled Students Pursuing (10th, 11th, 12th Equivalent Exams)",
+  "department": "Department of Social Justice, Government of Kerala",
+  "description": "This scheme provides financial assistance to differently abled students in Kerala who have dropped out of school and are pursuing SSLC, +1, or +2 equivalent courses implemented by the State Literacy Mission. The scheme aims to support such students with course fees, exam fees, registration, and admission charges.",
+  "eligibility": {
+    "residency": "Applicant must be a resident of Kerala.",
+    "disability": "Applicants must have 40% or more disability.",
+    "income_category": "Both APL and BPL category students are eligible."
+  },
+  "benefits": [
+    {
+      "class": "SSLC/10th Class",
+      "course_fee": 1750,
+      "exam_fee": 500,
+      "registration_fee": 100,
+      "admission_fee": null
+    },
+    {
+      "class": "11th Class",
+      "course_fee": 1950,
+      "exam_fee": 700,
+      "registration_fee": 100,
+      "admission_fee": 200
+    },
+    {
+      "class": "12th Class",
+      "course_fee": 1950,
+      "exam_fee": null,
+      "registration_fee": null,
+      "admission_fee": null
+    }
+  ],
+  "application_process": {
+    "mode": "Offline",
+    "steps": [
+      "Visit nearest Anganwadi Centre or District Social Justice Office and collect the application form, or download it from the official website.",
+      "Fill out the application form completely.",
+      "Submit the application to the District Social Justice Officers (DSJOs) or the concerned Anganwadi Centre."
+    ],
+    "verification": "DSJOs will ensure applicants completed the course and received certificates from the State Literacy Mission.",
+    "beneficiary_selection": "Based on applications collected by Anganwadi workers and enquiries by Child Development Project Officers (CDPOs)."
+  },
+  "documents_required": [
+    "Identity proof",
+    "Passport-size photo",
+    "Educational Certificates",
+    "BPL Card (if applicable)",
+    "Disability Certificate",
+    "Income Certificate or Copy of Ration Card (if applicable)",
+    "Bank account details"
+  ],
+  "target_group": "Differently abled students of Kerala",
+  "source": {
+    "official_website": "https://sjd.kerala.gov.in",
+    "scheme_url": "https://sjd.kerala.gov.in/scheme-info.php?scheme_id=MTE3c1Y4dXFSI3Z5"
+  }
+}

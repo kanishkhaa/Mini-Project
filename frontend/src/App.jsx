@@ -9,11 +9,13 @@ import Sidebar from './components/sidebar';
 import LoginPage from './pages/loginpage';
 import SignupPage from './pages/signup';
 import Scheme from './pages/scheme';
+import Eligibility from './pages/eligibility';
 import AccessibilityDialog from './pages/accessibility';
 import Chatbot from './components/Chatbot'; 
 
 
-function App() {
+function App() 
+{
   const location = useLocation();
 
   const shouldShowSidebar = !['/', '/login', '/signup'].includes(location.pathname);
@@ -39,6 +41,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/scheme" element={<Scheme />} />
+          <Route path="/eligibility" element={<Eligibility />} />
         </Routes>
       </div>
 
