@@ -10,7 +10,8 @@ import LoginPage from './pages/loginpage';
 import SignupPage from './pages/signup';
 import Scheme from './pages/scheme';
 import AccessibilityDialog from './pages/accessibility';
-import Chatbot from './components/Chatbot'; // ✅ Import the Chatbot
+import Chatbot from './components/Chatbot'; 
+
 
 function App() {
   const location = useLocation();
