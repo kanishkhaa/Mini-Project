@@ -10,7 +10,7 @@
         "Address needs not covered under regular schemes"
       ],
       "benefits": {
-        "grant": "Financial assistance for social defence initiatives"
+        "financial_assistance": "Grants for social defence initiatives"
       },
       "eligibility_criteria": [
         "Organizations or initiatives aligned with Ministry’s target groups",
@@ -418,8 +418,7 @@
         "Provide financial support to small-scale road transport operators",
         "Enhance transport infrastructure through loans"
       ],
-      "benefits ":
-      {
+      "benefits": {
         "loan": "Up to ₹10,00,000 at 13% interest rate"
       },
       "eligibility_criteria": [
@@ -642,7 +641,7 @@
       "documents_required": [
         "Proof of industry registration",
         "Building construction details",
-        "Identity proof",
+ "Identity proof",
         "Financial estimates"
       ],
       "official_links": {

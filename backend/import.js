@@ -10,7 +10,7 @@ const SocialWelfare = require('./models/SocialWelfare');
 const Transport = require('./models/Transport');
 const Women = require('./models/Women');
 
-// Import dataset files
+// Load datasets
 const agricultureData = require(path.join(process.env.DATASET_PATH, 'agriculture.json'));
 const educationData = require(path.join(process.env.DATASET_PATH, 'education.json'));
 const healthcareData = require(path.join(process.env.DATASET_PATH, 'healthcare.json'));
@@ -25,49 +25,52 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log('MongoDB connected successfully');
+    console.log('✅ MongoDB connected');
   } catch (error) {
-    console.error('MongoDB connection error:', error);
+    console.error('❌ MongoDB connection error:', error);
     process.exit(1);
   }
 };
 
-// Import function for a single collection
-const importData = async (Model, data, collectionName) => {
+// Clear and reload function for a model
+const clearAndReloadData = async (Model, data, name) => {
   try {
+    console.log(`🔄 Clearing ${name} collection...`);
     await Model.deleteMany({});
+    console.log(`✅ Cleared ${name} collection.`);
+
+    console.log(`📥 Inserting new ${name} data...`);
     await Model.insertMany(data);
-    console.log(`${collectionName} data imported successfully`);
+    console.log(`✅ ${name} data inserted successfully.`);
   } catch (error) {
-    console.error(`Error importing ${collectionName} data:`, error);
+    console.error(`❌ Failed to process ${name}:`, error);
     throw error;
   }
 };
 
-// Main import function
-const importAllData = async () => {
+// Main function to refresh all collections
+const refreshDatabase = async () => {
   try {
     await connectDB();
 
-    // Import all datasets
     await Promise.all([
-      importData(Agriculture, agricultureData, 'Agriculture'),
-      importData(Education, educationData, 'Education'),
-      importData(Healthcare, healthcareData, 'Healthcare'),
-      importData(SocialWelfare, socialWelfareData, 'SocialWelfare'),
-      importData(Transport, transportData, 'Transport'),
-      importData(Women, womenData, 'Women'),
+      clearAndReloadData(Agriculture, agricultureData, 'Agriculture'),
+      clearAndReloadData(Education, educationData, 'Education'),
+      clearAndReloadData(Healthcare, healthcareData, 'Healthcare'),
+      clearAndReloadData(SocialWelfare, socialWelfareData, 'SocialWelfare'),
+      clearAndReloadData(Transport, transportData, 'Transport'),
+      clearAndReloadData(Women, womenData, 'Women'),
     ]);
 
-    console.log('All datasets imported successfully');
+    console.log('✅ All collections cleared and reloaded.');
   } catch (error) {
-    console.error('Import failed:', error);
+    console.error('❌ Import failed:', error);
   } finally {
     await mongoose.connection.close();
-    console.log('MongoDB connection closed');
+    console.log('🔌 MongoDB connection closed');
     process.exit(0);
   }
 };
 
-// Run the import
-importAllData();
+// Run
+refreshDatabase();
