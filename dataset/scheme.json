@@ -5404,6 +5404,2251 @@
       "official_links": {
         "guidelines": "https://sje.gujarat.gov.in/schemes"
       }
+    },
+    {
+    "scheme_name": "Asangathit Karmakar Gambhir Bimari Chikitsa Sahayata Yojana",
+    "parent_scheme": "Health and Welfare Schemes",
+    "ministry": "Government of Chhattisgarh",
+    "department": "Labour Department",
+    "objectives": [
+      "Provide financial assistance for medical treatment of serious illnesses",
+      "Support unorganized workers with healthcare needs"
+    ],
+    "benefits": {
+      "financial_assistance": "Up to ₹50,000 for medical treatment of serious illnesses like kidney, cancer, sickle cell anemia, heart disease, AIDS, and paralysis",
+      "condition": "Actual cost if less than ₹50,000"
+    },
+    "eligibility_criteria": [
+      "Registered with the State Board for at least 90 days",
+      "Age between 18 and 60 years",
+      "Registered as a beneficiary of unorganized workers under Section 10 of the Act",
+      "Not availed benefits from similar government schemes"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Visit the official Chhattisgarh Labour Department website",
+        "Click 'Apply' under 'Chhattisgarh Unorganized Workers State Social Security Board'",
+        "For unregistered applicants: Select 'Asangathit Marmakaar Mandal', 'Asangathit Shramik Panjikaran', and 'Aavedan', then fill and submit the registration form",
+        "For registered applicants: Select 'Yojana', provide district name and registration number, select scheme, fill details, and submit"
+      ]
+    },
+    "documents_required": [
+      "Aadhaar Card",
+      "Registration Card",
+      "Disease details by Vikas Khand Adhikari/Surgeon/Chief Medical Officer/Health Officer",
+      "Approximate expenses details by related Medical Officer"
+    ],
+    "official_links": {
+      "website": "https://labour.cg.gov.in"
     }
+  },
+  {
+    "scheme_name": "Distress Relief Fund For The Differently Abled (Medical Treatment)",
+    "parent_scheme": "Social Welfare Schemes",
+    "ministry": "Government of Kerala",
+    "department": "Department of Social Justice",
+    "objectives": [
+      "Provide financial assistance for medical treatment and surgery for disabled persons",
+      "Support those handicapped due to accidents",
+      "Cover purposes not addressed by existing schemes for the handicapped"
+    ],
+    "benefits": {
+      "financial_assistance": "₹5,000 per person per year for medical treatment, including surgery"
+    },
+    "eligibility_criteria": [
+      "Resident of Kerala",
+      "Disabled or handicapped due to an accident",
+      "Annual income not exceeding ₹20,000 in rural areas or ₹22,375 in urban areas",
+      "Disabilities include: Blind, Deaf and Dumb, Orthopedically Handicapped, Mentally Challenged, or BPL with 40% or more disability"
+    ],
+    "application_process": {
+      "mode": "Online and Offline",
+      "steps": [
+        "Visit SUNEETHI-Online Service Application Portal for one-time registration",
+        "Fill in details like Name, Email ID, Mobile Number, and verify with OTP",
+        "Create profile with mandatory details",
+        "Login, update personal, contact, identity, and bank details",
+        "Select the scheme, fill the application form, and submit"
+      ]
+    },
+    "documents_required": [
+      "Aadhaar Card or Voter ID Card",
+      "Mobile number",
+      "Email ID",
+      "Passport-size photo",
+      "Doctor’s certificate confirming treatment necessity",
+      "Original Income Certificate",
+      "Bank account details (copy of bank passbook)",
+      "Other documents as required"
+    ],
+    "official_links": {
+      "guidelines": "https://suneethi.kerala.gov.in"
+    }
+  },
+  {
+    "scheme_name": "Atal Mission For Rejuvenation And Urban Transformation (AMRUT)",
+    "parent_scheme": "Urban Development Schemes",
+    "ministry": "Ministry of Housing & Urban Affairs",
+    "department": "Urban Development",
+    "objectives": [
+      "Ensure access to tap water and sewerage connections for every household",
+      "Increase city amenity value through greenery and open spaces",
+      "Reduce pollution by promoting public and non-motorized transport"
+    ],
+    "benefits": {
+      "components": [
+        "Capacity building",
+        "Reform implementation",
+        "Water supply systems (augmentation, treatment, metering)",
+        "Sewerage and septage management",
+        "Storm water drainage",
+        "Urban transport (ferry vessels, buses, footpaths, BRTS)",
+        "Green spaces and parks development"
+      ]
+    },
+    "eligibility_criteria": [
+      "Open scheme with no specific eligibility criteria",
+      "Covers 500 cities including those with population over one lakh, capital cities, heritage cities, and select others"
+    ],
+    "application_process": {
+      "mode": "Offline",
+      "steps": [
+        "No individual application required",
+        "Projects executed by Urban Local Bodies (ULBs)",
+        "State Government may involve parastatal agencies via tripartite MoU",
+        "ULBs responsible for maintenance of created assets"
+      ]
+    },
+    "documents_required": [],
+    "official_links": {
+      "guidelines": "https://amrut.gov.in"
+    }
+  },
+  {
+    "scheme_name": "Assam Arogya Nidhi Scheme",
+    "parent_scheme": "Health and Welfare Schemes",
+    "ministry": "Government of Assam",
+    "department": "Health & Family Welfare Department",
+    "objectives": [
+      "Provide financial assistance for treatment of life-threatening diseases",
+      "Support treatment for injuries from natural or manmade disasters"
+    ],
+    "benefits": {
+      "financial_assistance": "Up to ₹3,00,000 for treatment of life-threatening diseases and accident-related injuries",
+      "disbursement": "Direct bank transfer to beneficiary or hospital, with advance payment up to ₹3,00,000 to hospitals"
+    },
+    "eligibility_criteria": [
+      "Resident of Assam",
+      "Family income less than ₹5,00,000 per annum",
+      "No age limit",
+      "Excludes government employees or pensioners and their families",
+      "Treatment in government or registered private hospitals"
+    ],
+    "application_process": {
+      "mode": "Offline",
+      "steps": [
+        "Download application form from https://nhm.assam.gov.in/schemes/assam-arogya-nidhi",
+        "Submit completed form to NHM, Assam or Joint Director of Health Services",
+        "Expert Committee verifies and recommends eligible cases",
+        "Financial assistance provided via Direct Bank Transfer"
+      ]
+    },
+    "documents_required": [
+      "Attested photograph of the patient",
+      "Attested income certificate by Revenue Circle Officer",
+      "Attested identity and address proof (Voter ID, Aadhaar, Driving License)",
+      "Original bills, vouchers, receipts",
+      "Medical documents certified by treating doctor/hospital",
+      "Discharge summary/prescription (attested)",
+      "Bank passbook copy",
+      "PMJAY/AAA card copy (if applicable)"
+    ],
+    "official_links": {
+      "guidelines": "https://nhm.assam.gov.in/schemes/assam-arogya-nidhi"
+    }
+  },
+  {
+    "scheme_name": "Theka Shramik Evan Hamaal Shramik Baahy Rogi Chikitsa Sahaayata Yojana",
+    "parent_scheme": "Health and Welfare Schemes",
+    "ministry": "Government of Chhattisgarh",
+    "department": "Labour Department",
+    "objectives": [
+      "Provide financial assistance for medical treatment of unorganized workers"
+    ],
+    "benefits": {
+      "financial_assistance": "₹2,000 for medical treatment"
+    },
+    "eligibility_criteria": [
+      "Registered worker in any district of Chhattisgarh",
+      "Age between 18 and 60 years",
+      "Not availed benefits from similar state government schemes"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Visit the official Chhattisgarh Labour Department website",
+        "Click 'Apply' under 'Chhattisgarh Unorganized Workers State Social Security Board'",
+        "For unregistered applicants: Select 'Asangathit Marmakaar Mandal', 'Asangathit Shramik Panjikaran', and 'Aavedan', then fill and submit the registration form",
+        "For registered applicants: Select 'Yojana', provide district name and registration number, select scheme, fill details, and submit"
+      ]
+    },
+    "documents_required": [
+      "Aadhaar Card",
+      "Registration Card",
+      "Disease details by Vikas Khand Adhikari/Surgeon/Chief Medical Officer/Health Officer"
+    ],
+    "official_links": {
+      "website": "https://labour.cg.gov.in"
+    }
+  },
+  {
+    "scheme_name": "Swachh Bharat Mission – Urban 2.0",
+    "parent_scheme": "Sanitation Schemes",
+    "ministry": "Ministry of Housing & Urban Affairs",
+    "department": "Urban Development",
+    "objectives": [
+      "Promote sanitation through construction of household and community toilets",
+      "Improve solid waste management",
+      "Raise public awareness and capacity building"
+    ],
+    "benefits": {
+      "financial_support": [
+        "₹6,667 for toilet construction in specified states",
+        "₹12,000 in hilly and north-eastern states",
+        "₹5,333 in Union Territories"
+      ],
+      "components": [
+        "Household toilets",
+        "Community and public toilets",
+        "Solid waste management",
+        "IEC & Public Awareness",
+        "Capacity building"
+      ]
+    },
+    "eligibility_criteria": [
+      "Households without access to individual toilets or with insanitary toilets",
+      "80% of urban households engaging in open defecation"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Create Applicant Login ID on IHHL portal using Name, Mobile Number, Email, Address, ID Type, ID Number",
+        "Enter geographical particulars (State, District, ULB Name, Ward No.)",
+        "Provide toilet owner’s particulars (Name, Gender, Father/Husband’s Name, Mobile No, Address, Toilet Status, Aadhaar, Bank Details, Photograph)",
+        "Submit application to generate IHHL Application Acknowledgement slip"
+      ]
+    },
+    "documents_required": [
+      "Aadhaar Card",
+      "Bank account details (Passbook)",
+      "Photograph"
+    ],
+    "official_links": {
+      "guidelines": "https://swachhbharatmission.gov.in"
+    }
+  },
+  {
+    "scheme_name": "Grant of Financial Assistance to Poor Scheduled Caste Pregnant & Lactating Women",
+    "parent_scheme": "Social Welfare Schemes",
+    "ministry": "Government of Puducherry",
+    "department": "Adi Dravidar Welfare Department",
+    "objectives": [
+      "Support the well-being of Scheduled Caste pregnant and lactating mothers and their children"
+    ],
+    "benefits": {
+      "financial_assistance": "₹12,000 (₹2,000/month for three months pre-natal and three months post-natal, for up to two deliveries)"
+    },
+    "eligibility_criteria": [
+      "Citizen of India",
+      "Resident of Puducherry for at least 3 years",
+      "Belong to Scheduled Caste",
+      "Female and pregnant",
+      "Apply between 6 months of pregnancy and within 3 months post-delivery",
+      "Annual income of applicant and spouse not exceeding ₹2,00,000"
+    ],
+    "application_process": {
+      "mode": "Offline and Online",
+      "steps": [
+        "Visit Adi Dravidar Welfare Department office for application form",
+        "Fill mandatory fields, attach self-attested documents",
+        "Submit to concerned authority",
+        "Obtain receipt/acknowledgment with submission details"
+      ]
+    },
+    "documents_required": [
+      "Residence-cum-nativity Certificate",
+      "Aadhaar Card",
+      "Caste Certificate",
+      "Passport-size photograph",
+      "Discharge Summary/Birth Certificate",
+      "Medical Certificate from authorized health center",
+      "Ration Card",
+      "Bank Passbook"
+    ],
+    "official_links": {
+      "guidelines": "https://www.py.gov.in"
+    }
+  },
+  {
+    "scheme_name": "Thayi Bhagya Scheme (Comprehensive Maternal Healthcare)",
+    "parent_scheme": "Health and Welfare Schemes",
+    "ministry": "Government of Karnataka",
+    "department": "Health and Family Welfare Department",
+    "objectives": [
+      "Provide cashless delivery services for BPL pregnant women",
+      "Address shortage of specialist doctors in rural areas through public-private partnerships"
+    ],
+    "benefits": {
+      "services": "Free delivery services, checkups, and medicines in registered private hospitals",
+      "financial_incentive": [
+        "₹3,00,000 per 100 deliveries for private hospitals (with ₹30,000 advance)",
+        "₹1,50,000 per 100 deliveries for government hospitals"
+      ],
+      "limit": "First two live deliveries"
+    },
+    "eligibility_criteria": [
+      "Resident of Karnataka",
+      "Belong to BPL family",
+      "Hospitals must have 10 inpatient beds, operation theater, delivery room, 24-hour specialist availability, and blood bank linkage"
+    ],
+    "application_process": {
+      "mode": "Offline",
+      "steps": [
+        "Register with Junior Female Health Assistant of the area",
+        "Receive ANC card for identification",
+        "Avail benefits at registered hospitals",
+        "Contact head office at prs-hfw@karnataka.gov.in for queries"
+      ]
+    },
+    "documents_required": [
+      "Domicile certificate",
+      "BPL card or Ration card",
+      "Caste certificate",
+      "Aadhaar Card",
+      "ANC registration number indicating first or second delivery"
+    ],
+    "official_links": {
+      "guidelines": "https://www.karnataka.gov.in"
+    }
+  },
+  {
+    "scheme_name": "Nirmaan Shramik Mrtyu Evan Divyaang Sahaayata Yojana",
+    "parent_scheme": "Welfare Schemes for Construction Workers",
+    "ministry": "Government of Chhattisgarh",
+    "department": "Labour Department",
+    "objectives": [
+      "Provide financial assistance to families of construction workers in case of death or disability"
+    ],
+    "benefits": {
+      "financial_assistance": [
+        "₹1,00,000 for normal death",
+        "₹5,00,000 for death at work location",
+        "₹2,50,000 for permanent disability at work location"
+      ]
+    },
+    "eligibility_criteria": [
+      "Construction workers aged 18 to 60 years",
+      "Registered under Section 12 of the Building and Other Construction Workers Act, 1996",
+      "Excludes deaths due to suicide, substance abuse, crime, or riots",
+      "Not applicable for family member deaths",
+      "Not eligible if benefited under silicosis assistance scheme"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Visit Chhattisgarh Labour Department website",
+        "Click 'Apply' under Building and Other Construction Workers",
+        "Provide district and registration number, select scheme",
+        "Fill and submit online form with required documents",
+        "Note application number for tracking",
+        "Check status via 'Check the application status' option"
+      ]
+    },
+    "documents_required": [
+      "Registration certificate",
+      "Aadhaar Card",
+      "Bank passbook",
+      "Nominee’s Aadhaar Card",
+      "Address proof",
+      "Mobile number",
+      "Death certificate or permanent disability certificate",
+      "Age certificate",
+      "Class 10th marksheet"
+    ],
+    "official_links": {
+      "website": "https://labour.cg.gov.in"
+    }
+  },
+  {
+    "scheme_name": "Safai Karmakar Prasuti Sahayata Yojana",
+    "parent_scheme": "Health and Welfare Schemes",
+    "ministry": "Government of Chhattisgarh",
+    "department": "Labour Department",
+    "objectives": [
+      "Empower unorganized workers with financial assistance for maternity"
+    ],
+    "benefits": {
+      "financial_assistance": [
+        "₹4,200 in third month and ₹2,800 in eighth month of pregnancy for female employees",
+        "₹3,000 as paternity leave for male employees after child’s birth"
+      ],
+      "limit": "Benefits for up to two children"
+    },
+    "eligibility_criteria": [
+      "Registered worker (male or female)",
+      "Benefits limited to two children"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Visit Chhattisgarh Labour Department website",
+        "Click 'Apply' under 'Chhattisgarh Unorganized Workers State Social Security Board'",
+        "For unregistered applicants: Select 'Asangathit Marmakaar Mandal', 'Asangathit Shramik Panjikaran', and 'Aavedan', then fill and submit registration form",
+        "For registered applicants: Select 'Yojana', provide district name and registration number, select scheme, fill details, and submit"
+      ]
+    },
+    "documents_required": [
+      "Aadhaar Card",
+      "Labor registration Card",
+      "Permanent Residence Certificate",
+      "Copy of ration card"
+    ],
+    "official_links": {
+      "website": "https://labour.cg.gov.in"
+    }
+  },
+  {
+    "scheme_name": "Delhi Arogya Nidhi",
+    "parent_scheme": "Health and Welfare Schemes",
+    "ministry": "Government of Delhi",
+    "department": "Directorate General of Health Services",
+    "objectives": [
+      "Provide financial assistance for treatment of diseases in government hospitals"
+    ],
+    "benefits": {
+      "financial_assistance": "Up to ₹1,50,000 for treatment in government hospitals"
+    },
+    "eligibility_criteria": [
+      "Possess a National Food Security Card",
+      "Resident of Delhi for the last 3 years with domicile proof",
+      "Treatment in government hospitals in Delhi"
+    ],
+    "application_process": {
+      "mode": "Offline",
+      "steps": [
+        "Download application form from official website",
+        "Fill form with required details",
+        "Attach photocopies of documents, bring originals for verification",
+        "Submit undertaking for signature verification",
+        "Submit to Patient Welfare Cell, Directorate of Health Services, Karkardooma, Delhi"
+      ]
+    },
+    "documents_required": [
+      "Proof of continuous residence in Delhi for 3 years (National Food Security Card, Voter ID, Birth certificate for minors, Electoral roll extract, Aadhaar Card)",
+      "Original Estimate Certificate signed by Consultant/Medical Superintendent/CMO",
+      "Two attested photographs of the patient",
+      "Copy of National Food Security Card",
+      "Photocopies of treatment record",
+      "Undertaking for signature verification"
+    ],
+    "official_links": {
+      "guidelines": "https://health.delhigovt.nic.in"
+    }
+  },
+  {
+    "scheme_name": "Indian Community Welfare Fund",
+    "parent_scheme": "Welfare Schemes for Overseas Indians",
+    "ministry": "Ministry of External Affairs",
+    "department": "Overseas Indian Affairs",
+    "objectives": [
+      "Assist Overseas Indian nationals in distress situations",
+      "Support emergency evacuations and community welfare activities"
+    ],
+    "benefits": {
+      "assistance_types": [
+        "Transportation of mortal remains or local cremation/burial",
+        "Boarding and lodging for distressed nationals",
+        "Air passage to India for stranded nationals",
+        "Legal assistance for minor crimes or false implications",
+        "Payment of small fines/penalties",
+        "Emergency medical care for accidents or serious conditions",
+        "Support for cultural programs, Indian language teaching, and student welfare activities",
+        "Improvement in consular services"
+      ]
+    },
+    "eligibility_criteria": [
+      "Overseas Indian national in distress",
+      "Excludes Persons of Indian Origin and OCI Card Holders for individual financial assistance"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Apply through Indian Missions/Posts abroad",
+        "For compensation claims: Submit application as per nation-specific guidelines",
+        "Refer to sample forms from Embassy of India, Kuwait or Jeddah"
+      ]
+    },
+    "documents_required": [
+      "Death Certificate",
+      "Bank details of the deceased",
+      "Insurance Number of the deceased",
+      "Marriage Certificate (spouse) or Birth Certificate (children)",
+      "Original Passport of the deceased with photocopy",
+      "Power of attorney from next-of-kin",
+      "Legal Heir Certificate",
+      "Police or medical reports as relevant",
+      "NOC from other heirs (if multiple)"
+    ],
+    "official_links": {
+      "guidelines": "https://www.mea.gov.in/images/pdf/compendium.pdf",
+      "sample_forms": [
+        "https://indembkwt.gov.in/pdf/Application%20for%20seeking%20financial%20assistance%20from%20ICWF.pdf",
+        "https://www.cgijeddah.gov.in/web_files/779810210-Form%20for%20ICWF%20assitaance.pdf"
+      ]
+    }
+  },
+  {
+    "scheme_name": "Full Medical Checkup Assistance Scheme",
+    "parent_scheme": "Health and Welfare Schemes",
+    "ministry": "Government of Gujarat",
+    "department": "Labour, Skill Development & Employment Department",
+    "objectives": [
+      "Conduct health check-ups for organized sector workers"
+    ],
+    "benefits": {
+      "health_checkup": "Full medical check-up costing ₹1,950 per worker (25% or ₹487.50 paid by organization)"
+    },
+    "eligibility_criteria": [
+      "Workers with Labour Welfare Fund paid regularly for the last one year",
+      "Male workers above 45 years, female workers above 35 years",
+      "Benefit provided once a year",
+      "Medical examination within 30 days of approval"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Visit Sanman Portal: https://sanman.gujarat.gov.in",
+        "Register under 'Citizen Login' with Aadhaar and Labour Welfare Fund Account Number",
+        "Login, select scheme, read instructions",
+        "Fill application form, upload documents",
+        "Submit and receive confirmation email with application number"
+      ]
+    },
+    "documents_required": [
+      "Passport-size photograph",
+      "Identity card issued by contractor",
+      "Aadhaar Card",
+      "Labour Welfare Fund Account Number",
+      "Bonafide certificate",
+      "Other documents as required"
+    ],
+    "official_links": {
+      "guidelines": "https://sanman.gujarat.gov.in"
+    }
+  },
+  {
+    "scheme_name": "Maternity Benefit",
+    "parent_scheme": "Welfare Schemes for Construction Workers",
+    "ministry": "Government of West Bengal",
+    "department": "Labour Department",
+    "objectives": [
+      "Provide financial support during maternity for registered construction workers"
+    ],
+    "benefits": {
+      "financial_assistance": "₹6,000, limited to two times in beneficiary’s lifetime"
+    },
+    "eligibility_criteria": [
+      "Resident of West Bengal",
+      "Registered building/construction worker for at least 1 year",
+      "Aged 18 to 60 years",
+      "Engaged in construction work for at least 90 days in a year",
+      "Pregnant female member or wife of male member"
+    ],
+    "application_process": {
+      "mode": "Offline",
+      "steps": [
+        "Obtain Form-27 for registration from Assistant Labour Commissioners",
+        "Submit registration form with documents",
+        "For scheme: Obtain Form-XII, attach documents, and submit to Assistant Labour Commissioners",
+        "Pay ₹20 registration fee and ₹30 yearly subscription"
+      ]
+    },
+    "documents_required": [
+      "Four passport-size photographs",
+      "Attested proof of age",
+      "Identity Card of the member",
+      "Medical Certificate",
+      "Other documents as required"
+    ],
+    "official_links": {
+      "guidelines": "https://wblabour.gov.in",
+      "helpline": "1800-103-0009"
+    }
+  },
+  {
+    "scheme_name": "Odisha State Treatment Fund",
+    "parent_scheme": "Health and Welfare Schemes",
+    "ministry": "Government of Odisha",
+    "department": "Health and Family Welfare Department",
+    "objectives": [
+      "Provide financial assistance for treatment of life-threatening disorders and diseases"
+    ],
+    "benefits": {
+      "financial_assistance": [
+        "Up to ₹3,00,000 per case",
+        "District Head Quarters Hospitals: Up to ₹30,000",
+        "CDMO with Collector approval: Up to ₹50,000",
+        "Above ₹3,00,000 requires Chief Minister’s approval"
+      ],
+      "top-up": "Top-up to RSBY coverage"
+    },
+    "eligibility_criteria": [
+      "Below poverty line or annual family income not exceeding ₹40,000 (rural) or ₹60,000 (urban)",
+      "BPL card, AAY card, or income certificate required",
+      "RSBY cardholders eligible",
+      "Unknown accident victims or referred patients from registered destitute homes/orphanages eligible",
+      "Inpatient treatment in government/empanelled private hospitals"
+    ],
+    "application_process": {
+      "mode": "Offline",
+      "steps": [
+        "Submit prescribed application form with documents to Nodal Officer",
+        "For government hospitals: Committee approves up to ₹1,00,000; above requires further approval",
+        "For district hospitals: Committee approves up to ₹30,000; CDMO can approve up to ₹50,000",
+        "For private hospitals: Referral from government medical college/CDMO required, except in emergencies"
+      ]
+    },
+    "documents_required": [
+      "Aadhaar Card",
+      "Voter Card",
+      "BPL card",
+      "AAY ration card",
+      "RSBY card",
+      "Annual family income certificate by Tahasildar",
+      "Other documents as specified on https://health.odisha.gov.in/citizen-e-services/odisha-state-treatment-fund-ostf"
+    ],
+    "official_links": {
+      "guidelines": "https://health.odisha.gov.in/citizen-e-services/odisha-state-treatment-fund-ostf"
+    }
+  },
+  {
+    "scheme_name": "Khushi Scheme",
+    "parent_scheme": "Health and Hygiene Schemes",
+    "ministry": "Government of Odisha",
+    "department": "Health and Family Welfare Department",
+    "objectives": [
+      "Promote menstrual hygiene among school girls",
+      "Reduce school dropout rates",
+      "Empower women through local production of sanitary products"
+    ],
+    "benefits": {
+      "services": [
+        "Free sanitary napkins for girls in classes 6 to 12",
+        "Subsidized napkins for rural women at ₹6 for 6 napkins",
+        "Awareness campaigns on menstrual hygiene",
+        "Support for local production and employment"
+      ]
+    },
+    "eligibility_criteria": [
+      "Resident of Odisha",
+      "School girls from classes 6 to 12"
+    ],
+    "application_process": {
+      "mode": "Offline",
+      "steps": [
+        "No application required",
+        "School girls receive sanitary napkins at school",
+        "Rural women contact ASHA workers or visit PHCs/community health centers"
+      ]
+    },
+    "documents_required": [
+      "Aadhaar Card",
+      "Proof of Residence",
+      "School ID Card"
+    ],
+    "official_links": {
+      "guidelines": "https://health.odisha.gov.in"
+    }
+  },
+  {
+    "scheme_name": "Mobile Lab Scheme (P.B.O.C.W.W.B)",
+    "parent_scheme": "Welfare Schemes for Construction Workers",
+    "ministry": "Government of Punjab",
+    "department": "Labour Department",
+    "objectives": [
+      "Provide financial assistance for treatment of silicosis for registered construction workers"
+    ],
+    "benefits": {
+      "financial_assistance": "Up to ₹1,50,000 for silicosis treatment after exhausting ₹50,000 from Bhagat Puran Singh Sehat Beema Yojna"
+    },
+    "eligibility_criteria": [
+      "Resident of Punjab",
+      "Registered building/construction worker",
+      "Aged 18 to 60 years",
+      "Engaged in construction work for at least 90 days in a year",
+      "Monthly income ₹15,000 or below",
+      "Not a member of EPF/NPS/ESIC or other welfare funds",
+      "Not an income tax payer",
+      "Diagnosed with silicosis",
+      "Exhausted ₹50,000 health card benefit"
+    ],
+    "application_process": {
+      "mode": "Online and Offline",
+      "steps": [
+        "Register at Sewa Kendra or with Registering Officers/Labour Inspector",
+        "Pay ₹25 registration fee and ₹10 monthly contribution",
+        "Apply for scheme benefits at Sewa Kendra or with Registering Officers",
+        "Check application status online at https://pbocwwb.in"
+      ]
+    },
+    "documents_required": [
+      "Age proof (or self-declaration)",
+      "Residence proof",
+      "Aadhaar Card (if available)",
+      "Bank account details",
+      "Detail of dependents",
+      "Employer’s Certificate (Form No. 28)",
+      "Nomination Form (Form No. 27)",
+      "Medical Certificate for silicosis",
+      "Proof of expenditure on treatment"
+    ],
+    "official_links": {
+      "guidelines": "https://pbocwwb.in",
+      "helpline": "+91 172-2540125",
+      "email": "bocwhq@gmail.com"
+    }
+  },
+  {
+    "scheme_name": "Scheme to Provide Relief in Case of Death or Disability of Registered Building Workers",
+    "parent_scheme": "Welfare Schemes for Construction Workers",
+    "ministry": "Government of Andhra Pradesh",
+    "department": "Labour, Employment, Training & Factories Department",
+    "objectives": [
+      "Provide financial relief for accidental death, permanent disability, or natural death of registered construction workers"
+    ],
+    "benefits": {
+      "financial_assistance": [
+        "₹5,00,000 for accidental death",
+        "₹5,00,000 for permanent disability",
+        "₹60,000 for natural death"
+      ]
+    },
+    "eligibility_criteria": [
+      "Nominee/dependent of deceased or disabled construction worker",
+      "Worker registered with Andhra Pradesh Building and Other Construction Workers Welfare Board"
+    ],
+    "application_process": {
+      "mode": "Offline",
+      "steps": [
+        "Visit A.P. Building & Other Construction Workers Welfare Board office",
+        "Obtain and fill prescribed application form",
+        "Attach self-attested documents",
+        "Submit to Assistant Labour Officer/Assistant Commissioner of Labour",
+        "Obtain receipt/acknowledgment"
+      ]
+    },
+    "documents_required": [
+      "Aadhaar Card of worker and nominee",
+      "Accident Report",
+      "Medical Certificate for permanent disability",
+      "Death Certificate for natural or accidental death",
+      "Bank account details",
+      "Registration Card under BOCW Act",
+      "Other documents as required"
+    ],
+    "official_links": {
+      "guidelines": "https://labour.ap.gov.in"
+    }
+  },
+  {
+    "scheme_name": "Ayushman Bharat - Pradhan Mantri Jan Arogya Yojana",
+    "parent_scheme": "Health Insurance Schemes",
+    "ministry": "Ministry of Health & Family Welfare",
+    "department": "Health",
+    "objectives": [
+      "Provide universal health coverage for secondary and tertiary care hospitalization",
+      "Cover 10.74 crore poor and vulnerable families"
+    ],
+    "benefits": {
+      "health_cover": "₹5,00,000 per family per year for listed conditions",
+      "services": [
+        "Medical examination, treatment, consultation",
+        "Pre- and post-hospitalization care",
+        "Medicines, diagnostics, implants, accommodation, food services",
+        "Complications during treatment"
+      ],
+      "features": "No cap on family size or age, covers pre-existing diseases"
+    },
+    "eligibility_criteria": [
+      "Rural: Families meeting at least one of six deprivation criteria or automatic inclusion criteria (destitute, manual scavengers, tribal groups, bonded labour)",
+      "Urban: 11 occupational categories (e.g., ragpicker, domestic worker, construction worker)",
+      "Exclusions: Owners of vehicles, mechanized farming equipment, Kisan cards, government employees, high-income earners, or those with refrigerators/landlines"
+    ],
+    "application_process": {
+      "mode": "Offline",
+      "steps": [
+        "Visit hospital or Community Service Centre (CSC)",
+        "Arogya Mitra searches beneficiary list using name, location, ration card, mobile, or RSBY URN",
+        "Verify identity with Aadhaar or government ID and ration card",
+        "Upload scanned documents for individual and family identification",
+        "Submit records to trust/insurance company for approval",
+        "Receive e-card upon approval by State Health Agency"
+      ]
+    },
+    "documents_required": [
+      "Aadhaar Card or PAN Card",
+      "Proof of address",
+      "Contact details (mobile, email)",
+      "Caste Certificate",
+      "Income Certificate",
+      "Document proving family status (joint or nuclear)"
+    ],
+    "official_links": {
+      "guidelines": "https://pmjay.gov.in",
+      "application": "https://www.umang.gov.in"
+    }
+  },
+  {
+    "scheme_name": "Rastriya Arogya Nidhi - Health Minister’s Cancer Patient Fund",
+    "parent_scheme": "Health and Welfare Schemes",
+    "ministry": "Ministry of Health & Family Welfare",
+    "department": "Health",
+    "objectives": [
+      "Provide financial assistance to BPL patients for cancer treatment at Regional Cancer Centres"
+    ],
+    "benefits": {
+      "financial_assistance": [
+        "Up to ₹5,00,000 for treatment",
+        "Up to ₹15,00,000 for exceptional cases with Ministry approval"
+      ],
+      "treatments": [
+        "Radiation therapy",
+        "Anti-cancer chemotherapy",
+        "Bone marrow transplantation",
+        "Diagnostic procedures (including PET scan)",
+        "Surgery for operable malignant tumors"
+      ]
+    },
+    "eligibility_criteria": [
+      "Below poverty line",
+      "Suffering from cancer",
+      "Treatment at one of 27 Regional Cancer Centres",
+      "Excludes Central/State Govt./PSU employees",
+      "Excludes cases where free treatment is available"
+    ],
+    "application_process": {
+      "mode": "Offline",
+      "steps": [
+        "Download prescribed application form",
+        "Complete form and get it signed by treating doctor and Medical Superintendent",
+        "Submit form with required documents to concerned government hospital"
+      ]
+    },
+    "documents_required": [
+      "Prescribed application form signed by treating doctor and Medical Superintendent",
+      "Income certificate by Block/Mandal Development Officer/Tehsildar/SDM",
+      "Attested copy of Ration Card"
+    ],
+    "official_links": {
+      "guidelines": "https://main.mohfw.gov.in"
+    }
+  },
+  {
+    "scheme_name": "Financial Assistance for Medical (JKBOCWWB)",
+    "parent_scheme": "Welfare Schemes for Construction Workers",
+    "ministry": "Government of Jammu and Kashmir",
+    "department": "Labour Department",
+    "objectives": [
+      "Provide financial aid for medical needs of registered construction workers"
+    ],
+    "benefits": {
+      "financial_assistance": [
+        "₹5,000 for injury treatment",
+        "₹10,000 for temporary disability",
+        "₹75,000 for permanent disability",
+        "₹1,00,000 for chronic disease treatment"
+      ]
+    },
+    "eligibility_criteria": [
+      "Resident of Jammu & Kashmir",
+      "Registered building/construction worker",
+      "Aged 18 to 60 years",
+      "Engaged in construction work for at least 90 days in the last 12 months",
+      "Suffering from injury, disability, or chronic disease",
+      "Annual registration renewal"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Visit JKBOCWWB website for registration",
+        "Complete registration form, verify OTP, and receive Login ID/password",
+        "Login, select 'Construction Worker’s Registration', fill form, upload documents, pay fee",
+        "For scheme: Login, select 'Scheme Registration', choose scheme, fill details, submit",
+        "Track status online or via registered mobile number"
+      ]
+    },
+    "documents_required": [
+      "Aadhaar Card or Voter Card",
+      "Passport-size photograph",
+      "Attested work experience document",
+      "Proof of residence",
+      "Ration Card",
+      "Bank account details",
+      "Caste Certificate (if applicable)",
+      "Proof of age",
+      "Medical Officer certificate",
+      "Original bill of treatment expenditure"
+    ],
+    "official_links": {
+      "guidelines": "https://jkbocwwb.in"
+    }
+  },
+  {
+    "scheme_name": "Payment of Death Benefit (HPBOCWWB)",
+    "parent_scheme": "Welfare Schemes for Construction Workers",
+    "ministry": "Government of Himachal Pradesh",
+    "department": "Himachal Pradesh Building and Other Construction Workers Welfare Board",
+    "objectives": [
+      "Provide financial support to nominees/legal heirs of deceased registered workers"
+    ],
+    "benefits": {
+      "financial_assistance": [
+        "₹4,00,000 for accidental death",
+        "₹2,00,000 for natural death"
+      ]
+    },
+    "eligibility_criteria": [
+      "Nominee/legal heir of deceased worker",
+      "Deceased worker registered with HPBOCWWB",
+      "Active membership at the time of death"
+    ],
+    "application_process": {
+      "mode": "Online and Offline",
+      "steps": [
+        "Visit HPBOCWWB website, click 'Apply for Benefits'",
+        "Enter beneficiary details and date of birth, search",
+        "Select scheme, fill details, upload documents",
+        "Submit application",
+        "Track status online or via registered mobile number"
+      ]
+    },
+    "documents_required": [
+      "Aadhaar Card or Voter Card",
+      "Passport-size photograph",
+      "Undertaking",
+      "Work Slip copy",
+      "Proof of residence",
+      "Ration Card",
+      "Bank account details",
+      "Caste Certificate",
+      "Age proof",
+      "Labour Card",
+      "Death Certificate",
+      "Identity proof of nominee/legal heir"
+    ],
+    "official_links": {
+      "guidelines": "https://hpbocwwb.in"
+    }
+  },
+  {
+    "scheme_name": "Chief Minister’s Health Insurance Scheme - Nagaland",
+    "parent_scheme": "Health Insurance Schemes",
+    "ministry": "Government of Nagaland",
+    "department": "Health and Family Welfare Department",
+    "objectives": [
+      "Provide cashless hospitalization for employees, pensioners, and general residents"
+    ],
+    "benefits": {
+      "health_cover": [
+        "₹20,00,000 per family per annum for CMHIS (EP) beneficiaries",
+        "₹5,00,000 per family per annum for CMHIS (GEN) beneficiaries"
+      ],
+      "services": "Covers surgical, medical, and limited daycare packages in empanelled hospitals"
+    },
+    "eligibility_criteria": [
+      "Permanent and indigenous residents of Nagaland",
+      "CMHIS (EP): Government employees, pensioners, or dependents with valid documents",
+      "CMHIS (GEN): Indigenous Inhabitant or Permanent Resident not covered by AB PM-JAY"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Visit CMHIS Nagaland website",
+        "Register with required details",
+        "Submit application with documents to CSC or empanelled hospital",
+        "Verification by insurance provider",
+        "Approval/rejection based on eligibility"
+      ]
+    },
+    "documents_required": [
+      "Valid Mobile Phone number",
+      "Indigenous Inhabitant Certificate (IIC) or Permanent Residential Certificate (PRC) issued after 2016 (for CMHIS GEN)",
+      "Ration Card (for CMHIS GEN)",
+      "Photo ID card, Engagement/Appointment Order, or Letter from controlling officer (for employees without PIMS)",
+      "PPO book pages, PIMS code, or dependency documents (for CMHIS EP)"
+    ],
+    "official_links": {
+      "guidelines": "https://cmhis.nagaland.gov.in",
+      "helpline": "14555",
+      "email": "nagaland.nhpm@gmail.com"
+    }
+  },
+  {
+    "scheme_name": "Tripura Journalist Health Insurance Scheme",
+    "parent_scheme": "Health Insurance Schemes",
+    "ministry": "Government of Tripura",
+    "department": "Directorate of Information & Cultural Affairs",
+    "objectives": [
+      "Financially protect journalists from health-related monetary burdens"
+    ],
+    "benefits": {
+      "health_cover": "Up to ₹3,00,000 for listed diseases as recommended by committee"
+    },
+    "eligibility_criteria": [
+      "Permanent resident of Tripura",
+      "Accredited journalist by state government or PIB",
+      "Aged 21 to 65 years",
+      "Not covered under Ayushman Bharat or other Central/State health insurance schemes"
+    ],
+    "application_process": {
+      "mode": "Offline",
+      "steps": [
+        "Apply to Director, Information and Cultural Affairs Department, Agartala",
+        "Verification by Sub-Divisional Magistrate and other agencies",
+        "Application reviewed by Tripura Journalist Health Insurance Scheme Recommendation Committee",
+        "Approval by State Government for enrollment"
+      ]
+    },
+    "documents_required": [
+      "Proof of Age/DOB",
+      "Proof of Residence",
+      "Bank Details",
+      "Income Certificate",
+      "Proof of health-related situations"
+    ],
+    "official_links": {
+      "guidelines": "https://ica.tripura.gov.in"
+    }
+  },
+  {
+    "scheme_name": "Financial Incentives To Mothers Who Deliver A Girl Child (Mamta)",
+    "parent_scheme": "Social Welfare Schemes",
+    "ministry": "Government of Goa",
+    "department": "Directorate of Women And Child Development",
+    "objectives": [
+      "Improve female child sex ratio in the state"
+    ],
+    "benefits": {
+      "financial_incentive": [
+        "₹10,000 one-time payment at birth of a girl child",
+        "₹5,000 balance for those who received 1st installment under old scheme"
+      ],
+      "limit": "Maximum of two deliveries"
+    },
+    "eligibility_criteria": [
+      "Mother who delivered a live girl child in a registered medical institution",
+      "Resident of Goa for at least 3 years or married to a Goa resident",
+      "Application within 45 days of delivery",
+      "No social/economic status restrictions"
+    ],
+    "application_process": {
+      "mode": "Offline",
+      "steps": [
+        "Apply in prescribed format to Child Development Project Officer at ICDS Block Office",
+        "Submit within 45 days of delivery with required documents"
+      ]
+    },
+    "documents_required": [
+      "Certified/Self-Attested Aadhaar Card",
+      "Certified/Self-Attested Birth Report/Certificate from Registered Institution",
+      "Proof of 3-year residency in Goa or marriage certificate with husband’s residential certificate",
+      "Pre-receipt in duplicate (Annexure-2 for new beneficiaries, Annexure-3 for 1st installment recipients)"
+    ],
+    "official_links": {
+      "guidelines": "https://www.goa.gov.in"
+    }
+  },
+   {
+    "scheme_name": "Prime Minister’s Special Scholarship Scheme For The Students Of Union Territories Of Jammu & Kashmir And Ladakh",
+    "parent_scheme": "Scholarship Schemes",
+    "ministry": "Ministry of Education",
+    "department": "All India Council for Technical Education (AICTE)",
+    "objectives": [
+      "Provide financial assistance to students from J&K and Ladakh for higher education outside the UTs",
+      "Support meritorious students in securing admission in government colleges/institutions"
+    ],
+    "benefits": {
+      "general_degree": {
+        "number_of_scholarships": 2070,
+        "academic_fee_upper_limit": "₹30,000/-",
+        "maintenance_charges": "₹1,00,000/- per annum"
+      },
+      "professional_engineering": {
+        "number_of_scholarships": 2830,
+        "academic_fee_upper_limit": "₹1,25,000/-",
+        "maintenance_charges": "₹1,00,000/- per annum"
+      },
+      "medical_bds": {
+        "number_of_scholarships": 100,
+        "academic_fee_upper_limit": "₹3,00,000/-",
+        "maintenance_charges": "₹1,00,000/- per annum"
+      },
+      "disbursement": "Academic fees paid directly to institution; maintenance allowance via DBT in 9-10 installments"
+    },
+    "eligibility_criteria": [
+      "Domicile of Union Territories of J&K or Ladakh",
+      "Passed Class 12th from JKBOSE or CBSE-affiliated schools in J&K or Ladakh",
+      "Family income not exceeding ₹8,00,000 per annum",
+      "Admitted through AICTE counseling under supernumerary quota (except medical courses)",
+      "For lateral entry: Passed Diploma in Engineering from recognized polytechnic institutes in J&K or Ladakh"
+    ],
+    "exclusions": [
+      "Candidates pursuing courses through Open Universities",
+      "Students availing other scholarship schemes",
+      "Candidates admitted through Management Quota",
+      "Candidates pursuing Diploma or Post Graduate courses",
+      "Family income exceeding ₹8,00,000 per annum",
+      "Not applying through AICTE portal"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Visit https://www.aicte-india.org/bureaus/jk/2021-2022",
+        "Click on 'PMSSS 2021-22 Registration' or 'Diploma Registration (2022-23)'",
+        "Fill mandatory fields including personal details, educational qualifications, and income details",
+        "Register and verify via email link",
+        "Sign in at https://aicte-jk-scholarship-gov.in/, provide required details, and upload documents",
+        "Submit application"
+      ]
+    },
+    "documents_required": [
+      "Domicile certificate of J&K or Ladakh",
+      "Class 10th and 12th certificates",
+      "Polytechnic Diploma certificate (for lateral entry)",
+      "Income certificate",
+      "Caste certificate (if applicable)",
+      "Disability certificate (if applicable)",
+      "Joining report from allotted college",
+      "Bank details",
+      "Aadhaar card",
+      "Photograph"
+    ],
+    "official_links": {
+      "guidelines": "https://www.aicte-india.org/bureaus/jk/2021-2022"
+    }
+  },
+  {
+    "scheme_name": "Swami Vivekananda Single Girl Child Fellowship for Research in Social Sciences",
+    "parent_scheme": "Fellowship Schemes",
+    "ministry": "Ministry of Education",
+    "department": "University Grants Commission (UGC)",
+    "objectives": [
+      "Support higher education of single girl child in Social Sciences",
+      "Promote small family norms",
+      "Recognize and promote single girl child norm in society"
+    ],
+    "benefits": {
+      "fellowship": "₹25,000/- per month for initial two years; ₹28,000/- per month for remaining tenure",
+      "contingency": "₹10,000/- per annum for initial two years; ₹20,500/- per annum for remaining tenure",
+      "escort_reader_assistance": "₹2,000/- per month for PWD candidates",
+      "tenure": "5 years or until Ph.D. thesis submission, whichever is earlier"
+    },
+    "eligibility_criteria": [
+      "Single girl child without siblings (twin/fraternal daughters eligible)",
+      "Admitted to Ph.D. in Social Sciences in recognized Universities/Colleges/Institutes",
+      "Age up to 40 years for general category, 45 years for SC/ST/OBC/PWD",
+      "Pursuing regular, full-time Ph.D. program"
+    ],
+    "exclusions": [
+      "Candidates with siblings (if male sibling exists)",
+      "Pursuing Ph.D. in distance education mode"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Apply through UGC website: https://www.ugc.gov.in/",
+        "Fill and submit application form as per advertised instructions",
+        "Upload required documents"
+      ]
+    },
+    "documents_required": [
+      "Aadhaar card",
+      "Proof of identity",
+      "Proof of age (Birth certificate or Class 10th marksheet)",
+      "Bank details",
+      "Passport-size photograph",
+      "Caste certificate (if applicable)",
+      "Disability certificate (if applicable)",
+      "Transgender ID card (if applicable)",
+      "Affidavit on ₹50/- stamp paper confirming single girl child status"
+    ],
+    "official_links": {
+      "guidelines": "https://www.ugc.gov.in/"
+    }
+  },
+  {
+    "scheme_name": "CBSE Merit Scholarship Scheme For Single Girl Child",
+    "parent_scheme": "Scholarship Schemes",
+    "ministry": "Ministry of Education",
+    "department": "Central Board of Secondary Education (CBSE)",
+    "objectives": [
+      "Recognize efforts of parents in promoting girls' education",
+      "Encourage meritorious single girl students to continue education in Classes 11th and 12th"
+    ],
+    "benefits": {
+      "scholarship_amount": "₹500/- per month",
+      "duration": "Maximum 2 years",
+      "payment_mode": "Through ECS/NEFT"
+    },
+    "eligibility_criteria": [
+      "Single girl child of her family",
+      "Secured 60% or more marks in CBSE Class 10th examination",
+      "Studying in Class 11th or 12th in CBSE-affiliated school",
+      "Tuition fee not exceeding ₹1,500/- per month (₹6,000/- for NRI applicants)",
+      "Indian national"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Visit https://www.cbse.gov.in/",
+        "Register as new user or proceed with renewal",
+        "Fill roll number and date of birth as per Class 10th marksheet",
+        "Fill and attest undertaking and affidavit as per guidelines",
+        "Upload scanned undertaking and affidavit in PDF format",
+        "Submit application and print confirmation page",
+        "For renewal, courier confirmation page to CBSE Scholarship Office"
+      ]
+    },
+    "documents_required": [
+      "Caste certificate (if applicable)",
+      "Income certificate",
+      "Admission proof",
+      "Fee structure details",
+      "Passport-size photographs",
+      "Scanned signature",
+      "Student’s ID card",
+      "Class 11th marksheet (for renewal)",
+      "Aadhaar-linked bank account details",
+      "Affidavit on ₹50/- stamp paper confirming single girl child status"
+    ],
+    "official_links": {
+      "guidelines": "https://www.cbse.gov.in/"
+    }
+  },
+  {
+    "scheme_name": "National Scholarship For Post Graduate Studies",
+    "parent_scheme": "Scholarship Schemes",
+    "ministry": "Ministry of Education",
+    "department": "Department of Higher Education",
+    "objectives": [
+      "Provide financial assistance to meritorious students from economically weaker sections for postgraduate studies"
+    ],
+    "benefits": {
+      "scholarship_amount": "₹15,000/- per month for 10 months annually",
+      "duration": "For duration of postgraduate program"
+    },
+    "eligibility_criteria": [
+      "Pursuing first postgraduate degree",
+      "Enrolled in first year of full-time postgraduate program",
+      "Under 30 years old",
+      "Pursuing recognized postgraduate degree program"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Visit National Scholarship Portal",
+        "Register as new applicant with mobile OTP",
+        "Fill application form with personal and academic details",
+        "Upload required documents",
+        "Submit application"
+      ]
+    },
+    "documents_required": [
+      "Attested mark sheets and certificates from Class 9th onwards",
+      "Provisional or final admission letter to PG course",
+      "Proof of identity (Aadhaar, Voter ID, Passport, PAN Card, Driving License)",
+      "Bank details",
+      "Two passport-size photographs"
+    ],
+    "official_links": {
+      "guidelines": "https://scholarships.gov.in/"
+    }
+  },
+  {
+    "scheme_name": "Pradhan Mantri Uchchatar Shiksha Protsahan Yojana: Central Sector Interest Subsidy Scheme",
+    "parent_scheme": "Education Loan Schemes",
+    "ministry": "Ministry of Education",
+    "department": "Department of Higher Education",
+    "objectives": [
+      "Provide interest subsidy during moratorium period for education loans to economically weaker students",
+      "Support higher education in professional/technical courses"
+    ],
+    "benefits": {
+      "interest_subsidy": "Full interest subsidy during moratorium period (course period + 1 year)",
+      "loan_amount": "Up to ₹10,00,000/-",
+      "no_collateral": "For loans up to ₹7.5 lakhs"
+    },
+    "eligibility_criteria": [
+      "Loans taken under IBA Model Education Loan Scheme",
+      "Gross parental/family income up to ₹4.5 lakhs per annum",
+      "Enrolled in NAAC/NBA accredited institutions or CFTIs for professional/technical courses",
+      "Admissible only once for UG or PG degree courses"
+    ],
+    "application_process": {
+      "mode": "Online/Offline",
+      "steps": [
+        "Visit nearest bank branch where education loan was availed",
+        "Submit application for interest subsidy with required documents",
+        "Nodal bank (Canara Bank) disburses subsidy via DBT through PFMS portal"
+      ]
+    },
+    "documents_required": [
+      "Aadhaar card",
+      "PAN card",
+      "Income proof",
+      "Educational certificates",
+      "Proof of admission",
+      "Bank account details"
+    ],
+    "official_links": {
+      "guidelines": "https://www.education.gov.in/"
+    }
+  },
+  {
+    "scheme_name": "AICTE – Saksham Scholarship Scheme For Specially-Abled Student (Diploma)",
+    "parent_scheme": "Scholarship Schemes",
+    "ministry": "Ministry of Education",
+    "department": "All India Council for Technical Education (AICTE)",
+    "objectives": [
+      "Support specially-abled students to pursue technical education",
+      "Encourage preparation for a successful future through technical knowledge"
+    ],
+    "benefits": {
+      "scholarship_amount": "₹50,000/- per annum",
+      "duration": "Up to 3 years for first-year students; 2 years for lateral entry"
+    },
+    "eligibility_criteria": [
+      "Admitted to first or second year of diploma course in AICTE-approved institution",
+      "Disability of not less than 40%",
+      "Family income not exceeding ₹8,00,000/- per annum"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Visit https://scholarships.gov.in/",
+        "Register as new user, accept terms, and fill details",
+        "Login with application ID and password",
+        "Fill application form and upload documents",
+        "Submit application"
+      ]
+    },
+    "documents_required": [
+      "Aadhaar card",
+      "SSC/10th certificate and marksheet",
+      "HSC/12th certificate (for degree level)",
+      "ITI certificate (for lateral entry diploma)",
+      "Category certificate (if applicable)",
+      "Study/Bonafide certificate",
+      "Annual family income certificate",
+      "Promotion certificate (for renewal)"
+    ],
+    "official_links": {
+      "guidelines": "https://scholarships.gov.in/"
+    }
+  },
+  {
+    "scheme_name": "Post Graduate Indira Gandhi Scholarship For Single Girl Child",
+    "parent_scheme": "Scholarship Schemes",
+    "ministry": "Ministry of Education",
+    "department": "University Grants Commission (UGC)",
+    "objectives": [
+      "Support postgraduate education of single girl children",
+      "Promote small family norms"
+    ],
+    "benefits": {
+      "scholarship_amount": "₹36,200/- per annum",
+      "number_of_scholarships": "3000 annually",
+      "duration": "2 years for PG course"
+    },
+    "eligibility_criteria": [
+      "Single girl child without siblings (twin/fraternal daughters eligible)",
+      "Admitted to first year of regular, full-time Master’s degree course",
+      "Age not exceeding 30 years",
+      "Pursuing non-professional course"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Apply through National Scholarship Portal",
+        "Institution verifies online application",
+        "Submit required documents"
+      ]
+    },
+    "documents_required": [
+      "Aadhaar card",
+      "Proof of admission to Master’s degree course",
+      "Joining report (Annexure-I)",
+      "Affidavit for single girl child status (Annexure-II)",
+      "Bank passbook",
+      "Birth certificate or Class 10th marksheet"
+    ],
+    "official_links": {
+      "guidelines": "https://www.ugc.ac.in/"
+    }
+  },
+  {
+    "scheme_name": "Free Education For Sports Medal Winners / Participants Of National/International Events",
+    "parent_scheme": "Education Support Schemes",
+    "ministry": "Ministry of Education",
+    "department": "University Grants Commission (UGC)",
+    "objectives": [
+      "Assist medal-winning sportspersons in pursuing higher education",
+      "Motivate excellence in sports and academics"
+    ],
+    "benefits": {
+      "olympics_world_championship": {
+        "tuition_fee": "Actual",
+        "m_phil_phd_mba": "₹7,500/- per month + Actual",
+        "hostel_facilities": "Actual",
+        "kit": "₹15,000/- per annum"
+      },
+      "commonwealth_asian_saf": {
+        "tuition_fee": "75% of Actual for national level",
+        "m_phil_phd_mba": "₹5,000/- to ₹7,500/- per month + Actual",
+        "hostel_facilities": "Actual",
+        "kit": "₹6,000/- to ₹10,000/- per annum"
+      }
+    },
+    "eligibility_criteria": [
+      "Medal winners of national games or participants in recognized international sporting events",
+      "Admitted to recognized Universities/Colleges/Institutions"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Download prescribed application form",
+        "Fill and attach certificate of participation/medal",
+        "Submit to designated authority"
+      ]
+    },
+    "documents_required": [
+      "Application in prescribed format",
+      "Certificate of participation/medal (attested)",
+      "Statement of selected students and receipt of scholarship",
+      "Progress report after first year",
+      "Utilization certificate",
+      "Certificate for scholarship continuance"
+    ],
+    "official_links": {
+      "guidelines": "https://www.ugc.ac.in/"
+    }
+  },
+  {
+    "scheme_name": "Savitribai Jyotirao Phule Fellowship For Single Girl Child",
+    "parent_scheme": "Fellowship Schemes",
+    "ministry": "Ministry of Education",
+    "department": "University Grants Commission (UGC)",
+    "objectives": [
+      "Support higher education of single girl children in any stream",
+      "Promote small family norms",
+      "Recognize single girl child norm in society"
+    ],
+    "benefits": {
+      "fellowship": "₹31,000/- per month (JRF) for 2 years; ₹35,000/- per month (SRF) for remaining tenure",
+      "contingency": "₹10,000/- to ₹25,000/- per annum",
+      "escort_reader_assistance": "₹3,000/- per month for Divyang scholars",
+      "tenure": "5 years or until Ph.D. thesis submission"
+    },
+    "eligibility_criteria": [
+      "Single girl child pursuing Ph.D. in any stream",
+      "Registered in regular, full-time Ph.D. program",
+      "Age up to 40 years (general), 45 years (SC/ST/OBC/PWD)"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Visit https://frg.ugc.ac.in/",
+        "Register as new user, fill details, and upload photo/signature",
+        "Login with credentials, fill eligibility and PG/Ph.D. details",
+        "Submit application with affidavit for single girl child status"
+      ]
+    },
+    "documents_required": [
+      "Passport-size photograph and signature",
+      "Research proposal (up to 5 MB)",
+      "Abstract (up to 1 MB)",
+      "Signed auto-generated form by HoD/Registrar",
+      "Affidavit on ₹100/- stamp paper for single girl child status"
+    ],
+    "official_links": {
+      "guidelines": "https://frg.ugc.ac.in/"
+    }
+  },
+  {
+    "scheme_name": "Pre Matric Scholarship For Students With Disabilities",
+    "parent_scheme": "Scholarship Schemes",
+    "ministry": "Ministry of Social Justice and Empowerment",
+    "department": "Department of Empowerment of Persons with Disabilities (DEPwD)",
+    "objectives": [
+      "Support students with disabilities in Classes 9th and 10th",
+      "Enable SwDs to pursue education and earn a livelihood"
+    ],
+    "benefits": {
+      "maintenance_allowance": {
+        "day_scholars": "₹500/- per month",
+        "hostellers": "₹800/- per month"
+      },
+      "book_grant": "₹1,000/- per annum",
+      "disability_allowances": {
+        "visually_impaired": "₹4,000/- per annum",
+        "hearing_impaired": "₹2,000/- per annum",
+        "physically_disabled": "₹2,000/- per annum",
+        "intellectual_disabilities": "₹4,000/- per annum",
+        "other_disabilities": "₹2,000/- per annum"
+      }
+    },
+    "eligibility_criteria": [
+      "Studying in Class 9th or 10th in government or recognized school",
+      "Disability percentage of 40% or above",
+      "Family income not exceeding ₹2,00,000/- per annum",
+      "Not availing other government scholarships",
+      "Not the third sibling receiving this scholarship"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Visit https://scholarships.gov.in/",
+        "Register as new user, fill details, and submit",
+        "Login with application ID and password",
+        "Fill application form and upload documents",
+        "Submit application"
+      ]
+    },
+    "documents_required": [
+      "Photograph",
+      "Proof of age",
+      "Disability certificate",
+      "Income certificate",
+      "Tuition fee receipt",
+      "Last academic qualification certificate",
+      "Bank details"
+    ],
+    "official_links": {
+      "guidelines": "https://scholarships.gov.in/"
+    }
+  },
+  {
+    "scheme_name": "Junior Research Fellowship",
+    "parent_scheme": "Fellowship Schemes",
+    "ministry": "Ministry of Science and Technology",
+    "department": "Department of Biotechnology (DBT)",
+    "objectives": [
+      "Provide financial support for doctoral research in biotechnology and life sciences"
+    ],
+    "benefits": {
+      "fellowship_amount": "₹31,000/- per month for first 2 years; ₹35,000/- per month for next 3 years",
+      "tenure": "5 years"
+    },
+    "eligibility_criteria": [
+      "Indian citizen",
+      "Master’s degree in biotechnology or related field",
+      "Cleared GAT or NET exam",
+      "Age not exceeding 28 years (general/EWS) or 33 years (SC/ST/PH)",
+      "Pursuing full-time doctoral research"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Qualify Biotechnology Eligibility Test (BET)",
+        "Apply online on DBT website in July-August",
+        "Upload required documents",
+        "Appear for interview",
+        "Check final selection list on DBT website"
+      ]
+    },
+    "documents_required": [
+      "BET exam scorecard",
+      "Research proposal",
+      "No Objection Certificate (if applicable)",
+      "Passport-size photograph",
+      "Signature",
+      "Date of birth proof",
+      "Academic transcripts",
+      "Category certificate (if applicable)",
+      "PWD certificate (if applicable)"
+    ],
+    "official_links": {
+      "guidelines": "https://dbtindia.gov.in/"
+    }
+  },
+  {
+    "scheme_name": "Institutions of Eminence Scheme",
+    "parent_scheme": "Education Support Schemes",
+    "ministry": "Ministry of Education",
+    "department": "University Grants Commission (UGC)",
+    "objectives": [
+      "Empower Higher Educational Institutions to become world-class",
+      "Enhance affordable access to high-quality education"
+    ],
+    "benefits": {
+      "financial_assistance": "Up to ₹1,000 crore for government institutions",
+      "additional_benefits": [
+        "Freedom to mobilize resources from industry/alumni",
+        "Admit up to 30% foreign students",
+        "Fix fees for foreign and domestic students",
+        "Flexible curriculum and syllabus",
+        "Exemption from government approvals for academic collaborations"
+      ]
+    },
+    "eligibility_criteria": [
+      "10 selected institutions (mix of technical, management, and central universities)",
+      "Top 50 in NIRF category or top 500 in global rankings (Times, QS, Shanghai)"
+    ],
+    "application_process": {
+      "mode": "Offline",
+      "steps": [
+        "Central government institutions apply through controlling Ministry/Department",
+        "State public universities apply through state government",
+        "Submit 15-year strategic vision plan and 5-year implementation plan"
+      ]
+    },
+    "documents_required": [
+      "Organization details",
+      "Financial strength details",
+      "Land details",
+      "Governance structure",
+      "Five-year implementation plan",
+      "Alumni engagement plan",
+      "Sustainability plan",
+      "Affiliation plan"
+    ],
+    "official_links": {
+      "guidelines": "https://www.ugc.ac.in/"
+    }
+  },
+  {
+    "scheme_name": "Pradhan Mantri Vidyalaxmi (PM-Vidyalaxmi) Scheme",
+    "parent_scheme": "Education Loan Schemes",
+    "ministry": "Ministry of Education",
+    "department": "Department of Higher Education",
+    "objectives": [
+      "Provide financial support to meritorious students for higher education",
+      "Ensure no financial constraints prevent pursuit of quality education"
+    ],
+    "benefits": {
+      "loan_type": "Collateral-free, guarantor-free education loans",
+      "loan_amount": "No upper limit, covers course fees and associated expenses",
+      "credit_guarantee": "75% for loans up to ₹7,50,000/-",
+      "interest_subvention": "3% for loans up to ₹10,00,000/- for family income up to ₹8,00,000/-",
+      "repayment_period": "Up to 15 years excluding moratorium"
+    },
+    "eligibility_criteria": [
+      "Indian citizen, aged 18-23 years",
+      "Merit-based admission to one of 860 QHEIs",
+      "Pursuing technical/professional course",
+      "Passed 10th and 12th from government school",
+      "Not receiving other government scholarships",
+      "Family income up to ₹8,00,000/- for interest subvention"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Visit PM-Vidyalaxmi website, register with mobile/email OTP",
+        "Fill application form, choose bank/branch, and upload documents",
+        "Submit application and track status",
+        "Apply for interest subvention post-loan sanction"
+      ]
+    },
+    "documents_required": [
+      "Aadhaar card",
+      "PAN card",
+      "Address proof",
+      "Self-attested marksheets",
+      "Entrance exam result",
+      "Offer letter with fee structure",
+      "Income certificate or Annexure 6"
+    ],
+    "official_links": {
+      "guidelines": "https://www.education.gov.in/"
+    }
+  },
+  {
+    "scheme_name": "National Scheme Of Incentive To Girls For Secondary Education",
+    "parent_scheme": "Incentive Schemes",
+    "ministry": "Ministry of Education",
+    "department": "Department of School Education & Literacy",
+    "objectives": [
+      "Promote enrollment of girls aged 14-18 in secondary education",
+      "Reduce dropout rates and retain girls up to Class 12th"
+    ],
+    "benefits": {
+      "incentive_amount": "₹3,000/- as fixed deposit",
+      "withdrawal": "No premature withdrawal, matures at age 18"
+    },
+    "eligibility_criteria": [
+      "Girl child from SC/ST or passed Class 8th from Kasturba Gandhi Balika Vidyalayas",
+      "Enrolled in Class 9th in government, government-aided, or local body schools",
+      "Unmarried"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Register on National Scholarship Portal",
+        "Login, fill application form, and upload documents",
+        "Submit application",
+        "Track payment status via PFMS"
+      ]
+    },
+    "documents_required": [
+      "Aadhaar card",
+      "Domicile certificate",
+      "Income certificate",
+      "Class 10th scorecard",
+      "Certificate of two-year continuation in Class 9th",
+      "Fee receipts",
+      "Bank account proof",
+      "Disability certificate (if applicable)"
+    ],
+    "official_links": {
+      "guidelines": "https://scholarships.gov.in/"
+    }
+  },
+  {
+    "scheme_name": "Post Graduate Scholarship for GATE/GPAT Qualified Students for Pursuing M.Tech/M.E./M.Pharm-UGC",
+    "parent_scheme": "Scholarship Schemes",
+    "ministry": "Ministry of Education",
+    "department": "University Grants Commission (UGC)",
+    "objectives": [
+      "Attract young talent to pursue postgraduate education in technical fields"
+    ],
+    "benefits": {
+      "scholarship_amount": "₹12,400/- per month",
+      "contingency": "₹5,000/- per annum",
+      "duration": "24 months or course duration"
+    },
+    "eligibility_criteria": [
+      "GATE/GPAT qualified",
+      "Admitted to M.E./M.Tech./M.Pharm or integrated dual degree program",
+      "Full-time scholar"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "University submits claim on UGC portal",
+        "Upload undertaking and GATE/GPAT scorecard",
+        "Register on Canara Bank UGC portal",
+        "Scholarship disbursed via DBT"
+      ]
+    },
+    "documents_required": [
+      "Aadhaar card",
+      "Passport-size photograph",
+      "Proof of age",
+      "Marksheets/grade cards and degrees",
+      "GATE/GPAT scorecard",
+      "Caste certificate (if applicable)",
+      "Disability certificate (if applicable)",
+      "Income certificate (if applicable)",
+      "Bank account details"
+    ],
+    "official_links": {
+      "guidelines": "https://www.ugc.ac.in/"
+    }
+  },
+  {
+    "scheme_name": "Pragati Scholarship Scheme For Girl Students (Technical Diploma)",
+    "parent_scheme": "Scholarship Schemes",
+    "ministry": "Ministry of Education",
+    "department": "All India Council for Technical Education (AICTE)",
+    "objectives": [
+      "Empower women through technical education",
+      "Support girl students in pursuing diploma courses"
+    ],
+    "benefits": {
+      "scholarship_amount": "₹50,000/- per annum",
+      "duration": "Up to 3 years for first-year students; 2 years for lateral entry"
+    },
+    "eligibility_criteria": [
+      "Girl student pursuing first or second year of technical diploma",
+      "Family income not exceeding ₹8,00,000/- per annum",
+      "Maximum two girl children per family",
+      "From specified UTs/North Eastern States"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Register on National Scholarship Portal",
+        "Login, fill application form, and upload documents",
+        "Submit application",
+        "Track payment status via PFMS"
+      ]
+    },
+    "documents_required": [
+      "SSC/10th certificate",
+      "HSC/12th certificate (for degree level)",
+      "ITI certificate (for lateral entry diploma)",
+      "Diploma certificate (for lateral entry degree)",
+      "Bank passbook",
+      "Category certificate",
+      "Aadhaar card",
+      "Study certificate",
+      "Annual family income certificate",
+      "Parent’s declaration",
+      "Bank mandate form"
+    ],
+    "official_links": {
+      "guidelines": "https://scholarships.gov.in/"
+    }
+  },
+  {
+    "scheme_name": "Post Graduate Scholarships for Professional Courses for SC/ST Candidates",
+    "parent_scheme": "Scholarship Schemes",
+    "ministry": "Ministry of Education",
+    "department": "University Grants Commission (UGC)",
+    "objectives": [
+      "Provide financial assistance to SC/ST students for postgraduate professional courses"
+    ],
+    "benefits": {
+      "scholarship_amount": "₹7,800/- per month for ME/M.Tech; ₹4,500/- per month for other courses",
+      "duration": "2-3 years depending on course"
+    },
+    "eligibility_criteria": [
+      "Belong to SC/ST category",
+      "Graduate degree in relevant subject",
+      "Admitted to first year of full-time postgraduate professional course",
+      "Enrolled in recognized university/institution"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Apply on National Scholarship Portal after UGC advertisement",
+        "Fill application form, upload documents",
+        "Institution verifies application",
+        "Scholarship disbursed via DBT"
+      ]
+    },
+    "documents_required": [
+      "Aadhaar card",
+      "Passport-size photograph",
+      "Proof of age",
+      "Marksheets/grade cards and degrees",
+      "Caste certificate",
+      "Disability certificate (if applicable)"
+    ],
+    "official_links": {
+      "guidelines": "https://www.ugc.ac.in/"
+    }
+  },
+  {
+    "scheme_name": "Post Graduate Merit Scholarship Scheme For University Rank Holders At Under-Graduate Level",
+    "parent_scheme": "Scholarship Schemes",
+    "ministry": "Ministry of Education",
+    "department": "University Grants Commission (UGC)",
+    "objectives": [
+      "Promote and nurture talent",
+      "Reward meritorious students for pursuing postgraduate studies"
+    ],
+    "benefits": {
+      "scholarship_amount": "₹2,000/- per month",
+      "number_of_scholarships": "1800 for General Courses, 575 for Honours Courses",
+      "duration": "2 years"
+    },
+    "eligibility_criteria": [
+      "First or second rank holder in General Courses or first rank in Honours Courses at UG level",
+      "Minimum 60% marks at UG level",
+      "Admitted to regular, full-time Master’s degree course",
+      "Age not exceeding 30 years"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Visit https://www.ugc.ac.in/",
+        "Select scheme under e-SARTS Scholarships-Fellowships",
+        "Fill application form and upload documents",
+        "Submit before deadline"
+      ]
+    },
+    "documents_required": [
+      "Attested copy of UG degree",
+      "Matriculation certificate",
+      "Verification certificate from institute",
+      "Provisional rank certificate from university"
+    ],
+    "official_links": {
+      "guidelines": "https://www.ugc.ac.in/"
+    }
+  },
+  {
+    "scheme_name": "Pragati Scholarship Scheme For Girl Students (Technical Degree)",
+    "parent_scheme": "Scholarship Schemes",
+    "ministry": "Ministry of Education",
+    "department": "All India Council for Technical Education (AICTE)",
+    "objectives": [
+      "Empower women through technical education",
+      "Support girl students in pursuing degree courses"
+    ],
+    "benefits": {
+      "scholarship_amount": "₹50,000/- per annum",
+      "duration": "Up to 4 years for first-year students; 3 years for lateral entry"
+    },
+    "eligibility_criteria": [
+      "Girl student pursuing first or second year of technical degree",
+      "Family income not exceeding ₹8,00,000/- per annum",
+      "Maximum two girl children per family",
+      "From specified UTs/North Eastern States"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Register on National Scholarship Portal",
+        "Login, fill application form, and upload documents",
+        "Submit application",
+        "Track payment status via PFMS"
+      ]
+    },
+    "documents_required": [
+      "SSC/10th certificate",
+      "HSC/12th certificate",
+      "ITI certificate (for lateral entry diploma)",
+      "Diploma certificate (for lateral entry degree)",
+      "Bank passbook",
+      "Category certificate",
+      "Aadhaar card",
+      "Study certificate",
+      "Annual family income certificate",
+      "Parent’s declaration",
+      "Bank mandate form"
+    ],
+    "official_links": {
+      "guidelines": "https://scholarships.gov.in/"
+    }
+  },
+  {
+    "scheme_name": "AICTE-Swanath Scholarship Scheme For Students",
+    "parent_scheme": "Scholarship Schemes",
+    "ministry": "Ministry of Education",
+    "department": "All India Council for Technical Education (AICTE)",
+    "objectives": [
+      "Support orphans, wards of Covid-19 deceased parents, and wards of martyred Armed Forces personnel",
+      "Encourage pursuit of education in AICTE-approved institutions"
+    ],
+    "benefits": {
+      "scholarship_amount": "₹50,000/- per annum",
+      "number_of_scholarships": "2000 (1000 for Degree, 1000 for Diploma)",
+      "duration": "Up to 4 years for degree; 3 years for diploma"
+    },
+    "eligibility_criteria": [
+      "Orphan, or ward of parents deceased due to Covid-19, or ward of martyred Armed Forces personnel",
+      "Family income not exceeding ₹8,00,000/- per annum",
+      "Studying in AICTE-approved degree/diploma courses",
+      "Not receiving other government scholarships"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Register on AICTE portal",
+        "Login, fill application form, and upload documents",
+        "Submit application"
+      ]
+    },
+    "documents_required": [
+      "Death certificates or certificate from Tehsildar/SDM (for orphans)",
+      "Death certificate mentioning Covid-19 cause (if applicable)",
+      "Shaheed certificate (if applicable)",
+      "Bonafide certificate",
+      "10th and 12th marksheets",
+      "Category certificate",
+      "Income certificate"
+    ],
+    "official_links": {
+      "guidelines": "https://www.aicte-india.org/"
+    }
+  },
+  {
+    "scheme_name": "Post Graduate Scholarship Scheme for GATE/GPAT Qualified Students-AICTE",
+    "parent_scheme": "Scholarship Schemes",
+    "ministry": "Ministry of Education",
+    "department": "All India Council for Technical Education (AICTE)",
+    "objectives": [
+      "Support GATE/CEED qualified students in postgraduate technical programs"
+    ],
+    "benefits": {
+      "scholarship_amount": "₹12,400/- per month",
+      "duration": "24 months or course duration",
+      "leaves": "15 days casual, 30 days medical, maternity leave as per norms"
+    },
+    "eligibility_criteria": [
+      "Valid GATE/CEED score",
+      "Admitted to full-time M.E./M.Tech./M.Arch./M.Des. program",
+      "Within AICTE-approved intake"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Institute uploads student details on AICTE portal",
+        "Student collects Unique ID, logs in at https://pgscholarship.aicte-india.org/",
+        "Upload documents and submit",
+        "Institute verifies and approves candidature"
+      ]
+    },
+    "documents_required": [
+      "Aadhaar card",
+      "Passport-size photograph",
+      "Proof of age",
+      "Marksheets/grade cards and degrees",
+      "GATE/CEED scorecard",
+      "Caste certificate (if applicable)",
+      "Disability certificate (if applicable)",
+      "Income certificate (if applicable)",
+      "Bank account details"
+    ],
+    "official_links": {
+      "guidelines": "https://www.aicte-india.org/schemes/students-development-schemes/PG-Scholarship-Scheme"
+    }
+  },
+  {
+    "scheme_name": "National Means-Cum-Merit Scholarship Scheme",
+    "parent_scheme": "Scholarship Schemes",
+    "ministry": "Ministry of Education",
+    "department": "Department of School Education & Literacy",
+    "objectives": [
+      "Award scholarships to meritorious students of economically weaker sections",
+      "Reduce dropout rates at Class 8th and encourage secondary education"
+    ],
+    "benefits": {
+      "scholarship_amount": "₹12,000/- per annum (₹1,000/- per month)",
+      "number_of_scholarships": "1,00,000 annually",
+      "duration": "Up to Class 12th"
+    },
+    "eligibility_criteria": [
+      "Parental income not exceeding ₹3,50,000/- per annum",
+      "Regular student entering Class 9th in government/government-aided/local body school",
+      "Minimum 55% marks in Class 7th (50% for SC/ST)",
+      "Pass State-level MAT and SAT with minimum 40% marks (32% for SC/ST)"
+    ],
+    "application_process": {
+      "mode": "Online",
+      "steps": [
+        "Register on National Scholarship Portal",
+        "Login, fill application form, and upload documents",
+        "Submit application",
+        "Track payment status via PFMS"
+      ]
+    },
+    "documents_required": [
+      "Class 7th marksheet",
+      "Caste certificate",
+      "Income certificate",
+      "Disability certificate (if applicable)",
+      "Domicile certificate"
+    ],
+    "official_links": {
+      "guidelines": "https://scholarships.gov.in/"
+    }
+  },
+  {
+    "scheme_name": "Sanskrit Research Scholarship Scheme",
+    "parent_scheme": "Scholarship Schemes",
+    "ministry": "Uttarakhand",
+    "department": "Department of Sanskrit Education",
+    "objectives": [
+      "Promote advanced academic research in Sanskrit",
+      "Support Ph.D. scholars in completing doctoral research"
+    ],
+    "benefits": {
+      "scholarship_amount": "₹40,000/- per year",
+      "total_beneficiaries": "20 annually",
+      "duration": "Up to 3 years"
+    },
+    "eligibility_criteria": [
+      "Belong to General, SC, ST, or EWS category",
+      "High marks in NET exam",
+      "Registered for Ph.D. in Sanskrit at recognized university in Uttarakhand"
+    ],
+    "application_process": {
+      "mode": "Offline",
+      "steps": [
+        "Obtain application form from Uttarakhand Sanskrit Academy",
+        "Fill form and attach self-attested documents",
+        "Submit to Uttarakhand Sanskrit Academy",
+        "Selection based on NET scores and reservations"
+      ]
+    },
+    "documents_required": [
+      "Aadhaar card",
+      "NET exam marksheet",
+      "Educational certificates",
+      "Ph.D. registration certificate",
+      "Bank account details",
+      "Caste certificate (if applicable)"
+    ],
+    "official_links": {
+      "guidelines": "Uttarakhand Sanskrit Academy website"
+    }
+  },
+  {
+    "scheme_name": "National Overseas Scholarship For Students With Disabilities",
+    "parent_scheme": "Scholarship Schemes",
+    "ministry": "Ministry of Social Justice and Empowerment",
+    "department": "Department of Empowerment of Persons with Disabilities (DEPwD)",
+    "objectives": [
+      "Support students with disabilities for Master’s or Ph.D. abroad",
+      "Enable SwDs to overcome barriers and pursue higher education"
+    ],
+    "benefits": {
+      "maintenance_allowance": {
+        "usa_other_countries": "$15,400",
+        "uk": "£9,900"
+      },
+      "contingency_allowance": {
+        "usa_other_countries": "$1,500",
+        "uk": "£1,100"
+      },
+      "equipment_allowance": "₹1,500",
+      "tuition_fees": "Actual",
+      "visa_fees": "Actual",
+      "poll_tax": "Actual",
+      "medical_insurance": "Actual",
+      "air_passage": "Economy class by national carrier"
+    },
+    "eligibility_criteria": [
+      "Admitted to Master’s/Ph.D. in accredited foreign university",
+      "Disability percentage of 40% or above",
+      "Age 35 years or less",
+      "Family income not exceeding ₹6,00,000/- per annum",
+      "Maximum two children with disabilities per family"
+    ],
+    "application_process": {
+      "mode": "Offline",
+      "steps": [
+        "Download form from http://disabilityaffairs.gov.in/",
+        "Fill and send with documents to DEPwD, New Delhi",
+        "Applications accepted throughout the year"
+      ]
+    },
+    "documents_required": [
+      "Birth certificate or Class 10th certificate",
+      "Disability certificate",
+      "Voter ID",
+      "Aadhaar card",
+      "Proof of residence",
+      "PAN card (applicant and parents/guardian)",
+      "Educational certificates and marksheets",
+      "Income certificate",
+      "Admission papers from foreign university",
+      "Certificate of not availing other scholarships"
+    ],
+    "official_links": {
+      "guidelines": "http://disabilityaffairs.gov.in/"
+    }
+  },
+  {
+    "scheme_name": "Educational Assistance to the Children Studying in 1st to 7th and 8th to 10th Class",
+    "parent_scheme": "Educational Assistance Schemes",
+    "ministry": "Maharashtra",
+    "department": "Maharashtra Building And Other Construction Workers Welfare Board (MBOCWW)",
+    "objectives": [
+      "Provide financial assistance to children of registered construction workers for school education"
+    ],
+    "benefits": {
+      "1st_to_7th_class": "₹2,500/- per year",
+      "8th_to_10th_class": "₹5,000/- per year",
+      "beneficiaries": "Up to two children or wife of registered male worker"
+    },
+    "eligibility_criteria": [
+      "Worker registered with MBOCWW",
+      "Children or wife enrolled in Classes 1st to 10th",
+      "Maximum two beneficiaries per family"
+    ],
+    "application_process": {
+      "mode": "Offline",
+      "steps": [
+        "Download form from MBOCWW website",
+        "Fill form and attach self-attested documents",
+        "Submit to Labor Commissioner/Government Labor Officer",
+        "Obtain receipt of submission"
+      ]
+    },
+    "documents_required": [
+      "Passport-size photo",
+      "Aadhaar card",
+      "MBOCWW identity card",
+      "Bank passbook",
+      "School certificate of 75% attendance",
+      "Proof of residence (Aadhaar, Passport, Driving License, Ration Card, Electricity Bill, or Gram Panchayat Certificate)"
+    ],
+    "official_links": {
+      "guidelines": "MBOCWW official website"
+    }
+  },
+  {
+  "scheme_name": "Scheme for Grant of Additional Scholarship to the Students of Other Backward Classes of Andaman and Nicobar Islands, for Pursuing Higher Studies Anywhere in India after Secondary Level (Except Class XI & XII)",
+  "parent_scheme": "Educational Schemes",
+  "ministry": "Andaman and Nicobar Administration",
+  "department": "Department of Social Welfare",
+  "objectives": [
+    "Provide additional financial assistance (scholarship) to OBC students of non-creamy layer for pursuing higher education after Secondary (X)/Senior Secondary (XII)",
+    "Supplement the cost of education in Government-recognized Polytechnic/ITI/College/University anywhere in India"
+  ],
+  "benefits": {
+    "scholarship_value": "₹1000 per month for 10 months in an academic session",
+    "disbursement": [
+      "Directly credited to Aadhaar-linked bank account",
+      "Admissible only to students who passed the previous academic session",
+      "Dependent on fund availability in a financial year"
+    ]
+  },
+  "eligibility_criteria": [
+    "Belong to non-creamy layer of OBC as per Notification dated 16th December 2005 and amendments",
+    "Domicile of Andaman and Nicobar Islands",
+    "Passed Secondary (Class X) or Senior Secondary (Class XII) from a recognized Board",
+    "Pursuing higher education in a recognized Institution/University",
+    "Limited to two children of the same parent/guardian (except in case of multiple births in second live birth)",
+    "Eligible courses include: Degree (Graduation/Post-Graduation), M.Phil, Ph.D., Post-Doctoral Programmes, Post-Graduate Diploma in Management/Medicine, Commercial Pilot License, CA/ICWA/CS/ICFA, Pharmacy, Nursing, LLB, BFS, Para-medical, Mass Communication, Hotel Management, etc.",
+    "Post Matriculation non-degree courses like ITI, 3-year Diploma in Polytechnic",
+    "Students pursuing Post-graduate courses in Medicine must not practice during the course",
+    "Scholarship awarded on a year-to-year basis, subject to passing the stage/year/semesters",
+    "Scholarship stopped if student fails a class for more than one year",
+    "Scholarship cancelled and recoverable if obtained by false statements",
+    "Scholarship refundable if studies are discontinued"
+  ],
+  "exclusions": [
+    "Students repeating the same stage/level of education in a different subject/stream (e.g., B.Sc. after B.A, M.A. in another subject)",
+    "Students pursuing another professional course after completing one (e.g., LLB after B.T/B.Ed)",
+    "Courses funded by Central/State Government or UT Administration (e.g., Aircraft Maintenance Engineering, Private Pilot Licence, Defence Academies, Pre-Examination Training Centre, distance education courses)"
+  ],
+  "renewal": [
+    "Renewed yearly if scholar secures promotion to the next higher class",
+    "Renewable for next academic year with medical certificate or sufficient proof for inability to appear in annual examination",
+    "Eligible for scholarship in promoted class per University/Institution regulations"
+  ],
+  "application_process": {
+    "mode": "Online",
+    "steps": [
+      "Register on NSP Portal (https://scholarships.gov.in/) using 'New Registration' icon",
+      "Receive Student Registration ID after successful registration",
+      "Login using 'Fresh Application' icon with Student Registration ID",
+      "Fill and submit the application form via 'Application Form' icon",
+      "Receive system-generated registration number for future reference",
+      "Applications invited in May-June via advertisement in leading newspapers and other media"
+    ]
+  },
+  "documents_required": [
+    "Passport-size photograph",
+    "Certificates of Class X/XII, Diploma/Degree of qualifying examination",
+    "Caste Certificate signed by Revenue Officer (not below Tehsildar)",
+    "Non-creamy Layer Certificate signed by Revenue Officer (not below Tehsildar)",
+    "Income Certificate",
+    "Receipt of acknowledgment of scholarship from previous year (for renewal)",
+    "Copy of marks statement counter-signed by Head of Institution (for renewal)",
+    "Copy of Aadhaar Card",
+    "First page of bank passbook",
+    "Other documents as required"
+  ],
+  "official_links": {
+    "guidelines": "https://scholarships.gov.in"
+  }
+}
   ]
 }
