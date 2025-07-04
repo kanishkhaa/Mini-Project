@@ -214,13 +214,13 @@
         "Any other documents (if required)"
       ],
       "official_links": {
-        "guidelines": "https://www.tn.com"
+        "guidelines": "https://www.tn.gov.in"
       }
     },
     {
       "scheme_name": "Pradhan Mantri Kisan Samman Nidhi Yojana",
       "parent_scheme": "Farmer Income Support",
-      "ministry": "Ministry Ministry of Agriculture and Farmers Welfare",
+      "ministry": "Ministry of Agriculture and Farmers Welfare",
       "department": "Department of Agriculture and Farmers Welfare",
       "objectives": [
         "Provide income support to small and marginal farmers",
@@ -568,7 +568,7 @@
         "Promote horticulture crops",
         "Enhance farmer income through diversification"
       ],
-      "benefitsev": {
+      "benefits": {
         "subsidy": "On planting material, infrastructure"
       },
       "eligibility_criteria": [
@@ -1286,7 +1286,7 @@
         "Improve socio-economic conditions"
       ],
       "benefits": {
-        "funding": "For infrastructure and livelihood"
+        "funding": "For infrastructure and livelihoods"
       },
       "eligibility_criteria": [
         "Villages with over 50% SC population"

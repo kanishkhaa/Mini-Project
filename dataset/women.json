@@ -1,5 +1,5 @@
 {
-  "women_empowerment_schemes": [
+  "women_schemes": [
     {
       "scheme_name": "Sukanya Samriddhi Yojana (SSY)",
       "parent_scheme": "Women and Child Welfare Schemes",
@@ -202,7 +202,7 @@
       }
     },
     {
-      "scheme_name": "Mukhyamantri Kanya Utthan Yojana",
+      "scheme_name": "M Mukhyamantri Kanya Utthan Yojana",
       "parent_scheme": "Women and Child Welfare Schemes",
       "ministry": "Government of Bihar",
       "department": "Department of Social Welfare",
@@ -390,7 +390,7 @@
         "guidelines": "https://wcd.nic.in/bbbp-schemes"
       }
     },
-        {
+    {
       "scheme_name": "Chief Minister’s Girl Child Protection Scheme",
       "parent_scheme": "Women and Child Welfare Schemes",
       "ministry": "Government of Tamil Nadu",
@@ -557,7 +557,7 @@
         "guidelines": "https://www.tnsocialwelfare.tn.gov.in/en/schemes/free-supply-sewing-machines"
       }
     },
-        {
+    {
       "scheme_name": "Self Employment Loan Scheme",
       "parent_scheme": "Women Empowerment Schemes",
       "ministry": "Government of Kerala",
@@ -758,7 +758,7 @@
         "guidelines": "https://kswdc.org/latest-news/applicants-selected-for-transgender-self-employment-loan-scheme/"
       }
     },
-        {
+    {
       "scheme_name": "Stree Shakthi Scheme",
       "parent_scheme": "Women Empowerment Schemes",
       "ministry": "Government of Karnataka",
@@ -1112,44 +1112,6 @@
       }
     },
     {
-      "scheme_name": "Ujjawala Scheme",
-      "parent_scheme": "Women Safety and Rehabilitation Schemes",
-      "ministry": "Ministry of Women and Child Development",
-      "department": "Department of Women and Child Development",
-      "objectives": [
-        "Prevent trafficking of women and children for commercial sexual exploitation",
-        "Facilitate rescue, rehabilitation, and reintegration of victims",
-        "Provide vocational training for economic independence"
-      ],
-      "benefits": {
-        "rehabilitation": "Shelter, food, clothing, medical treatment, and counseling",
-        "vocational_training": "Skill development for income-generating activities",
-        "legal_aid": "Support for legal proceedings and repatriation"
-      },
-      "eligibility_criteria": [
-        "Women and children victims of trafficking or commercial sexual exploitation",
-        "Referred by police, NGOs, or self-referral",
-        "No specific income or age criteria"
-      ],
-      "application_process": {
-        "mode": "Offline",
-        "steps": [
-          "Contact Ujjawala homes via district authorities or NGOs",
-          "Provide incident details or referral",
-          "Assessment and admission by authorities",
-          "Access to rehabilitation services"
-        ]
-      },
-      "documents_required": [
-        "Identity proof (Aadhaar, etc., if available)",
-        "Referral letter (if applicable)",
-        "Police report (if applicable)"
-      ],
-      "official_links": {
-        "guidelines": "https://wcd.nic.in/schemes/ujjawala"
-      }
-    },
-        {
       "scheme_name": "Kalyana Lakshmi / Shaadi Mubarak",
       "parent_scheme": "Marriage Assistance Schemes",
       "ministry": "Government of Telangana",
@@ -1699,81 +1661,6 @@
       ],
       "official_links": {
         "guidelines": "https://wcd.nic.in/sakhi-one-stop-centres"
-      }
-    },
-    {
-      "scheme_name": "Beti Bachao Beti Padhao (BBBP)",
-      "parent_scheme": "Women and Child Welfare Schemes",
-      "ministry": "Ministry of Women and Child Development",
-      "department": "Department of Women and Child Development",
-      "objectives": [
-        "Prevent gender-biased sex selection",
-        "Ensure survival, protection, and education of girl children",
-        "Promote gender equality and social empowerment"
-      ],
-      "benefits": {
-        "awareness_campaigns": "Nationwide campaigns for gender equality",
-        "multi_sectoral_interventions": "Coordination with health and education sectors",
-        "financial_incentives": "Support for education in select districts"
-      },
-      "eligibility_criteria": [
-        "Girl children and their families",
-        "Residents of Gujarat, with focus on low Child Sex Ratio districts",
-        "No specific income criteria for awareness benefits"
-      ],
-      "application_process": {
-        "mode": "Offline",
-        "steps": [
-          "Access benefits through Anganwadi centres or schools",
-          "Register for specific incentives via district authorities",
-          "No formal application for awareness campaigns"
-        ]
-      },
-      "documents_required": [
-        "Birth certificate (for specific incentives)",
-        "Identity proof (Aadhaar, etc.)",
-        "Residence proof (if applicable)"
-      ],
-      "official_links": {
-        "guidelines": "https://wcd.nic.in/bbbp-schemes"
-      }
-    },
-    {
-      "scheme_name": "Ujjawala Scheme",
-      "parent_scheme": "Women Safety and Rehabilitation Schemes",
-      "ministry": "Ministry of Women and Child Development",
-      "department": "Department of Women and Child Development",
-      "objectives": [
-        "Prevent trafficking of women and children for commercial sexual exploitation",
-        "Facilitate rescue, rehabilitation, and reintegration of victims",
-        "Provide vocational training for economic independence"
-      ],
-      "benefits": {
-        "rehabilitation": "Shelter, food, clothing, medical treatment, and counseling",
-        "vocational_training": "Skill development for income-generating activities",
-        "legal_aid": "Support for legal proceedings and repatriation"
-      },
-      "eligibility_criteria": [
-        "Women and children victims of trafficking or commercial sexual exploitation",
-        "Referred by police, NGOs, or self-referral",
-        "No specific income or age criteria"
-      ],
-      "application_process": {
-        "mode": "Offline",
-        "steps": [
-          "Contact Ujjawala homes via district authorities or NGOs",
-          "Provide incident details or referral",
-          "Assessment and admission by authorities",
-          "Access to rehabilitation services"
-        ]
-      },
-      "documents_required": [
-        "Identity proof (Aadhaar, etc., if available)",
-        "Referral letter (if applicable)",
-        "Police report (if applicable)"
-      ],
-      "official_links": {
-        "guidelines": "https://wcd.nic.in/schemes/ujjawala"
       }
     },
     {
