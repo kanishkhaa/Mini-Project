@@ -1,0 +1,1036 @@
+{
+  "social_welfare_and_empowerment_schemes": [
+    {
+      "scheme_name": "Dr. Ambedkar Centrally Sponsored Scheme of Post-Matric Scholarships for the Economically Backward Class (EBC) Students",
+      "parent_scheme": "Post-Matric Scholarship Schemes",
+      "ministry": "Ministry of Social Justice and Empowerment",
+      "department": "Department of Social Justice and Empowerment",
+      "objectives": [
+        "Provide financial assistance to Economically Backward Class (EBC) students",
+        "Enable EBC students to complete post-matriculation or post-secondary education"
+      ],
+      "benefits": {
+        "scholarship": "Financial assistance for studies in India"
+      },
+      "eligibility_criteria": [
+        "Belong to Economically Backward Class (EBC)",
+        "Pursuing post-matriculation or post-secondary education in India"
+      ],
+      "application_process": {
+        "mode": "Online/Offline (via respective state portals or institutions)",
+        "steps": [
+          "Apply through the National Scholarship Portal or state scholarship portal",
+          "Submit required documents",
+          "Verification by educational institution and scholarship authorities"
+        ]
+      },
+      "documents_required": [
+        "Income certificate",
+        "EBC certificate",
+        "Academic certificates",
+        "Identity proof (Aadhaar, etc.)",
+        "Bank account details"
+      ],
+      "official_links": {
+        "guidelines": "https://scholarships.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "Jeevanam Self-Employment Scheme To Dependents Of Crime Victims",
+      "parent_scheme": "Social Welfare Schemes",
+      "ministry": "Government of Kerala",
+      "department": "Department of Social Justice",
+      "objectives": [
+        "Provide financial assistance for self-employment to dependents of crime victims",
+        "Support economic independence for affected families"
+      ],
+      "benefits": {
+        "financial_assistance": "Support for starting self-employment ventures"
+      },
+      "eligibility_criteria": [
+        "Resident of Kerala",
+        "Dependent of a crime victim",
+        "Breadwinner of the family affected by crime"
+      ],
+      "application_process": {
+        "mode": "Offline",
+        "steps": [
+          "Obtain application form from Department of Social Justice",
+          "Submit application with required documents",
+          "Verification by department officials"
+        ]
+      },
+      "documents_required": [
+        "Proof of residence",
+        "Identity proof",
+        "Document proving dependency on crime victim",
+        "Details of proposed self-employment venture"
+      ],
+      "official_links": {
+        "guidelines": "https://sjd.kerala.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "Coaching Schemes For SC/ST/OBC (Non-Creamy Layer) & Minority Students For Universities",
+      "parent_scheme": "Educational Support Schemes",
+      "ministry": "Ministry of Minority Affairs",
+      "department": "Department of Minority Affairs",
+      "objectives": [
+        "Provide coaching to SC/ST/OBC (non-creamy layer) and minority students",
+        "Support preparation for university entrance examinations"
+      ],
+      "benefits": {
+        "coaching": "Free or subsidized coaching for higher education entrance"
+      },
+      "eligibility_criteria": [
+        "Belong to SC, ST, OBC (non-creamy layer), or minority communities",
+        "Preparing for university entrance examinations"
+      ],
+      "application_process": {
+        "mode": "Online/Offline",
+        "steps": [
+          "Apply through designated coaching institutes or Ministry portal",
+          "Submit eligibility documents",
+          "Selection based on merit or need"
+        ]
+      },
+      "documents_required": [
+        "Caste/community certificate",
+        "Income certificate (for OBC non-creamy layer)",
+        "Identity proof",
+        "Academic records"
+      ],
+      "official_links": {
+        "guidelines": "https://minorityaffairs.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "Goa Village & Municipal Child Committee Grants And Awards Scheme",
+      "parent_scheme": "Child Welfare Schemes",
+      "ministry": "Government of Goa",
+      "department": "Department of Women and Child Development",
+      "objectives": [
+        "Support Panchayats/Municipal bodies in addressing child-related issues",
+        "Promote child welfare activities at the local level"
+      ],
+      "benefits": {
+        "grant": "₹10,000 annually for administrative expenses"
+      },
+      "eligibility_criteria": [
+        "Panchayats or Municipal Local Bodies in Goa",
+        "Engaged in child welfare activities"
+      ],
+      "application_process": {
+        "mode": "Offline",
+        "steps": [
+          "Submit application to Department of Women and Child Development",
+          "Provide details of child welfare activities",
+          "Evaluation by state authorities"
+        ]
+      },
+      "documents_required": [
+        "Details of child welfare activities",
+        "Proof of Panchayat/Municipal status",
+        "Financial expenditure details"
+      ],
+      "official_links": {
+        "guidelines": "https://www.goa.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "Fee Waiver Scheme For SC/ST Students Pursuing Higher Education",
+      "parent_scheme": "Educational Support Schemes",
+      "ministry": "Government of Goa",
+      "department": "Department of Tribal Welfare",
+      "objectives": [
+        "Provide free access to higher education for SC/ST students",
+        "Ensure no eligible SC/ST student is deprived of education due to financial constraints"
+      ],
+      "benefits": {
+        "fee_waiver": "Full waiver of tuition fees for higher education"
+      },
+      "eligibility_criteria": [
+        "Resident of Goa",
+        "Belong to SC/ST community",
+        "Enrolled in recognized higher education institution"
+      ],
+      "application_process": {
+        "mode": "Offline",
+        "steps": [
+          "Apply through educational institution or Department of Tribal Welfare",
+          "Submit required documents",
+          "Verification by authorities"
+        ]
+      },
+      "documents_required": [
+        "SC/ST certificate",
+        "Proof of admission",
+        "Identity proof",
+        "Residence proof"
+      ],
+      "official_links": {
+        "guidelines": "https://www.goa.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "Pradhan Mantri Jeevan Jyoti Bima Yojana",
+      "parent_scheme": "Insurance Schemes",
+      "ministry": "Ministry of Finance",
+      "department": "Department of Financial Services",
+      "objectives": [
+        "Provide life insurance cover for death due to any reason",
+        "Offer renewable one-year life insurance coverage"
+      ],
+      "benefits": {
+        "insurance_cover": "₹2,00,000 for death due to any reason",
+        "premium": "₹436 per annum (subject to change)"
+      },
+      "eligibility_criteria": [
+        "Indian citizen aged 18–50 years",
+        "Must have a bank/post office account"
+      ],
+      "application_process": {
+        "mode": "Offline/Online",
+        "steps": [
+          "Approach participating bank or post office",
+          "Submit consent form and premium payment",
+          "Enrollment through linked bank account"
+        ]
+      },
+      "documents_required": [
+        "Aadhaar card",
+        "Bank account details",
+        "Consent-cum-declaration form"
+      ],
+      "official_links": {
+        "guidelines": "https://jansuraksha.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "Financial Assistance For Purchase Of Stationery To SC/ST/OBC/Minorities Students",
+      "parent_scheme": "Educational Support Schemes",
+      "ministry": "Government of Delhi",
+      "department": "Department for the Welfare of SC/ST/OBC/Minorities",
+      "objectives": [
+        "Provide financial assistance for purchasing stationery",
+        "Support SC/ST/OBC/Minority students in classes 1 to 12"
+      ],
+      "benefits": {
+        "financial_assistance": "Funds for stationery purchase"
+      },
+      "eligibility_criteria": [
+        "Resident of Delhi",
+        "SC/ST/OBC/Minority student in classes 1 to 12",
+        "Studying in Govt. of India/GNCT of Delhi/Aided Recognized schools"
+      ],
+      "application_process": {
+        "mode": "Offline",
+        "steps": [
+          "Apply through school or Department for the Welfare of SC/ST/OBC/Minorities",
+          "Submit required documents",
+          "Verification by school/authorities"
+        ]
+      },
+      "documents_required": [
+        "SC/ST/OBC/Minority certificate",
+        "School enrollment proof",
+        "Identity proof",
+        "Residence proof"
+      ],
+      "official_links": {
+        "guidelines": "https://scstobc.delhi.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "Mahatma Gandhi National Rural Employment Guarantee Act",
+      "parent_scheme": "Employment Schemes",
+      "ministry": "Ministry of Rural Development",
+      "department": "Department of Rural Development",
+      "objectives": [
+        "Provide at least 100 days of guaranteed wage employment",
+        "Support rural households with unskilled work opportunities"
+      ],
+      "benefits": {
+        "employment": "Minimum 100 days of wage employment per financial year"
+      },
+      "eligibility_criteria": [
+        "Indian citizen above 18 years",
+        "Residing in a rural area",
+        "Willing to do unskilled manual work"
+      ],
+      "application_process": {
+        "mode": "Offline",
+        "steps": [
+          "Apply at local Gram Panchayat",
+          "Obtain job card",
+          "Request work allocation"
+        ]
+      },
+      "documents_required": [
+        "Identity proof (Aadhaar, etc.)",
+        "Residence proof",
+        "Photograph for job card"
+      ],
+      "official_links": {
+        "guidelines": "https://nrega.nic.in/"
+      }
+    },
+    {
+      "scheme_name": "Dr. B.R. Ambedkar Awas Navinikarn Yojna",
+      "parent_scheme": "Housing Schemes",
+      "ministry": "Government of Haryana",
+      "department": "Department of Social Justice and Empowerment",
+      "objectives": [
+        "Provide grants for house repairs to Below Poverty Line families",
+        "Support Scheduled Caste and backward class families"
+      ],
+      "benefits": {
+        "grant": "₹80,000 for house repairs"
+      },
+      "eligibility_criteria": [
+        "Resident of Haryana",
+        "Belong to Below Poverty Line, Scheduled Caste, or Backward Classes",
+        "House requiring repairs"
+      ],
+      "application_process": {
+        "mode": "Online",
+        "steps": [
+          "Apply via https://saralharyana.gov.in/",
+          "Submit required documents",
+          "Verification by authorities"
+        ]
+      },
+      "documents_required": [
+        "BPL certificate",
+        "SC/Backward Class certificate",
+        "Proof of house ownership",
+        "Identity proof"
+      ],
+      "official_links": {
+        "guidelines": "https://saralharyana.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "The Artist Welfare Fund Of Assam",
+      "parent_scheme": "Cultural Welfare Schemes",
+      "ministry": "Government of Assam",
+      "department": "Department of Cultural Affairs",
+      "objectives": [
+        "Provide financial assistance to artists",
+        "Support medical aid, education, and accident relief for artists"
+      ],
+      "benefits": {
+        "financial_assistance": "Support for medical, educational, and accident-related expenses"
+      },
+      "eligibility_criteria": [
+        "Resident of Assam",
+        "Recognized artist under the scheme"
+      ],
+      "application_process": {
+        "mode": "Offline",
+        "steps": [
+          "Apply through Assam State Film (Finance and Development) Corporation",
+          "Submit required documents",
+          "Verification by cultural department"
+        ]
+      },
+      "documents_required": [
+        "Proof of residence",
+        "Artist recognition certificate",
+        "Identity proof",
+        "Details of financial need"
+      ],
+      "official_links": {
+        "guidelines": "https://culturalaffairs.assam.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "State Programme For Rehabilitation Of Persons With Disabilities",
+      "parent_scheme": "Disability Welfare Schemes",
+      "ministry": "Government of Arunachal Pradesh",
+      "department": "Department of Social Justice, Empowerment and Tribal Affairs",
+      "objectives": [
+        "Provide rehabilitation services to persons with disabilities",
+        "Support under the Persons with Disabilities Act 1995"
+      ],
+      "benefits": {
+        "rehabilitation": "Aids and rehabilitation services for disabled persons"
+      },
+      "eligibility_criteria": [
+        "Resident of Arunachal Pradesh",
+        "Person with disability as per the 1995 Act"
+      ],
+      "application_process": {
+        "mode": "Offline",
+        "steps": [
+          "Apply through Department of Social Justice",
+          "Submit disability certificate and documents",
+          "Verification by authorities"
+        ]
+      },
+      "documents_required": [
+        "Disability certificate",
+        "Identity proof",
+        "Residence proof"
+      ],
+      "official_links": {
+        "guidelines": "https://arunachalpradesh.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "Grant of House Construction Subsidy to Scheduled Caste People",
+      "parent_scheme": "Housing Schemes",
+      "ministry": "Government of Puducherry",
+      "department": "Adi Dravidar Welfare Department",
+      "objectives": [
+        "Provide house construction subsidy to poor Scheduled Caste people",
+        "Support economically backward classes"
+      ],
+      "benefits": {
+        "subsidy": "Financial assistance for house construction"
+      },
+      "eligibility_criteria": [
+        "Resident of Puducherry",
+        "Belong to Scheduled Caste or economically backward class",
+        "Meet income criteria"
+      ],
+      "application_process": {
+        "mode": "Offline",
+        "steps": [
+          "Apply through Adi Dravidar Welfare Department",
+          "Submit required documents",
+          "Verification by authorities"
+        ]
+      },
+      "documents_required": [
+        "SC certificate",
+        "Income certificate",
+        "Proof of land ownership",
+        "Identity proof"
+      ],
+      "official_links": {
+        "guidelines": "https://adwelfare.puducherry.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "Financial Assistance for Marriage of Poor Scheduled Caste Brides",
+      "parent_scheme": "Social Welfare Schemes",
+      "ministry": "Government of Puducherry",
+      "department": "Adi Dravidar Welfare Department",
+      "objectives": [
+        "Provide financial assistance for marriage of poor SC brides",
+        "Support poor Scheduled Caste parents"
+      ],
+      "benefits": {
+        "financial_assistance": "Support for marriage expenses"
+      },
+      "eligibility_criteria": [
+        "Resident of Puducherry",
+        "Scheduled Caste bride or parents",
+        "Meet income criteria"
+      ],
+      "application_process": {
+        "mode": "Offline",
+        "steps": [
+          "Apply through Adi Dravidar Welfare Department",
+          "Submit required documents",
+          "Verification by authorities"
+        ]
+      },
+      "documents_required": [
+        "SC certificate",
+        "Income certificate",
+        "Marriage invitation or proof",
+        "Identity proof"
+      ],
+      "official_links": {
+        "guidelines": "https://adwelfare.puducherry.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "Pension to the Persons who lost 100% Eye Sight",
+      "parent_scheme": "Disability Welfare Schemes",
+      "ministry": "Government of Tripura",
+      "department": "Directorate of Social Welfare and Social Education",
+      "objectives": [
+        "Provide monthly pension to persons with 100% blindness",
+        "Support financial independence for visually impaired individuals"
+      ],
+      "benefits": {
+        "pension": "₹2,000 per month"
+      },
+      "eligibility_criteria": [
+        "Resident of Tripura",
+        "Age 10 years and above",
+        "100% blindness certified by medical authority"
+      ],
+      "application_process": {
+        "mode": "Offline",
+        "steps": [
+          "Apply through Directorate of Social Welfare",
+          "Submit medical certificate and documents",
+          "Verification by authorities"
+        ]
+      },
+      "documents_required": [
+        "Medical certificate for 100% blindness",
+        "Age proof",
+        "Residence proof",
+        "Identity proof"
+      ],
+      "official_links": {
+        "guidelines": "https://socialwelfare.tripura.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "Leprosy Pension Scheme",
+      "parent_scheme": "Disability Welfare Schemes",
+      "ministry": "Government of Uttar Pradesh",
+      "department": "Department of Empowerment of Persons with Disabilities",
+      "objectives": [
+        "Provide financial assistance to persons affected by leprosy",
+        "Support social welfare and empowerment"
+      ],
+      "benefits": {
+        "pension": "Monthly financial assistance"
+      },
+      "eligibility_criteria": [
+        "Resident of Uttar Pradesh",
+        "Diagnosed with leprosy",
+        "Certified by medical authority"
+      ],
+      "application_process": {
+        "mode": "Offline",
+        "steps": [
+          "Apply through Department of Empowerment of Persons with Disabilities",
+          "Submit medical certificate and documents",
+          "Verification by authorities"
+        ]
+      },
+      "documents_required": [
+        "Medical certificate for leprosy",
+        "Identity proof",
+        "Residence proof"
+      ],
+      "official_links": {
+        "guidelines": "https://uphwd.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "Death Benefit Scheme (APB&OCWWB)",
+      "parent_scheme": "Welfare Schemes for Workers",
+      "ministry": "Government of Arunachal Pradesh",
+      "department": "Department of Labour and Employment",
+      "objectives": [
+        "Provide financial assistance to families of deceased registered workers",
+        "Support construction workers' welfare"
+      ],
+      "benefits": {
+        "financial_assistance": "Death benefit for registered workers"
+      },
+      "eligibility_criteria": [
+        "Registered worker with APB&OCWWB",
+        "Resident of Arunachal Pradesh",
+        "Family member applying post-worker’s death"
+      ],
+      "application_process": {
+        "mode": "Offline",
+        "steps": [
+          "Apply through APB&OCWWB",
+          "Submit death certificate and documents",
+          "Verification by board"
+        ]
+      },
+      "documents_required": [
+        "Death certificate",
+        "Worker registration proof",
+        "Identity proof of applicant",
+        "Residence proof"
+      ],
+      "official_links": {
+        "guidelines": "https://labour.arunachal.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "HIV / AIDS Pension Scheme",
+      "parent_scheme": "Health and Welfare Schemes",
+      "ministry": "Government of Puducherry",
+      "department": "Department of Social Welfare",
+      "objectives": [
+        "Provide monthly financial assistance to HIV/AIDS-affected persons",
+        "Support personal and medical expenses"
+      ],
+      "benefits": {
+        "pension": "Monthly financial assistance"
+      },
+      "eligibility_criteria": [
+        "Resident of Puducherry",
+        "Diagnosed with HIV/AIDS",
+        "Certified by medical authority"
+      ],
+      "application_process": {
+        "mode": "Offline",
+        "steps": [
+          "Apply through Department of Social Welfare",
+          "Submit medical certificate and documents",
+          "Verification by authorities"
+        ]
+      },
+      "documents_required": [
+        "Medical certificate for HIV/AIDS",
+        "Identity proof",
+        "Residence proof"
+      ],
+      "official_links": {
+        "guidelines": "https://socialwelfare.puducherry.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "National Action Plan for Skill Development of Persons with Disabilities",
+      "parent_scheme": "Skill Development Schemes",
+      "ministry": "Ministry of Social Justice and Empowerment",
+      "department": "Department of Empowerment of Persons with Disabilities",
+      "objectives": [
+        "Provide vocational training to Persons with Disabilities (PwDs)",
+        "Enhance employability and societal contribution"
+      ],
+      "benefits": {
+        "training": "High-quality vocational skill training"
+      },
+      "eligibility_criteria": [
+        "Person with Disability as per government norms",
+        "Indian citizen seeking vocational training"
+      ],
+      "application_process": {
+        "mode": "Online/Offline",
+        "steps": [
+          "Apply through designated training institutes or DEPwD portal",
+          "Submit disability certificate and documents",
+          "Selection by training authorities"
+        ]
+      },
+      "documents_required": [
+        "Disability certificate",
+        "Identity proof",
+        "Educational certificates (if applicable)"
+      ],
+      "official_links": {
+        "guidelines": "https://disabilityaffairs.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "Swasraya Scheme For Parents/Mothers Of Physically Handicapped/Mentally Retarded Persons",
+      "parent_scheme": "Disability Welfare Schemes",
+      "ministry": "Government of Kerala",
+      "department": "Department of Social Justice",
+      "objectives": [
+        "Provide financial assistance for self-employment",
+        "Support parents/mothers of physically/mentally disabled persons"
+      ],
+      "benefits": {
+        "financial_assistance": "Support for self-employment ventures"
+      },
+      "eligibility_criteria": [
+        "Resident of Kerala",
+        "Parent/mother of physically handicapped or mentally retarded person",
+        "Below Poverty Line (BPL)"
+      ],
+      "application_process": {
+        "mode": "Offline",
+        "steps": [
+          "Apply through Department of Social Justice",
+          "Submit required documents",
+          "Verification by authorities"
+        ]
+      },
+      "documents_required": [
+        "BPL certificate",
+        "Disability certificate of child",
+        "Identity proof",
+        "Residence proof"
+      ],
+      "official_links": {
+        "guidelines": "https://sjd.kerala.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "Persons With Disabilities Scheme In Colleges: Financial Assistance To Visually Challenged Teachers",
+      "parent_scheme": "Disability Welfare Schemes",
+      "ministry": "Ministry of Social Justice and Empowerment",
+      "department": "Department of Empowerment of Persons with Disabilities",
+      "objectives": [
+        "Support visually challenged teachers in pursuing teaching and research",
+        "Provide financial assistance for readers and learning aids"
+      ],
+      "benefits": {
+        "readers_allowance": "Financial support for hiring readers",
+        "learning_aids": "Funds for Braille books and recorded materials"
+      },
+      "eligibility_criteria": [
+        "Permanent visually challenged teacher",
+        "Employed in recognized educational institution"
+      ],
+      "application_process": {
+        "mode": "Offline",
+        "steps": [
+          "Apply through educational institution or DEPwD",
+          "Submit disability certificate and documents",
+          "Verification by authorities"
+        ]
+      },
+      "documents_required": [
+        "Disability certificate (visual impairment)",
+        "Employment proof",
+        "Identity proof"
+      ],
+      "official_links": {
+        "guidelines": "https://disabilityaffairs.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "Farmer Suicide Ex-Gratia",
+      "parent_scheme": "Farmer Welfare Schemes",
+      "ministry": "Government of Andhra Pradesh",
+      "department": "Agriculture & Cooperation Department",
+      "objectives": [
+        "Provide financial assistance to families of farmers who committed suicide",
+        "Support families affected by agrarian distress"
+      ],
+      "benefits": {
+        "ex_gratia": "₹7,00,000 to family members"
+      },
+      "eligibility_criteria": [
+        "Resident of Andhra Pradesh",
+        "Family member of deceased farmer/tenant farmer",
+        "Suicide due to agrarian reasons"
+      ],
+      "application_process": {
+        "mode": "Offline",
+        "steps": [
+          "Apply through Agriculture & Cooperation Department",
+          "Submit death certificate and documents",
+          "Verification by authorities"
+        ]
+      },
+      "documents_required": [
+        "Death certificate",
+        "Proof of agrarian distress",
+        "Identity proof",
+        "Residence proof"
+      ],
+      "official_links": {
+        "guidelines": "https://agriculture.ap.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "Rajasthan Chief Minister's Relief Fund - Accident Assistance",
+      "parent_scheme": "Relief Schemes",
+      "ministry": "Government of Rajasthan",
+      "department": "Chief Minister's Secretariat",
+      "objectives": [
+        "Provide financial assistance for accident victims",
+        "Support families in case of death or serious injury"
+      ],
+      "benefits": {
+        "death_assistance": "₹1,00,000 for death due to accident",
+        "injury_assistance": "Up to ₹20,000 for serious injury"
+      },
+      "eligibility_criteria": [
+        "Resident of Rajasthan",
+        "Victim of accident or their family"
+      ],
+      "application_process": {
+        "mode": "Offline",
+        "steps": [
+          "Apply through Chief Minister's Secretariat",
+          "Submit accident-related documents",
+          "Verification by authorities"
+        ]
+      },
+      "documents_required": [
+        "Accident report",
+        "Death certificate (if applicable)",
+        "Medical certificate (for injury)",
+        "Identity proof"
+      ],
+      "official_links": {
+        "guidelines": "https://cmrelief.rajasthan.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "Supply of Prosthetic Appliances to Differently Abled Persons",
+      "parent_scheme": "Disability Welfare Schemes",
+      "ministry": "Government of Puducherry",
+      "department": "Department of Social Welfare",
+      "objectives": [
+        "Provide prosthetic appliances to differently-abled persons",
+        "Minimize mobility challenges"
+      ],
+      "benefits": {
+        "prosthetic_appliances": "Free supply of prosthetic devices"
+      },
+      "eligibility_criteria": [
+        "Resident of Puducherry",
+        "Person with disability requiring prosthetic appliances"
+      ],
+      "application_process": {
+        "mode": "Offline",
+        "steps": [
+          "Apply through Department of Social Welfare",
+          "Submit disability certificate and documents",
+          "Verification by authorities"
+        ]
+      },
+      "documents_required": [
+        "Disability certificate",
+        "Identity proof",
+        "Residence proof"
+      ],
+      "official_links": {
+        "guidelines": "https://socialwelfare.puducherry.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "National Award For Senior Citizens (Vayoshreshtha Samman): Best District Panchayat In Providing Services And Facilities To Senior Citizens",
+      "parent_scheme": "Senior Citizen Welfare Schemes",
+      "ministry": "Ministry of Social Justice and Empowerment",
+      "department": "Department of Social Justice and Empowerment",
+      "objectives": [
+        "Recognize district Panchayats for outstanding work for senior citizens",
+        "Promote services and facilities for senior citizens"
+      ],
+      "benefits": {
+        "award": "Recognition by the President of India on 1st October annually"
+      },
+      "eligibility_criteria": [
+        "District Panchayat in India",
+        "Demonstrated outstanding work for senior citizens"
+      ],
+      "application_process": {
+        "mode": "Offline",
+        "steps": [
+          "Nominate through Ministry of Social Justice and Empowerment",
+          "Submit details of senior citizen welfare activities",
+          "Evaluation by award committee"
+        ]
+      },
+      "documents_required": [
+        "Details of senior citizen welfare activities",
+        "Panchayat registration proof",
+        "Supporting documents for initiatives"
+      ],
+      "official_links": {
+        "guidelines": "https://socialjustice.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "Annai Teresa Ninaivu Marriage Assistance Scheme for Orphan Girls-II",
+      "parent_scheme": "Marriage Assistance Schemes",
+      "ministry": "Government of Tamil Nadu",
+      "department": "Social Welfare and Women Empowerment Department",
+      "objectives": [
+        "Provide financial assistance for marriage of orphan girls",
+        "Support economically disadvantaged orphan brides"
+      ],
+      "benefits": {
+        "financial_assistance": "Support for marriage expenses",
+        "gold": "Assistance for gold (if applicable)"
+      },
+      "eligibility_criteria": [
+        "Resident of Tamil Nadu",
+        "Orphan girl aged 18 years or older",
+        "Economically disadvantaged"
+      ],
+      "application_process": {
+        "mode": "Offline",
+        "steps": [
+          "Apply through Social Welfare Department",
+          "Submit required documents",
+          "Verification by authorities"
+        ]
+      },
+      "documents_required": [
+        "Orphan certificate",
+        "Age proof",
+        "Marriage invitation or proof",
+        "Identity proof"
+      ],
+      "official_links": {
+        "guidelines": "https://www.tn.gov.in/scheme/social_welfare"
+      }
+    },
+    {
+      "scheme_name": "Petrol Subsidy To Persons With Disability",
+      "parent_scheme": "Disability Welfare Schemes",
+      "ministry": "Government of Chandigarh",
+      "department": "Department of Social Welfare",
+      "objectives": [
+        "Provide petrol/diesel subsidy for persons with disabilities",
+        "Support mobility for handicapped individuals using motorized vehicles"
+      ],
+      "benefits": {
+        "subsidy": "50% subsidy on petrol/diesel expenditure"
+      },
+      "eligibility_criteria": [
+        "Resident of Chandigarh",
+        "Person with disability using motorized vehicle"
+      ],
+      "application_process": {
+        "mode": "Offline",
+        "steps": [
+          "Apply through Department of Social Welfare",
+          "Submit disability certificate and vehicle details",
+          "Verification by authorities"
+        ]
+      },
+      "documents_required": [
+        "Disability certificate",
+        "Vehicle registration proof",
+        "Fuel expenditure receipts",
+        "Identity proof"
+      ],
+      "official_links": {
+        "guidelines": "https://chandigarh.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "Shramyogi Home Town Scheme- Gujarat Labour Welfare Board",
+      "parent_scheme": "Labour Welfare Schemes",
+      "ministry": "Government of Gujarat",
+      "department": "Gujarat Labour Welfare Board",
+      "objectives": [
+        "Facilitate railway fare payment for migrant labourers",
+        "Enable travel to/from home town for organized sector workers"
+      ],
+      "benefits": {
+        "travel_assistance": "Payment of railway fares"
+      },
+      "eligibility_criteria": [
+        "Migrant labourer in Gujarat’s organized sector",
+        "Registered with Gujarat Labour Welfare Board"
+      ],
+      "application_process": {
+        "mode": "Offline",
+        "steps": [
+          "Apply through Gujarat Labour Welfare Board",
+          "Submit required documents",
+          "Verification by board"
+        ]
+      },
+      "documents_required": [
+        "Labour registration proof",
+        "Identity proof",
+        "Residence proof",
+        "Travel details"
+      ],
+      "official_links": {
+        "guidelines": "https://labour.gujarat.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "Laptop Purchase Assistance Scheme- Gujarat Labour Welfare Board",
+      "parent_scheme": "Educational Support Schemes",
+      "ministry": "Government of Gujarat",
+      "department": "Gujarat Labour Welfare Board",
+      "objectives": [
+        "Provide financial assistance for laptop purchase",
+        "Support children of laborers in professional/design courses"
+      ],
+      "benefits": {
+        "financial_assistance": "Support for purchasing laptops"
+      },
+      "eligibility_criteria": [
+        "Child of registered laborer",
+        "Enrolled in professional or design course",
+        "Resident of Gujarat"
+      ],
+      "application_process": {
+        "mode": "Offline",
+        "steps": [
+          "Apply through Gujarat Labour Welfare Board",
+          "Submit educational and labor registration documents",
+          "Verification by board"
+        ]
+      },
+      "documents_required": [
+        "Labour registration proof",
+        "Course enrollment certificate",
+        "Identity proof",
+        "Residence proof"
+      ],
+      "official_links": {
+        "guidelines": "https://labour.gujarat.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "Thatched House Repair Grant for Re-thatching & Repairs (Sainik Welfare)",
+      "parent_scheme": "Housing Schemes",
+      "ministry": "Government of Puducherry",
+      "department": "Department of Sainik Welfare",
+      "objectives": [
+        "Provide grants for re-thatching and repair of houses",
+        "Support ex-servicemen, widows, or dependents"
+      ],
+      "benefits": {
+        "grant": "Up to ₹40,000 every three years"
+      },
+      "eligibility_criteria": [
+        "Resident of Puducherry",
+        "Registered ex-serviceman, widow, or dependent",
+        "Receiving subsistence allowance"
+      ],
+      "application_process": {
+        "mode": "Offline",
+        "steps": [
+          "Apply through Department of Sainik Welfare",
+          "Submit required documents",
+          "Verification by authorities"
+        ]
+      },
+      "documents_required": [
+        "Ex-serviceman registration proof",
+        "Subsistence allowance proof",
+        "House ownership proof",
+        "Identity proof"
+      ],
+      "official_links": {
+        "guidelines": "https://sainikwelfare.puducherry.gov.in/"
+      }
+    },
+    {
+      "scheme_name": "Financial Assistance Scheme for Purchase of Agricultural Land to Scheduled Caste Farmers",
+      "parent_scheme": "Agricultural Support Schemes",
+      "ministry": "Government of Gujarat",
+      "department": "Department of Social Justice and Empowerment",
+      "objectives": [
+        "Provide financial assistance for purchasing agricultural land",
+        "Support Scheduled Caste farmers for self-cultivation"
+      ],
+      "benefits": {
+        "financial_assistance": "Support for purchasing up to 2 acres of land"
+      },
+      "eligibility_criteria": [
+        "Resident of Gujarat",
+        "Belong to Scheduled Caste",
+        "Farmer intending to purchase agricultural land"
+      ],
+      "application_process": {
+        "mode": "Offline",
+        "steps": [
+          "Apply through Department of Social Justice and Empowerment",
+          "Submit required documents",
+          "Verification by authorities"
+        ]
+      },
+      "documents_required": [
+        "SC certificate",
+        "Land purchase agreement",
+        "Identity proof",
+        "Residence proof"
+      ],
+      "official_links": {
+        "guidelines": "https://sje.gujarat.gov.in/"
+      }
+    }
+  ]
+}
