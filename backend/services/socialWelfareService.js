@@ -18,15 +18,19 @@ class SocialWelfareService {
       await SocialWelfare.insertMany(socialWelfareData);
       return { message: '✅ Social Welfare data loaded successfully' };
     } catch (error) {
+      console.error('Error loading social welfare data:', error.message);
       throw new Error(`❌ Error loading social welfare data: ${error.message}`);
     }
   }
 
   static async getAllData() {
     try {
-      return await SocialWelfare.find();
+      const data = await SocialWelfare.find();
+      console.log('Fetched social welfare data from MongoDB:', data); // Debug log
+      return data;
     } catch (error) {
-      throw new Error(`❌ Error fetching social welfare data: ${error.message}`);
+      console.error(`❌ Error fetching social welfare data: ${error.message}`);
+      throw error;
     }
   }
 }

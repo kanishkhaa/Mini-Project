@@ -7,6 +7,7 @@ router.post('/load', async (req, res) => {
     const result = await SocialWelfareService.loadData();
     res.json(result);
   } catch (error) {
+    console.error('Error in social welfare load route:', error.message);
     res.status(500).json({ error: error.message });
   }
 });
@@ -14,8 +15,15 @@ router.post('/load', async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     const data = await SocialWelfareService.getAllData();
-    res.json(data);
+    console.log('Raw data from SocialWelfareService:', data); // Debug log
+    const flattenedData = data.flatMap(doc => doc.social_welfare_schemes || []);
+    console.log('Flattened data for response:', flattenedData); // Debug log
+    if (flattenedData.length === 0) {
+      console.warn('No schemes found in social_welfare_schemes');
+    }
+    res.json(flattenedData);
   } catch (error) {
+    console.error('Error in social welfare route:', error.message);
     res.status(500).json({ error: error.message });
   }
 });

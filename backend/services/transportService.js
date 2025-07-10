@@ -16,17 +16,22 @@ class TransportService {
 
       await Transport.deleteMany({});
       await Transport.insertMany(transportData);
+      console.log('Transport data inserted into MongoDB:', transportData); // Debug log
       return { message: '✅ Transport data loaded successfully' };
     } catch (error) {
-      throw new Error(`❌ Error loading transport data: ${error.message}`);
+      console.error(`❌ Error loading transport data: ${error.message}`);
+      throw error;
     }
   }
 
   static async getAllData() {
     try {
-      return await Transport.find();
+      const data = await Transport.find();
+      console.log('Fetched transport data from MongoDB:', data); // Debug log
+      return data;
     } catch (error) {
-      throw new Error(`❌ Error fetching transport data: ${error.message}`);
+      console.error(`❌ Error fetching transport data: ${error.message}`);
+      throw error;
     }
   }
 }

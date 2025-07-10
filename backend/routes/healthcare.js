@@ -7,6 +7,7 @@ router.post('/load', async (req, res) => {
     const result = await HealthcareService.loadData();
     res.json(result);
   } catch (error) {
+    console.error('Error loading healthcare data:', error.message);
     res.status(500).json({ error: error.message });
   }
 });
@@ -14,8 +15,15 @@ router.post('/load', async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     const data = await HealthcareService.getAllData();
-    res.json(data);
+    console.log('Raw data from HealthcareService:', data); // Debug log
+    const flattenedData = data.flatMap(doc => doc.healthcare_schemes || []);
+    console.log('Flattened healthcare data for response:', flattenedData); // Debug log
+    if (flattenedData.length === 0) {
+      console.warn('No schemes found in healthcare_schemes');
+    }
+    res.json(flattenedData);
   } catch (error) {
+    console.error('Error in healthcare route:', error.message);
     res.status(500).json({ error: error.message });
   }
 });

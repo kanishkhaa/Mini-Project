@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Search, Filter, Clock, Star, BookmarkPlus, ExternalLink, Users, MapPin, TrendingUp, Award, ChevronDown, X, Heart, Bell, Sparkles, Target, Gift, Shield, Zap, Sliders,
   Calendar, Stethoscope, CheckCircle, FileText, UserCheck, Send, Lightbulb, HelpCircle, Info, AlertCircle
 } from 'lucide-react';
+import axios from 'axios';
 
 const Scheme = () => {
+  const [schemes, setSchemes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedProvider, setSelectedProvider] = useState('all');
   const [activeFilter, setActiveFilter] = useState('all');
@@ -22,230 +26,137 @@ const Scheme = () => {
 
   const categories = [
     { id: 'all', label: 'All Categories', icon: Target, color: 'bg-gradient-to-r from-gray-600 to-gray-800' },
-    { id: 'healthcare', label: 'Healthcare & Medical', icon: Stethoscope, color: 'bg-gradient-to-r from-red-500 to-red-700' },
-    { id: 'social-welfare', label: 'Social Welfare', icon: Users, color: 'bg-gradient-to-r from-blue-400 to-blue-600' },
-    { id: 'urban-development', label: 'Urban Development', icon: MapPin, color: 'bg-gradient-to-r from-indigo-500 to-indigo-700' },
-    { id: 'sanitation', label: 'Sanitation', icon: Shield, color: 'bg-gradient-to-r from-green-500 to-green-700' }
+    { id: 'agriculture', label: 'Agriculture', icon: Zap, color: 'bg-gradient-to-r from-green-500 to-green-700' },
+    { id: 'education', label: 'Education', icon: Calendar, color: 'bg-gradient-to-r from-blue-400 to-blue-600' },
+    { id: 'healthcare', label: 'Healthcare', icon: Stethoscope, color: 'bg-gradient-to-r from-red-500 to-red-700' },
+    { id: 'social-welfare', label: 'Social Welfare', icon: Users, color: 'bg-gradient-to-r from-indigo-500 to-indigo-700' },
+    { id: 'transport', label: 'Transport', icon: MapPin, color: 'bg-gradient-to-r from-yellow-500 to-yellow-700' },
+    { id: 'women', label: 'Women Empowerment', icon: Shield, color: 'bg-gradient-to-r from-pink-500 to-pink-700' },
   ];
 
   const providers = [
     { id: 'all', name: 'All Providers', shortName: 'All' },
-    { id: 'chhattisgarh', name: 'Government of Chhattisgarh', shortName: 'GoC' },
-    { id: 'kerala', name: 'Government of Kerala', shortName: 'GoK' },
-    { id: 'mohua', name: 'Ministry of Housing & Urban Affairs', shortName: 'MoHUA' },
-    { id: 'assam', name: 'Government of Assam', shortName: 'GoA' },
-    { id: 'puducherry', name: 'Government of Puducherry', shortName: 'GoP' }
+    { id: 'tn-gov', name: 'Government of Tamil Nadu', shortName: 'GoTN' },
+    { id: 'india-gov', name: 'Government of India', shortName: 'GoI' },
   ];
 
-  const states = [
-    'All States', 'Chhattisgarh', 'Kerala', 'Assam', 'Puducherry'
-  ];
+  const states = ['All States', 'Tamil Nadu', 'Pan India'];
 
   const fundingRanges = [
     { id: 'all', label: 'Any Amount' },
     { id: 'under-1l', label: 'Under ₹1 Lakh' },
     { id: '1l-5l', label: '₹1L - ₹5L' },
-    { id: '5l-10l', label: '₹5L - ₹10L' }
+    { id: '5l-10l', label: '₹5L - ₹10L' },
   ];
 
-  const schemes = [
-    {
-      id: 1,
-      name: "Asangathit Karmakar Gambhir Bimari Chikitsa Sahayata Yojana",
-      provider: "Government of Chhattisgarh",
-      providerShort: "GoC",
-      category: "healthcare",
-      eligibilityScore: 92,
-      status: "active",
-      deadline: "2025-12-31",
-      benefits: ["Up to ₹50,000 for serious illness treatment"],
-      whySuggested: "Ideal for unorganized workers needing medical support.",
-      description: "Financial assistance for treatment of serious illnesses like kidney, cancer, and heart disease for unorganized workers.",
-      applicants: 8500,
-      successRate: 70,
-      tags: ["Healthcare", "Unorganized Workers", "Financial Aid"],
-      fundingAmount: 50000,
-      region: "Chhattisgarh",
-      applicationType: "individual",
-      location: "Chhattisgarh",
-      eligibility: [
-        "Registered with the State Board for at least 90 days",
-        "Age between 18 and 60 years",
-        "Registered as a beneficiary of unorganized workers under Section 10 of the Act",
-        "Not availed benefits from similar government schemes"
-      ],
-      documents: [
-        "Aadhaar Card",
-        "Registration Card",
-        "Disease details by Vikas Khand Adhikari/Surgeon/Chief Medical Officer/Health Officer",
-        "Approximate expenses details by related Medical Officer"
-      ],
-      applicationProcess: [
-        "Visit the official Chhattisgarh Labour Department website",
-        "Click 'Apply' under 'Chhattisgarh Unorganized Workers State Social Security Board'",
-        "For unregistered applicants: Select 'Asangathit Marmakaar Mandal', 'Asangathit Shramik Panjikaran', and 'Aavedan', then fill and submit the registration form",
-        "For registered applicants: Select 'Yojana', provide district name and registration number, select scheme, fill details, and submit"
-      ],
-      officialLinks: ["https://labour.cg.gov.in"],
-      smartTips: ["Ensure registration is complete 90 days prior", "Keep medical documents updated"],
-      postSubmission: ["Track application status online", "Contact Labour Department for updates"],
-      dosAndDonts: ["Do: Submit accurate medical details", "Don't: Apply if enrolled in similar schemes"]
-    },
-    {
-      id: 2,
-      name: "Distress Relief Fund For The Differently Abled",
-      provider: "Government of Kerala",
-      providerShort: "GoK",
-      category: "social-welfare",
-      eligibilityScore: 88,
-      status: "active",
-      deadline: "2025-11-30",
-      benefits: ["₹5,000 for medical treatment/surgery"],
-      whySuggested: "Supports differently-abled individuals with medical needs.",
-      description: "Financial assistance for medical treatment and surgery for disabled persons in Kerala.",
-      applicants: 4500,
-      successRate: 65,
-      tags: ["Social Welfare", "Disability", "Medical Support"],
-      fundingAmount: 5000,
-      region: "Kerala",
-      applicationType: "individual",
-      location: "Kerala",
-      eligibility: [
-        "Resident of Kerala",
-        "Disabled or handicapped due to an accident",
-        "Annual income not exceeding ₹20,000 in rural areas or ₹22,375 in urban areas",
-        "Disabilities include: Blind, Deaf and Dumb, Orthopedically Handicapped, Mentally Challenged, or BPL with 40% or more disability"
-      ],
-      documents: [
-        "Aadhaar Card or Voter ID Card",
-        "Mobile number",
-        "Email ID",
-        "Passport-size photo",
-        "Doctor’s certificate confirming treatment necessity",
-        "Original Income Certificate",
-        "Bank account details (copy of bank passbook)"
-      ],
-      applicationProcess: [
-        "Visit SUNEETHI-Online Service Application Portal for one-time registration",
-        "Fill in details like Name, Email ID, Mobile Number, and verify with OTP",
-        "Create profile with mandatory details",
-        "Login, update personal, contact, identity, and bank details",
-        "Select the scheme, fill the application form, and submit"
-      ],
-      officialLinks: ["https://suneethi.kerala.gov.in"],
-      smartTips: ["Verify income certificate accuracy", "Ensure doctor’s certificate is detailed"],
-      postSubmission: ["Check application status on SUNEETHI portal", "Follow up with Social Justice Department"],
-      dosAndDonts: ["Do: Provide valid contact details", "Don't: Submit without doctor’s certificate"]
-    },
-    {
-      id: 3,
-      name: "Atal Mission For Rejuvenation And Urban Transformation (AMRUT)",
-      provider: "Ministry of Housing & Urban Affairs",
-      providerShort: "MoHUA",
-      category: "urban-development",
-      eligibilityScore: 80,
-      status: "active",
-      deadline: "2025-12-31",
-      benefits: ["Water supply, sewerage, urban transport, green spaces"],
-      whySuggested: "Enhances urban living with essential infrastructure.",
-      description: "Ensures tap water, sewerage connections, and urban amenities in 500 cities.",
-      applicants: 10000,
-      successRate: 75,
-      tags: ["Urban Development", "Water Supply", "Sanitation"],
-      fundingAmount: 0,
-      region: "Nationwide",
-      applicationType: "group",
-      location: "Pan India",
-      eligibility: ["Open scheme with no specific eligibility criteria", "Covers 500 cities including those with population over one lakh"],
-      documents: [],
-      applicationProcess: ["No individual application required", "Projects executed by Urban Local Bodies (ULBs)"],
-      officialLinks: ["https://amrut.gov.in"],
-      smartTips: ["Contact local ULB for project details", "Stay updated on city-specific implementations"],
-      postSubmission: ["No individual submission required", "Monitor ULB project progress"],
-      dosAndDonts: ["Do: Engage with local ULB for benefits", "Don't: Expect individual funding"]
-    },
-    {
-      id: 4,
-      name: "Assam Arogya Nidhi Scheme",
-      provider: "Government of Assam",
-      providerShort: "GoA",
-      category: "healthcare",
-      eligibilityScore: 90,
-      status: "active",
-      deadline: "2025-10-31",
-      benefits: ["Up to ₹3,00,000 for life-threatening diseases"],
-      whySuggested: "Supports low-income families with critical healthcare needs.",
-      description: "Financial assistance for treatment of life-threatening diseases and accident injuries in Assam.",
-      applicants: 12000,
-      successRate: 68,
-      tags: ["Healthcare", "Financial Aid", "Life-threatening Diseases"],
-      fundingAmount: 300000,
-      region: "Assam",
-      applicationType: "individual",
-      location: "Assam",
-      eligibility: [
-        "Resident of Assam",
-        "Family income less than ₹5,00,000 per annum",
-        "Treatment in government or registered private hospitals"
-      ],
-      documents: [
-        "Attested photograph of the patient",
-        "Attested income certificate by Revenue Circle Officer",
-        "Attested identity and address proof (Voter ID, Aadhaar, Driving License)",
-        "Original bills, vouchers, receipts",
-        "Medical documents certified by treating doctor/hospital"
-      ],
-      applicationProcess: [
-        "Download application form from https://nhm.assam.gov.in/schemes/assam-arogya-nidhi",
-        "Submit completed form to NHM, Assam or Joint Director of Health Services",
-        "Expert Committee verifies and recommends eligible cases"
-      ],
-      officialLinks: ["https://nhm.assam.gov.in/schemes/assam-arogya-nidhi"],
-      smartTips: ["Ensure all medical bills are original", "Submit promptly to meet deadlines"],
-      postSubmission: ["Track status with NHM, Assam", "Contact Joint Director for updates"],
-      dosAndDonts: ["Do: Include all medical documents", "Don't: Apply if government employee"]
-    },
-    {
-      id: 5,
-      name: "Theka Shramik Evan Hamaal Shramik Baahy Rogi Chikitsa Sahaayata Yojana",
-      provider: "Government of Chhattisgarh",
-      providerShort: "GoC",
-      category: "healthcare",
-      eligibilityScore: 85,
-      status: "active",
-      deadline: "2025-12-31",
-      benefits: ["₹2,000 for medical treatment"],
-      whySuggested: "Provides medical support for unorganized workers.",
-      description: "Financial assistance for medical treatment of unorganized workers in Chhattisgarh.",
-      applicants: 6000,
-      successRate: 70,
-      tags: ["Healthcare", "Unorganized Workers", "Medical Support"],
-      fundingAmount: 2000,
-      region: "Chhattisgarh",
-      applicationType: "individual",
-      location: "Chhattisgarh",
-      eligibility: [
-        "Registered worker in any district of Chhattisgarh",
-        "Age between 18 and 60 years",
-        "Not availed benefits from similar state government schemes"
-      ],
-      documents: [
-        "Aadhaar Card",
-        "Registration Card",
-        "Disease details by Vikas Khand Adhikari/Surgeon/Chief Medical Officer/Health Officer"
-      ],
-      applicationProcess: [
-        "Visit the official Chhattisgarh Labour Department website",
-        "Click 'Apply' under 'Chhattisgarh Unorganized Workers State Social Security Board'",
-        "For registered applicants: Select 'Yojana', provide district name and registration number, select scheme, fill details, and submit"
-      ],
-      officialLinks: ["https://labour.cg.gov.in"],
-      smartTips: ["Register early to meet eligibility", "Keep disease details certified"],
-      postSubmission: ["Track application online", "Contact Labour Department for issues"],
-      dosAndDonts: ["Do: Verify registration status", "Don't: Apply for multiple similar schemes"]
+  // Fetch schemes from backend
+useEffect(() => {
+  const fetchSchemes = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const domains = ['agriculture', 'education', 'healthcare', 'social-welfare', 'transport', 'women'];
+      const responses = await Promise.all(
+        domains.map(domain =>
+          axios.get(`http://localhost:3000/api/${domain}`)
+            .then(res => {
+              console.log(`Raw data for ${domain}:`, res.data); // Log raw response
+              return { domain, data: res.data };
+            })
+            .catch(err => {
+              console.error(`Error fetching ${domain} schemes:`, err.message);
+              return { domain, data: [] };
+            })
+        )
+      );
+
+      // Map backend data to frontend structure
+    const mappedSchemes = responses.flatMap(({ domain, data }) =>
+  data.map((scheme, index) => {
+    try {
+      return {
+        id: `${domain}-${index}`,
+        name: scheme.scheme_name || 'Unnamed Scheme',
+        provider: scheme.ministry || 'Unknown',
+        providerShort: scheme.ministry && typeof scheme.ministry === 'string' && scheme.ministry.includes('Tamil Nadu') ? 'GoTN' : 'GoI',
+        category: domain,
+        eligibilityScore: scheme.eligibility_score || 80, // Use actual field if available
+        status: scheme.status || 'active',
+        deadline: scheme.deadline || '2025-12-31',
+        benefits: formatBenefits(scheme.benefits),
+        whySuggested: `Supports ${domain} initiatives`,
+        description: scheme.objectives?.join(' ') || 'No description available',
+        applicants: scheme.applicant_count || 1000,
+        successRate: scheme.success_rate || 50,
+        tags: [domain.charAt(0).toUpperCase() + domain.slice(1), ...(scheme.objectives || [])],
+        fundingAmount: parseFundingAmount(scheme.benefits),
+        region: scheme.eligibility_criteria?.includes('Resident of Tamil Nadu') ? 'Tamil Nadu' : 'Pan India',
+        applicationType: scheme.eligibility_criteria?.includes('group') ? 'group' : 'individual',
+        location: scheme.eligibility_criteria?.includes('Resident of Tamil Nadu') ? 'Tamil Nadu' : 'Pan India',
+        eligibility: scheme.eligibility_criteria || [],
+        documents: scheme.documents_required || [],
+        applicationProcess: scheme.application_process?.steps || [],
+        officialLinks: scheme.official_links?.guidelines ? [scheme.official_links.guidelines] : [],
+        smartTips: scheme.smart_tips || ['Ensure all documents are valid', 'Apply before deadline'],
+        postSubmission: scheme.post_submission || ['Track application status online', 'Contact relevant department'],
+        dosAndDonts: scheme.dos_and_donts || ['Do: Submit complete documents', "Don't: Apply if ineligible"],
+      };
+    } catch (err) {
+      console.error(`Error processing scheme in ${domain} at index ${index}:`, err.message);
+      return null;
     }
+  }).filter(scheme => scheme !== null)
+);
+
+      console.log('Mapped schemes:', mappedSchemes); // Log mapped schemes
+      setSchemes(mappedSchemes);
+    } catch (err) {
+      setError('Failed to fetch schemes. Please try again later.');
+      console.error('Fetch schemes error:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchSchemes();
+}, []);
+
+  // Parse funding amount from benefits
+const parseFundingAmount = (benefits) => {
+  if (!benefits) return 0;
+
+  const extractAmount = (value) => {
+    if (typeof value === 'string') {
+      const match = value.match(/₹([\d,]+)(?:\s*to\s*₹([\d,]+))?/);
+      if (match) {
+        return parseInt(match[1].replace(/,/g, ''));
+      }
+    } else if (typeof value === 'object' && value !== null) {
+      for (const val of Object.values(value)) {
+        const amount = extractAmount(val);
+        if (amount) return amount;
+      }
+    }
+    return 0;
+  };
+
+  const fields = [
+    'loan_amount', 'financial_support', 'subsidy', 'disbursement',
+    'scholarship_amount', 'fellowship', 'incentive_amount', 'maintenance_allowance',
+    'general_degree', 'professional_engineering', 'medical_bds', 'contingency'
   ];
 
+  for (const field of fields) {
+    if (benefits[field]) {
+      const amount = extractAmount(benefits[field]);
+      if (amount) return amount;
+    }
+  }
+
+  return 0;
+};
+
+  // Filter and sort schemes
   const filteredSchemes = schemes.filter(scheme => {
     const matchesSearch = scheme.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          scheme.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -333,6 +244,25 @@ const Scheme = () => {
     if (diffDays <= 30) return `${diffDays} days left`;
     return date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
   };
+const formatBenefits = (benefits) => {
+  if (!benefits) return [];
+
+  const formatNestedObject = (obj, prefix = '') => {
+    const result = [];
+    for (const [key, value] of Object.entries(obj)) {
+      if (typeof value === 'string' && value.trim() !== '') {
+        result.push(`${prefix}${key}: ${value}`);
+      } else if (typeof value === 'object' && value !== null) {
+        // Handle nested objects
+        const nested = formatNestedObject(value, `${prefix}${key}.`);
+        result.push(...nested);
+      }
+    }
+    return result;
+  };
+
+  return formatNestedObject(benefits);
+};
 
   const getSelectedProviderName = () => {
     const provider = providers.find(p => p.id === selectedProvider);
@@ -380,55 +310,59 @@ const Scheme = () => {
   const renderTabContent = (scheme) => {
     switch (activeTab) {
       case 'overview':
-        return (
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg"
-          >
-            <div className="flex items-center mb-6">
-              <div className="p-3 rounded-full bg-blue-100 mr-3">
-                <Info className="w-6 h-6 text-blue-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-800">Overview</h3>
-            </div>
-            <motion.div variants={itemVariants} className="space-y-6">
-              <div className="p-4 bg-blue-50 rounded-xl shadow-sm border border-blue-100">
-                <div className="flex items-center gap-2 mb-2">
-                  <Info className="w-5 h-5 text-blue-500" />
-                  <span className="text-sm font-semibold text-gray-700">Description</span>
-                </div>
-                <p className="text-gray-700 text-base font-medium">{scheme.description}</p>
-              </div>
-              <div className="p-4 bg-emerald-50 rounded-xl shadow-sm border border-emerald-100">
-                <div className="flex items-center gap-2 mb-2">
-                  <Star className="w-5 h-5 text-emerald-500" />
-                  <span className="text-sm font-semibold text-gray-700">Why Suggested</span>
-                </div>
-                <p className="text-gray-700 text-base font-medium">{scheme.whySuggested}</p>
-              </div>
-              <div className="p-4 bg-rose-50 rounded-xl shadow-sm border border-rose-100">
-                <div className="flex items-center gap-2 mb-2">
-                  <Gift className="w-5 h-5 text-rose-500" />
-                  <span className="text-sm font-semibold text-gray-700">Benefits</span>
-                </div>
-                <div className="space-y-4">
-                  {scheme.benefits.map((benefit, index) => (
-                    <motion.div
-                      key={index}
-                      variants={itemVariants}
-                      className="flex items-start p-3 bg-rose-100 rounded-lg border border-rose-200"
-                    >
-                      <CheckCircle className="w-5 h-5 text-rose-500 mr-3" />
-                      <p className="text-gray-700 text-sm font-medium">{benefit}</p>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        );
+  return (
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg"
+    >
+      <div className="flex items-center mb-6">
+        <div className="p-3 rounded-full bg-blue-100 mr-3">
+          <Info className="w-6 h-6 text-blue-600" />
+        </div>
+        <h3 className="text-2xl font-bold text-gray-800">Overview</h3>
+      </div>
+      <motion.div variants={itemVariants} className="space-y-6">
+        <div className="p-4 bg-blue-50 rounded-xl shadow-sm border border-blue-100">
+          <div className="flex items-center gap-2 mb-2">
+            <Info className="w-5 h-5 text-blue-500" />
+            <span className="text-sm font-semibold text-gray-700">Description</span>
+          </div>
+          <p className="text-gray-700 text-base font-medium">{scheme.description}</p>
+        </div>
+        <div className="p-4 bg-emerald-50 rounded-xl shadow-sm border border-emerald-100">
+          <div className="flex items-center gap-2 mb-2">
+            <Star className="w-5 h-5 text-emerald-500" />
+            <span className="text-sm font-semibold text-gray-700">Why Suggested</span>
+          </div>
+          <p className="text-gray-700 text-base font-medium">{scheme.whySuggested}</p>
+        </div>
+        <div className="p-4 bg-rose-50 rounded-xl shadow-sm border border-rose-100">
+          <div className="flex items-center gap-2 mb-2">
+            <Gift className="w-5 h-5 text-rose-500" />
+            <span className="text-sm font-semibold text-gray-700">Benefits</span>
+          </div>
+          <ul className="list-disc list-inside space-y-2 text-gray-700 text-sm font-medium">
+            {scheme.benefits.map((benefit, index) => (
+              <li key={index}>{benefit}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="p-4 bg-indigo-50 rounded-xl shadow-sm border border-indigo-100">
+          <div className="flex items-center gap-2 mb-2">
+            <Users className="w-5 h-5 text-indigo-500" />
+            <span className="text-sm font-semibold text-gray-700">Eligibility Criteria</span>
+          </div>
+          <ul className="list-disc list-inside space-y-2 text-gray-700 text-sm font-medium">
+            {scheme.eligibility.map((crit, index) => (
+              <li key={index}>{crit}</li>
+            ))}
+          </ul>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
       case 'documents':
         return (
           <motion.div
@@ -680,6 +614,35 @@ const Scheme = () => {
     }
   };
 
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-100 to-blue-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-600"></div>
+          <p className="mt-4 text-gray-600 font-semibold">Loading schemes...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-100 to-blue-50 flex items-center justify-center">
+        <div className="text-center bg-white rounded-3xl shadow-lg border border-gray-100 p-12 max-w-md">
+          <AlertCircle className="h-16 w-16 text-red-600 mx-auto mb-4" />
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Error</h3>
+          <p className="text-gray-600 mb-6">{error}</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-xl hover:from-blue-500 hover:to-indigo-500 transition-all duration-300 font-semibold shadow-lg"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 to-blue-50 font-sans">
       <style>
@@ -724,10 +687,10 @@ const Scheme = () => {
                 <Target className="h-8 w-8 text-white" />
               </div>
               <div>
-                <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight">Healthcare Scheme Finder</h1>
+                <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight">Scheme Finder</h1>
                 <p className="text-gray-600 mt-2 flex items-center gap-2 text-lg">
                   <Sparkles className="h-5 w-5 text-blue-600" />
-                  Discover tailored healthcare schemes with AI precision
+                  Discover tailored government schemes with AI precision
                 </p>
               </div>
             </div>

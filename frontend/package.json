@@ -10,7 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tailwindazcss/vite": "^4.1.10",
+    "@tailwindcss/vite": "^4.1.10",
+    "axios": "^1.10.0",
     "framer-motion": "^12.18.1",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.514.0",

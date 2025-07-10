@@ -16,17 +16,22 @@ class WomenService {
 
       await Women.deleteMany({});
       await Women.insertMany(womenData);
+      console.log('Women data inserted into MongoDB:', womenData); // Debug log
       return { message: '✅ Women data loaded successfully' };
     } catch (error) {
-      throw new Error(`❌ Error loading women data: ${error.message}`);
+      console.error(`❌ Error loading women data: ${error.message}`);
+      throw error;
     }
   }
 
   static async getAllData() {
     try {
-      return await Women.find();
+      const data = await Women.find();
+      console.log('Fetched women data from MongoDB:', data); // Debug log
+      return data;
     } catch (error) {
-      throw new Error(`❌ Error fetching women data: ${error.message}`);
+      console.error(`❌ Error fetching women data: ${error.message}`);
+      throw error;
     }
   }
 }
