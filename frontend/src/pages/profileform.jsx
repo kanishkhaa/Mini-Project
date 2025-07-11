@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, CheckCircle } from 'lucide-react';
 
-const profileform = () => {
+const ProfileForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [errors, setErrors] = useState({});
+  const [isLoadingLocation, setIsLoadingLocation] = useState(false);
+  const [locationError, setLocationError] = useState('');
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: '',
     fatherName: '',
@@ -31,52 +35,6 @@ const profileform = () => {
     eligibilityAwareness: ''
   });
 
-  // Pincode data
-  const pincodeData = {
-    '110001': { state: 'Delhi', district: 'Central Delhi', type: 'Urban' },
-    '110002': { state: 'Delhi', district: 'Central Delhi', type: 'Urban' },
-    '110003': { state: 'Delhi', district: 'Central Delhi', type: 'Urban' },
-    '400001': { state: 'Maharashtra', district: 'Mumbai City', type: 'Urban' },
-    '400002': { state: 'Maharashtra', district: 'Mumbai City', type: 'Urban' },
-    '400003': { state: 'Maharashtra', district: 'Mumbai City', type: 'Urban' },
-    '700001': { state: 'West Bengal', district: 'Kolkata', type: 'Urban' },
-    '700002': { state: 'West Bengal', district: 'Kolkata', type: 'Urban' },
-    '600001': { state: 'Tamil Nadu', district: 'Chennai', type: 'Urban' },
-    '600002': { state: 'Tamil Nadu', district: 'Chennai', type: 'Urban' },
-    '560001': { state: 'Karnataka', district: 'Bengaluru Urban', type: 'Urban' },
-    '560002': { state: 'Karnataka', district: 'Bengaluru Urban', type: 'Urban' },
-    '500001': { state: 'Telangana', district: 'Hyderabad', type: 'Urban' },
-    '500002': { state: 'Telangana', district: 'Hyderabad', type: 'Urban' },
-    '380001': { state: 'Gujarat', district: 'Ahmedabad', type: 'Urban' },
-    '380002': { state: 'Gujarat', district: 'Ahmedabad', type: 'Urban' },
-    '302001': { state: 'Rajasthan', district: 'Jaipur', type: 'Urban' },
-    '302002': { state: 'Rajasthan', district: 'Jaipur', type: 'Urban' },
-    '226001': { state: 'Uttar Pradesh', district: 'Lucknow', type: 'Urban' },
-    '226002': { state: 'Uttar Pradesh', district: 'Lucknow', type: 'Urban' },
-    '800001': { state: 'Bihar', district: 'Patna', type: 'Urban' },
-    '800002': { state: 'Bihar', district: 'Patna', type: 'Urban' },
-    '160001': { state: 'Chandigarh', district: 'Chandigarh', type: 'Urban' },
-    '751001': { state: 'Odisha', district: 'Khordha', type: 'Urban' },
-    '682001': { state: 'Kerala', district: 'Ernakulam', type: 'Urban' },
-    '444001': { state: 'Maharashtra', district: 'Akola', type: 'Urban' },
-    '490001': { state: 'Chhattisgarh', district: 'Raipur', type: 'Urban' },
-    '534001': { state: 'Andhra Pradesh', district: 'West Godavari', type: 'Urban' },
-    '788001': { state: 'Assam', district: 'Cachar', type: 'Urban' },
-    '797001': { state: 'Nagaland', district: 'Kohima', type: 'Urban' },
-    '796001': { state: 'Mizoram', district: 'Aizawl', type: 'Urban' },
-    '795001': { state: 'Manipur', district: 'Imphal West', type: 'Urban' },
-    '793001': { state: 'Meghalaya', district: 'East Khasi Hills', type: 'Urban' },
-    '792001': { state: 'Arunachal Pradesh', district: 'Papum Pare', type: 'Urban' },
-    '737001': { state: 'Sikkim', district: 'East Sikkim', type: 'Urban' },
-    '799001': { state: 'Tripura', district: 'West Tripura', type: 'Urban' },
-    '110020': { state: 'Delhi', district: 'North West Delhi', type: 'Rural' },
-    '400070': { state: 'Maharashtra', district: 'Mumbai Suburban', type: 'Rural' },
-    '700150': { state: 'West Bengal', district: 'South 24 Parganas', type: 'Rural' },
-    '600070': { state: 'Tamil Nadu', district: 'Kanchipuram', type: 'Rural' },
-    '560070': { state: 'Karnataka', district: 'Bengaluru Rural', type: 'Rural' },
-    '500070': { state: 'Telangana', district: 'Rangareddy', type: 'Rural' },
-  };
-
   // Calculate age based on date of birth
   useEffect(() => {
     if (formData.dateOfBirth) {
@@ -92,6 +50,49 @@ const profileform = () => {
       setFormData(prev => ({ ...prev, age: '' }));
     }
   }, [formData.dateOfBirth]);
+
+  // Fetch user location
+  useEffect(() => {
+    const fetchLocation = async () => {
+      if (navigator.geolocation) {
+        setIsLoadingLocation(true);
+        setLocationError('');
+        navigator.geolocation.getCurrentPosition(
+          async (position) => {
+            try {
+              const { latitude, longitude } = position.coords;
+              const response = await fetch(
+                `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=18&addressdetails=1`
+              );
+              const data = await response.json();
+              if (data.address) {
+                setFormData(prev => ({
+                  ...prev,
+                  pincode: data.address.postcode || '',
+                  state: data.address.state || '',
+                  district: data.address.state_district || data.address.city_district || '',
+                  urbanRural: data.address.city ? 'Urban' : 'Rural'
+                }));
+              } else {
+                setLocationError('Unable to fetch location details');
+              }
+            } catch (error) {
+              setLocationError('Error fetching location details');
+            } finally {
+              setIsLoadingLocation(false);
+            }
+          },
+          (error) => {
+            setLocationError('Please enable location access or enter pincode manually');
+            setIsLoadingLocation(false);
+          }
+        );
+      } else {
+        setLocationError('Geolocation is not supported by this browser');
+      }
+    };
+    fetchLocation();
+  }, []);
 
   const handleInputChange = (field, value) => {
     let isValid = true;
@@ -141,26 +142,6 @@ const profileform = () => {
 
     // Update form data
     setFormData(prev => ({ ...prev, [field]: value }));
-
-    // Auto-detect location based on pincode
-    if (field === 'pincode' && value.length === 6) {
-      const locationData = pincodeData[value];
-      if (locationData) {
-        setFormData(prev => ({
-          ...prev,
-          state: locationData.state,
-          district: locationData.district,
-          urbanRural: locationData.type
-        }));
-      } else {
-        setFormData(prev => ({
-          ...prev,
-          state: '',
-          district: '',
-          urbanRural: ''
-        }));
-      }
-    }
 
     // Clear spouse name if marital status is not married
     if (field === 'maritalStatus' && value !== 'Married') {
@@ -221,205 +202,203 @@ const profileform = () => {
   const handleSubmit = () => {
     console.log('Form submitted:', formData);
     setCurrentStep(5);
+    setTimeout(() => {
+      navigate('/dashboard');
+    }, 2000); // Redirect after 2 seconds to show success message
   };
 
   const renderStepIndicator = () => {
     const steps = [
-      { id: 1, title: 'Basic Info' },
-      { id: 2, title: 'Social & Economic' },
+      { id: 1, title: 'Personal Details' },
+      { id: 2, title: 'Socio-Economic' },
       { id: 3, title: 'Preferences' },
-      { id: 4, title: 'Preview' },
+      { id: 4, title: 'Review' },
       { id: 5, title: 'Complete' }
     ];
 
     return (
-      <div className="mb-16">
+      <div className="mb-12 relative">
         <div className="flex justify-between items-center mb-6">
           {steps.map((step) => (
-            <div key={step.id} className="flex flex-col items-center">
-              <div className={`w-12 h-12 rounded-full flex items-center justify-center text-sm font-medium ${
-                currentStep > step.id ? 'bg-green-600 text-white' : 
-                currentStep === step.id ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-500'
-              }`}>
-                {step.id}
+            <div key={step.id} className="flex flex-col items-center relative z-10">
+              <div className={`w-12 h-12 rounded-full flex items-center justify-center text-base font-bold transition-all duration-300 ${
+                currentStep > step.id ? 'bg-gradient-to-br from-green-400 to-green-600 text-white' : 
+                currentStep === step.id ? 'bg-gradient-to-br from-blue-500 to-blue-700 text-white' : 'bg-gray-100 text-gray-400'
+              } shadow-md`}>
+                {currentStep > step.id ? <CheckCircle className="w-6 h-6" /> : step.id}
               </div>
-              <span className={`text-xs mt-2 ${
-                currentStep > step.id ? 'text-green-600 font-medium' : 
-                currentStep === step.id ? 'text-blue-600 font-medium' : 'text-gray-500'
+              <span className={`text-sm mt-3 font-semibold ${
+                currentStep > step.id ? 'text-green-600' : 
+                currentStep === step.id ? 'text-blue-600' : 'text-gray-400'
               }`}>
                 {step.title}
               </span>
             </div>
           ))}
         </div>
-        <div className="relative">
-          <div className="absolute top-0 left-0 w-full h-3 bg-gray-200 rounded-full"></div>
-          <div 
-            className="absolute top-0 left-0 h-3 rounded-full transition-all duration-500 ease-in-out shadow-lg"
-            style={{ 
-              width: `${((currentStep - 1) / 4) * 100}%`,
-              background: currentStep > 1 ? 'linear-gradient(to right, #059669, #34d399)' : 'linear-gradient(to right, #2563eb, #60a5fa)',
-            }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shine"></div>
-          </div>
-        </div>
-        <style jsx>{`
-          @keyframes shine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-          }
-          .animate-shine {
-            animation: shine 2s infinite;
-          }
-        `}</style>
+        <div className="absolute top-6 left-0 w-full h-2 bg-gray-100 rounded-full"></div>
+        <div 
+          className="absolute top-6 left-0 h-2 rounded-full transition-all duration-500 ease-in-out bg-gradient-to-r from-blue-500 to-indigo-600"
+          style={{ width: `${((currentStep - 1) / 4) * 100}%` }}
+        />
       </div>
     );
   };
 
   const renderBasicInfo = () => (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6">Basic Information</h2>
+    <div className="space-y-10">
+      <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight">Personal Details</h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Full Name <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            value={formData.fullName}
-            onChange={(e) => handleInputChange('fullName', e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            placeholder="Enter your full name"
-          />
-          {errors.fullName && <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>}
-        </div>
-        
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Father's Name <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            value={formData.fatherName}
-            onChange={(e) => handleInputChange('fatherName', e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            placeholder="Enter father's name"
-          />
-          {errors.fatherName && <p className="text-red-500 text-sm mt-1">{errors.fatherName}</p>}
-        </div>
-        
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Mother's Name <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            value={formData.motherName}
-            onChange={(e) => handleInputChange('motherName', e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            placeholder="Enter mother's name"
-          />
-          {errors.motherName && <p className="text-red-500 text-sm mt-1">{errors.motherName}</p>}
-        </div>
-        
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Marital Status <span className="text-red-500">*</span>
-          </label>
-          <select
-            value={formData.maritalStatus}
-            onChange={(e) => handleInputChange('maritalStatus', e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          >
-            <option value="">Select Marital Status</option>
-            <option value="Single">Single</option>
-            <option value="Married">Married</option>
-            <option value="Divorced">Divorced</option>
-          </select>
-          {errors.maritalStatus && <p className="text-red-500 text-sm mt-1">{errors.maritalStatus}</p>}
-        </div>
-
-        {formData.maritalStatus === 'Married' && (
+      <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Spouse Name <span className="text-red-500">*</span>
+              Full Name <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
-              value={formData.spouseName}
-              onChange={(e) => handleInputChange('spouseName', e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              placeholder="Enter spouse name"
+              value={formData.fullName}
+              onChange={(e) => handleInputChange('fullName', e.target.value)}
+              className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300 bg-gray-50/50 hover:bg-gray-50"
+              placeholder="Enter your full name"
             />
-            {errors.spouseName && <p className="text-red-500 text-sm mt-1">{errors.spouseName}</p>}
+            {errors.fullName && <p className="text-red-500 text-sm mt-2">{errors.fullName}</p>}
           </div>
-        )}
-        
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Date of Birth <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="date"
-            value={formData.dateOfBirth}
-            onChange={(e) => handleInputChange('dateOfBirth', e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            style={{ color: formData.dateOfBirth ? 'inherit' : '#9CA3AF' }}
-          />
-          {errors.dateOfBirth && <p className="text-red-500 text-sm mt-1">{errors.dateOfBirth}</p>}
-        </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Father's Name <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              value={formData.fatherName}
+              onChange={(e) => handleInputChange('fatherName', e.target.value)}
+              className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300 bg-gray-50/50 hover:bg-gray-50"
+              placeholder="Enter father's name"
+            />
+            {errors.fatherName && <p className="text-red-500 text-sm mt-2">{errors.fatherName}</p>}
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Mother's Name <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              value={formData.motherName}
+              onChange={(e) => handleInputChange('motherName', e.target.value)}
+              className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300 bg-gray-50/50 hover:bg-gray-50"
+              placeholder="Enter mother's name"
+            />
+            {errors.motherName && <p className="text-red-500 text-sm mt-2">{errors.motherName}</p>}
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Marital Status <span className="text-red-500">*</span>
+            </label>
+            <select
+              value={formData.maritalStatus}
+              onChange={(e) => handleInputChange('maritalStatus', e.target.value)}
+              className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300 bg-gray-50/50 hover:bg-gray-50"
+            >
+              <option value="">Select Marital Status</option>
+              <option value="Single">Single</option>
+              <option value="Married">Married</option>
+              <option value="Divorced">Divorced</option>
+            </select>
+            {errors.maritalStatus && <p className="text-red-500 text-sm mt-2">{errors.maritalStatus}</p>}
+          </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Age
-          </label>
-          <input
-            type="text"
-            value={formData.age}
-            readOnly
-            className="w-full p-3 border border-gray-300 rounded-lg bg-gray-100"
-            placeholder="Auto-calculated"
-          />
-        </div>
-        
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Gender <span className="text-red-500">*</span>
-          </label>
-          <select
-            value={formData.gender}
-            onChange={(e) => handleInputChange('gender', e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          >
-            <option value="">Select Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Others">Others</option>
-            <option value="Rather not say">Rather not say</option>
-          </select>
-          {errors.gender && <p className="text-red-500 text-sm mt-1">{errors.gender}</p>}
-        </div>
-        
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Phone Number <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            value={formData.phoneNumber}
-            onChange={(e) => handleInputChange('phoneNumber', e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            placeholder="Enter 10-digit phone number"
-            maxLength="10"
-          />
-          {errors.phoneNumber && <p className="text-red-500 text-sm mt-1">{errors.phoneNumber}</p>}
+          {formData.maritalStatus === 'Married' && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Spouse Name <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                value={formData.spouseName}
+                onChange={(e) => handleInputChange('spouseName', e.target.value)}
+                className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300 bg-gray-50/50 hover:bg-gray-50"
+                placeholder="Enter spouse name"
+              />
+              {errors.spouseName && <p className="text-red-500 text-sm mt-2">{errors.spouseName}</p>}
+            </div>
+          )}
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Date of Birth <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="date"
+              value={formData.dateOfBirth}
+              onChange={(e) => handleInputChange('dateOfBirth', e.target.value)}
+              className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300 bg-gray-50/50 hover:bg-gray-50"
+            />
+            {errors.dateOfBirth && <p className="text-red-500 text-sm mt-2">{errors.dateOfBirth}</p>}
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Age
+            </label>
+            <input
+              type="text"
+              value={formData.age}
+              readOnly
+              className="w-full p-3 border border-gray-200 rounded-lg bg-gray-100 cursor-not-allowed text-gray-500"
+              placeholder="Auto-calculated"
+            />
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Gender <span className="text-red-500">*</span>
+            </label>
+            <select
+              value={formData.gender}
+              onChange={(e) => handleInputChange('gender', e.target.value)}
+              className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300 bg-gray-50/50 hover:bg-gray-50"
+            >
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Others">Others</option>
+              <option value="Rather not say">Rather not say</option>
+            </select>
+            {errors.gender && <p className="text-red-500 text-sm mt-2">{errors.gender}</p>}
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Phone Number <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              value={formData.phoneNumber}
+              onChange={(e) => handleInputChange('phoneNumber', e.target.value)}
+              className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300 bg-gray-50/50 hover:bg-gray-50"
+              placeholder="Enter 10-digit phone number"
+              maxLength="10"
+            />
+            {errors.phoneNumber && <p className="text-red-500 text-sm mt-2">{errors.phoneNumber}</p>}
+          </div>
         </div>
       </div>
       
-      <div className="mt-8">
-        <h3 className="text-lg font-semibold text-gray-800 mb-4">Location Details</h3>
+      <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+        <h3 className="text-xl font-semibold text-gray-900 mb-4">Location Details</h3>
+        {isLoadingLocation && (
+          <div className="flex items-center text-indigo-600 text-sm mb-4">
+            <svg className="animate-spin h-5 w-5 mr-2" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            Fetching your location...
+          </div>
+        )}
+        {locationError && <p className="text-red-500 text-sm mb-4">{locationError}</p>}
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
@@ -430,11 +409,11 @@ const profileform = () => {
               type="text"
               value={formData.pincode}
               onChange={(e) => handleInputChange('pincode', e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300 bg-gray-50/50 hover:bg-gray-50"
               placeholder="Enter 6-digit pincode"
               maxLength="6"
             />
-            {errors.pincode && <p className="text-red-500 text-sm mt-1">{errors.pincode}</p>}
+            {errors.pincode && <p className="text-red-500 text-sm mt-2">{errors.pincode}</p>}
           </div>
           
           <div>
@@ -445,8 +424,8 @@ const profileform = () => {
               type="text"
               value={formData.state}
               readOnly
-              className="w-full p-3 border border-gray-300 rounded-lg bg-gray-100"
-              placeholder="Auto-filled based on pincode"
+              className="w-full p-3 border border-gray-200 rounded-lg bg-gray-100 cursor-not-allowed text-gray-500"
+              placeholder="Auto-filled based on location"
             />
           </div>
           
@@ -458,8 +437,8 @@ const profileform = () => {
               type="text"
               value={formData.district}
               readOnly
-              className="w-full p-3 border border-gray-300 rounded-lg bg-gray-100"
-              placeholder="Auto-filled based on pincode"
+              className="w-full p-3 border border-gray-200 rounded-lg bg-gray-100 cursor-not-allowed text-gray-500"
+              placeholder="Auto-filled based on location"
             />
           </div>
           
@@ -471,8 +450,8 @@ const profileform = () => {
               type="text"
               value={formData.urbanRural}
               readOnly
-              className="w-full p-3 border border-gray-300 rounded-lg bg-gray-100"
-              placeholder="Auto-filled based on pincode"
+              className="w-full p-3 border border-gray-200 rounded-lg bg-gray-100 cursor-not-allowed text-gray-500"
+              placeholder="Auto-filled based on location"
             />
           </div>
         </div>
@@ -481,312 +460,315 @@ const profileform = () => {
   );
 
   const renderSocialEconomic = () => (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6">Social & Economic Details</h2>
+    <div className="space-y-10">
+      <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight">Socio-Economic Details</h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Education Level <span className="text-red-500">*</span>
-          </label>
-          <select
-            value={formData.educationLevel}
-            onChange={(e) => handleInputChange('educationLevel', e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          >
-            <option value="">Select Education Level</option>
-            <option value="Below 10th">Below 10th</option>
-            <option value="10th Pass">10th Pass</option>
-            <option value="12th Pass">12th Pass</option>
-            <option value="Graduate">Graduate</option>
-            <option value="Post Graduate">Post Graduate</option>
-            <option value="Doctorate">Doctorate</option>
-          </select>
-          {errors.educationLevel && <p className="text-red-500 text-sm mt-1">{errors.educationLevel}</p>}
-        </div>
-        
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Occupation <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            value={formData.occupation}
-            onChange={(e) => handleInputChange('occupation', e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            placeholder="Enter your occupation"
-          />
-          {errors.occupation && <p className="text-red-500 text-sm mt-1">{errors.occupation}</p>}
-        </div>
-        
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Work Sector <span className="text-red-500">*</span>
-          </label>
-          <select
-            value={formData.workSector}
-            onChange={(e) => handleInputChange('workSector', e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          >
-            <option value="">Select Work Sector</option>
-            <option value="Government">Government</option>
-            <option value="Private">Private</option>
-          </select>
-          {errors.workSector && <p className="text-red-500 text-sm mt-1">{errors.workSector}</p>}
-        </div>
-        
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Annual Income Range <span className="text-red-500">*</span>
-          </label>
-          <select
-            value={formData.annualIncome}
-            onChange={(e) => handleInputChange('annualIncome', e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          >
-            <option value="">Select Income Range</option>
-            <option value="Below 1 Lakh">Below ₹1 Lakh</option>
-            <option value="1-3 Lakhs">₹1-3 Lakhs</option>
-            <option value="3-5 Lakhs">₹3-5 Lakhs</option>
-            <option value="5-10 Lakhs">₹5-10 Lakhs</option>
-            <option value="Above 10 Lakhs">Above ₹10 Lakhs</option>
-          </select>
-          {errors.annualIncome && <p className="text-red-500 text-sm mt-1">{errors.annualIncome}</p>}
-        </div>
-        
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Ration Card Type
-          </label>
-          <select
-            value={formData.rationCardType}
-            onChange={(e) => handleInputChange('rationCardType', e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          >
-            <option value="">Select Ration Card Type</option>
-            <option value="APL">APL (Above Poverty Line)</option>
-            <option value="BPL">BPL (Below Poverty Line)</option>
-            <option value="AAY">AAY (Antyodaya Anna Yojana)</option>
-            <option value="None">None</option>
-          </select>
-        </div>
-        
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Disability (if any)
-          </label>
-          <input
-            type="text"
-            value={formData.disability}
-            onChange={(e) => handleInputChange('disability', e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            placeholder="Specify disability if any"
-          />
-        </div>
-        
-        <div className="md:col-span-2">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Aadhaar Linked <span className="text-red-500">*</span>
-          </label>
-          <select
-            value={formData.aadhaarLinked}
-            onChange={(e) => handleInputChange('aadhaarLinked', e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          >
-            <option value="">Is your Aadhaar linked?</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-          </select>
-          {errors.aadhaarLinked && <p className="text-red-500 text-sm mt-1">{errors.aadhaarLinked}</p>}
+      <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Education Level <span className="text-red-500">*</span>
+            </label>
+            <select
+              value={formData.educationLevel}
+              onChange={(e) => handleInputChange('educationLevel', e.target.value)}
+              className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300 bg-gray-50/50 hover:bg-gray-50"
+            >
+              <option value="">Select Education Level</option>
+              <option value="Below 10th">Below 10th</option>
+              <option value="10th Pass">10th Pass</option>
+              <option value="12th Pass">12th Pass</option>
+              <option value="Graduate">Graduate</option>
+              <option value="Post Graduate">Post Graduate</option>
+              <option value="Doctorate">Doctorate</option>
+            </select>
+            {errors.educationLevel && <p className="text-red-500 text-sm mt-2">{errors.educationLevel}</p>}
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Occupation <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              value={formData.occupation}
+              onChange={(e) => handleInputChange('occupation', e.target.value)}
+              className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300 bg-gray-50/50 hover:bg-gray-50"
+              placeholder="Enter your occupation"
+            />
+            {errors.occupation && <p className="text-red-500 text-sm mt-2">{errors.occupation}</p>}
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Work Sector <span className="text-red-500">*</span>
+            </label>
+            <select
+              value={formData.workSector}
+              onChange={(e) => handleInputChange('workSector', e.target.value)}
+              className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300 bg-gray-50/50 hover:bg-gray-50"
+            >
+              <option value="">Select Work Sector</option>
+              <option value="Government">Government</option>
+              <option value="Private">Private</option>
+            </select>
+            {errors.workSector && <p className="text-red-500 text-sm mt-2">{errors.workSector}</p>}
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Annual Income Range <span className="text-red-500">*</span>
+            </label>
+            <select
+              value={formData.annualIncome}
+              onChange={(e) => handleInputChange('annualIncome', e.target.value)}
+              className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300 bg-gray-50/50 hover:bg-gray-50"
+            >
+              <option value="">Select Income Range</option>
+              <option value="Below 1 Lakh">Below ₹1 Lakh</option>
+              <option value="1-3 Lakhs">₹1-3 Lakhs</option>
+              <option value="3-5 Lakhs">₹3-5 Lakhs</option>
+              <option value="5-10 Lakhs">₹5-10 Lakhs</option>
+              <option value="Above 10 Lakhs">Above ₹10 Lakhs</option>
+            </select>
+            {errors.annualIncome && <p className="text-red-500 text-sm mt-2">{errors.annualIncome}</p>}
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Ration Card Type
+            </label>
+            <select
+              value={formData.rationCardType}
+              onChange={(e) => handleInputChange('rationCardType', e.target.value)}
+              className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300 bg-gray-50/50 hover:bg-gray-50"
+            >
+              <option value="">Select Ration Card Type</option>
+              <option value="APL">APL (Above Poverty Line)</option>
+              <option value="BPL">BPL (Below Poverty Line)</option>
+              <option value="AAY">AAY (Antyodaya Anna Yojana)</option>
+              <option value="None">None</option>
+            </select>
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Disability (if any)
+            </label>
+            <input
+              type="text"
+              value={formData.disability}
+              onChange={(e) => handleInputChange('disability', e.target.value)}
+              className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300 bg-gray-50/50 hover:bg-gray-50"
+              placeholder="Specify disability if any"
+            />
+          </div>
+          
+          <div className="md:col-span-2">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Aadhaar Linked <span className="text-red-500">*</span>
+            </label>
+            <select
+              value={formData.aadhaarLinked}
+              onChange={(e) => handleInputChange('aadhaarLinked', e.target.value)}
+              className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300 bg-gray-50/50 hover:bg-gray-50"
+            >
+              <option value="">Is your Aadhaar linked?</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+            {errors.aadhaarLinked && <p className="text-red-500 text-sm mt-2">{errors.aadhaarLinked}</p>}
+          </div>
         </div>
       </div>
     </div>
   );
 
   const renderSchemePreferences = () => (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6">Scheme Preferences</h2>
+    <div className="space-y-10">
+      <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight">Scheme Preferences</h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Government Preference <span className="text-red-500">*</span>
-          </label>
-          <select
-            value={formData.govtPreference}
-            onChange={(e) => handleInputChange('govtPreference', e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          >
-            <option value="">Select preference</option>
-            <option value="Central Government">Central Government</option>
-            <option value="State Government">State Government</option>
-            <option value="Both">Both</option>
-          </select>
-          {errors.govtPreference && <p className="text-red-500 text-sm mt-1">{errors.govtPreference}</p>}
-        </div>
+      <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Government Preference <span className="text-red-500">*</span>
+            </label>
+            <select
+              value={formData.govtPreference}
+              onChange={(e) => handleInputChange('govtPreference', e.target.value)}
+              className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300 bg-gray-50/50 hover:bg-gray-50"
+            >
+              <option value="">Select preference</option>
+              <option value="Central Government">Central Government</option>
+              <option value="State Government">State Government</option>
+              <option value="Both">Both</option>
+            </select>
+            {errors.govtPreference && <p className="text-red-500 text-sm mt-2">{errors.govtPreference}</p>}
+          </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Preferred Sector <span className="text-red-500">*</span>
-          </label>
-          <select
-            value={formData.preferredSector}
-            onChange={(e) => handleInputChange('preferredSector', e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          >
-            <option value="">Select sector</option>
-            <option value="Education">Education</option>
-            <option value="Healthcare">Healthcare</option>
-            <option value="Employment">Employment</option>
-            <option value="Housing">Housing</option>
-            <option value="Financial Assistance">Financial Assistance</option>
-          </select>
-          {errors.preferredSector && <p className="text-red-500 text-sm mt-1">{errors.preferredSector}</p>}
-        </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Preferred Sector <span className="text-red-500">*</span>
+            </label>
+            <select
+              value={formData.preferredSector}
+              onChange={(e) => handleInputChange('preferredSector', e.target.value)}
+              className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300 bg-gray-50/50 hover:bg-gray-50"
+            >
+              <option value="">Select sector</option>
+              <option value="Education">Education</option>
+              <option value="Healthcare">Healthcare</option>
+              <option value="Employment">Employment</option>
+              <option value="Housing">Housing</option>
+              <option value="Financial Assistance">Financial Assistance</option>
+            </select>
+            {errors.preferredSector && <p className="text-red-500 text-sm mt-2">{errors.preferredSector}</p>}
+          </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Benefit Type <span className="text-red-500">*</span>
-          </label>
-          <select
-            value={formData.benefitType}
-            onChange={(e) => handleInputChange('benefitType', e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          >
-            <option value="">Select benefit type</option>
-            <option value="Subsidies">Subsidies</option>
-            <option value="Grants">Grants</option>
-            <option value="Loans">Loans</option>
-            <option value="Training">Training</option>
-            <option value="Other">Other</option>
-          </select>
-          {errors.benefitType && <p className="text-red-500 text-sm mt-1">{errors.benefitType}</p>}
-        </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Benefit Type <span className="text-red-500">*</span>
+            </label>
+            <select
+              value={formData.benefitType}
+              onChange={(e) => handleInputChange('benefitType', e.target.value)}
+              className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300 bg-gray-50/50 hover:bg-gray-50"
+            >
+              <option value="">Select benefit type</option>
+              <option value="Subsidies">Subsidies</option>
+              <option value="Grants">Grants</option>
+              <option value="Loans">Loans</option>
+              <option value="Training">Training</option>
+              <option value="Other">Other</option>
+            </select>
+            {errors.benefitType && <p className="text-red-500 text-sm mt-2">{errors.benefitType}</p>}
+          </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Eligibility Awareness <span className="text-red-500">*</span>
-          </label>
-          <select
-            value={formData.eligibilityAwareness}
-            onChange={(e) => handleInputChange('eligibilityAwareness', e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          >
-            <option value="">Select awareness level</option>
-            <option value="Fully Aware">Fully Aware</option>
-            <option value="Partially Aware">Partially Aware</option>
-            <option value="Not Aware">Not Aware</option>
-          </select>
-          {errors.eligibilityAwareness && <p className="text-red-500 text-sm mt-1">{errors.eligibilityAwareness}</p>}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Eligibility Awareness <span className="text-red-500">*</span>
+            </label>
+            <select
+              value={formData.eligibilityAwareness}
+              onChange={(e) => handleInputChange('eligibilityAwareness', e.target.value)}
+              className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300 bg-gray-50/50 hover:bg-gray-50"
+            >
+              <option value="">Select awareness level</option>
+              <option value="Fully Aware">Fully Aware</option>
+              <option value="Partially Aware">Partially Aware</option>
+              <option value="Not Aware">Not Aware</option>
+            </select>
+            {errors.eligibilityAwareness && <p className="text-red-500 text-sm mt-2">{errors.eligibilityAwareness}</p>}
+          </div>
         </div>
       </div>
     </div>
   );
 
   const renderPreview = () => (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6">Preview Your Information</h2>
+    <div className="space-y-10">
+      <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight">Review Your Information</h2>
       
-      <div className="bg-gray-50 p-6 rounded-lg">
-        <h3 className="text-lg font-semibold text-gray-800 mb-4">Basic Information</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <p><strong>Full Name:</strong> {formData.fullName || 'N/A'}</p>
-          <p><strong>Father's Name:</strong> {formData.fatherName || 'N/A'}</p>
-          <p><strong>Mother's Name:</strong> {formData.motherName || 'N/A'}</p>
-          {formData.maritalStatus === 'Married' && <p><strong>Spouse Name:</strong> {formData.spouseName || 'N/A'}</p>}
-          <p><strong>Date of Birth:</strong> {formData.dateOfBirth || 'N/A'}</p>
-          <p><strong>Age:</strong> {formData.age || 'N/A'}</p>
-          <p><strong>Gender:</strong> {formData.gender || 'N/A'}</p>
-          <p><strong>Marital Status:</strong> {formData.maritalStatus || 'N/A'}</p>
-          <p><strong>Phone Number:</strong> {formData.phoneNumber || 'N/A'}</p>
+      <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+        <h3 className="text-xl font-semibold text-gray-900 mb-4">Personal Details</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
+          <p><span className="font-medium">Full Name:</span> {formData.fullName || 'N/A'}</p>
+          <p><span className="font-medium">Father's Name:</span> {formData.fatherName || 'N/A'}</p>
+          <p><span className="font-medium">Mother's Name:</span> {formData.motherName || 'N/A'}</p>
+          {formData.maritalStatus === 'Married' && <p><span className="font-medium">Spouse Name:</span> {formData.spouseName || 'N/A'}</p>}
+          <p><span className="font-medium">Date of Birth:</span> {formData.dateOfBirth || 'N/A'}</p>
+          <p><span className="font-medium">Age:</span> {formData.age || 'N/A'}</p>
+          <p><span className="font-medium">Gender:</span> {formData.gender || 'N/A'}</p>
+          <p><span className="font-medium">Marital Status:</span> {formData.maritalStatus || 'N/A'}</p>
+          <p><span className="font-medium">Phone Number:</span> {formData.phoneNumber || 'N/A'}</p>
         </div>
         
-        <h3 className="text-lg font-semibold text-gray-800 mt-6 mb-4">Location Details</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <p><strong>Pincode:</strong> {formData.pincode || 'N/A'}</p>
-          <p><strong>State:</strong> {formData.state || 'N/A'}</p>
-          <p><strong>District:</strong> {formData.district || 'N/A'}</p>
-          <p><strong>Urban/Rural:</strong> {formData.urbanRural || 'N/A'}</p>
+        <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">Location Details</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
+          <p><span className="font-medium">Pincode:</span> {formData.pincode || 'N/A'}</p>
+          <p><span className="font-medium">State:</span> {formData.state || 'N/A'}</p>
+          <p><span className="font-medium">District:</span> {formData.district || 'N/A'}</p>
+          <p><span className="font-medium">Urban/Rural:</span> {formData.urbanRural || 'N/A'}</p>
         </div>
         
-        <h3 className="text-lg font-semibold text-gray-800 mt-6 mb-4">Social & Economic Details</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <p><strong>Education Level:</strong> {formData.educationLevel || 'N/A'}</p>
-          <p><strong>Occupation:</strong> {formData.occupation || 'N/A'}</p>
-          <p><strong>Work Sector:</strong> {formData.workSector || 'N/A'}</p>
-          <p><strong>Annual Income:</strong> {formData.annualIncome || 'N/A'}</p>
-          <p><strong>Ration Card Type:</strong> {formData.rationCardType || 'N/A'}</p>
-          <p><strong>Disability:</strong> {formData.disability || 'N/A'}</p>
-          <p><strong>Aadhaar Linked:</strong> {formData.aadhaarLinked || 'N/A'}</p>
+        <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">Socio-Economic Details</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
+          <p><span className="font-medium">Education Level:</span> {formData.educationLevel || 'N/A'}</p>
+          <p><span className="font-medium">Occupation:</span> {formData.occupation || 'N/A'}</p>
+          <p><span className="font-medium">Work Sector:</span> {formData.workSector || 'N/A'}</p>
+          <p><span className="font-medium">Annual Income:</span> {formData.annualIncome || 'N/A'}</p>
+          <p><span className="font-medium">Ration Card Type:</span> {formData.rationCardType || 'N/A'}</p>
+          <p><span className="font-medium">Disability:</span> {formData.disability || 'N/A'}</p>
+          <p><span className="font-medium">Aadhaar Linked:</span> {formData.aadhaarLinked || 'N/A'}</p>
         </div>
         
-        <h3 className="text-lg font-semibold text-gray-800 mt-6 mb-4">Scheme Preferences</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <p><strong>Government Preference:</strong> {formData.govtPreference || 'N/A'}</p>
-          <p><strong>Preferred Sector:</strong> {formData.preferredSector || 'N/A'}</p>
-          <p><strong>Benefit Type:</strong> {formData.benefitType || 'N/A'}</p>
-          <p><strong>Eligibility Awareness:</strong> {formData.eligibilityAwareness || 'N/A'}</p>
+        <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">Scheme Preferences</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
+          <p><span className="font-medium">Government Preference:</span> {formData.govtPreference || 'N/A'}</p>
+          <p><span className="font-medium">Preferred Sector:</span> {formData.preferredSector || 'N/A'}</p>
+          <p><span className="font-medium">Benefit Type:</span> {formData.benefitType || 'N/A'}</p>
+          <p><span className="font-medium">Eligibility Awareness:</span> {formData.eligibilityAwareness || 'N/A'}</p>
         </div>
       </div>
     </div>
   );
 
   const renderComplete = () => (
-    <div className="text-center space-y-6">
-      <CheckCircle className="mx-auto h-16 w-16 text-green-600" />
-      <h2 className="text-2xl font-bold text-gray-800">Form Submitted Successfully!</h2>
-      <p className="text-gray-600">Thank you for completing the profile form. Your information has been submitted successfully.</p>
-      <button
-        onClick={() => setCurrentStep(1)}
-        className="mt-4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-      >
-        Start Over
-      </button>
+    <div className="text-center space-y-8">
+      <CheckCircle className="mx-auto h-20 w-20 text-green-500 animate-bounce" />
+      <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight">Form Submitted Successfully!</h2>
+      <p className="text-gray-600 max-w-lg mx-auto text-lg">Thank you for completing the profile form. Your information has been submitted successfully.</p>
+      <p className="text-gray-500 text-sm">Redirecting to dashboard...</p>
     </div>
   );
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg">
-      {renderStepIndicator()}
-      
-      {currentStep === 1 && renderBasicInfo()}
-      {currentStep === 2 && renderSocialEconomic()}
-      {currentStep === 3 && renderSchemePreferences()}
-      {currentStep === 4 && renderPreview()}
-      {currentStep === 5 && renderComplete()}
-
-      {currentStep < 5 && (
-        <div className="mt-8 flex justify-between">
-          {currentStep > 1 && (
-            <button
-              onClick={prevStep}
-              className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-            >
-              <ChevronLeft className="mr-2 h-5 w-5" />
-              Previous
-            </button>
-          )}
-          
-          {currentStep < 4 ? (
-            <button
-              onClick={nextStep}
-              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-            >
-              Next
-              <ChevronRight className="ml-2 h-5 w-5" />
-            </button>
-          ) : currentStep === 4 ? (
-            <button
-              onClick={handleSubmit}
-              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-            >
-              Submit
-            </button>
-          ) : null}
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl w-full bg-white rounded-2xl shadow-xl p-8">
+        {renderStepIndicator()}
+        
+        <div className="min-h-[500px] transition-all duration-500">
+          {currentStep === 1 && renderBasicInfo()}
+          {currentStep === 2 && renderSocialEconomic()}
+          {currentStep === 3 && renderSchemePreferences()}
+          {currentStep === 4 && renderPreview()}
+          {currentStep === 5 && renderComplete()}
         </div>
-      )}
+
+        {currentStep < 5 && (
+          <div className="mt-10 flex justify-between">
+            {currentStep > 1 && (
+              <button
+                onClick={prevStep}
+                className="inline-flex items-center px-6 py-3 border border-gray-200 rounded-lg text-sm font-semibold text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300 shadow-sm"
+              >
+                <ChevronLeft className="mr-2 h-5 w-5" />
+                Previous
+              </button>
+            )}
+            
+            {currentStep < 4 ? (
+              <button
+                onClick={nextStep}
+                className="inline-flex items-center px-6 py-3 border border-transparent rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300 shadow-md"
+              >
+                Next
+                <ChevronRight className="ml-2 h-5 w-5" />
+              </button>
+            ) : currentStep === 4 ? (
+              <button
+                onClick={handleSubmit}
+                className="inline-flex items-center px-6 py-3 border border-transparent rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-300 shadow-md"
+              >
+                Submit
+              </button>
+            ) : null}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
 
-export default profileform;
+export default ProfileForm;
