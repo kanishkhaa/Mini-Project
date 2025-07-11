@@ -2,23 +2,28 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
-
-// Routes
+const passport = require('passport');
+const authRoutes = require('./routes/auth');
 const agricultureRoutes = require('./routes/agriculture');
 const educationRoutes = require('./routes/education');
 const healthcareRoutes = require('./routes/healthcare');
-const socialWelfareRoutes = require('./routes/socialwelfare');
+const socialWelfareRoutes = require('./routes/socialWelfare');
 const transportRoutes = require('./routes/transport');
 const womenRoutes = require('./routes/women');
-const authRoutes = require('./routes/auth'); // ✅ Corrected to require
-
-// Services
 const AgricultureService = require('./services/agricultureService');
 const EducationService = require('./services/educationService');
 const HealthcareService = require('./services/healthcareService');
 const SocialWelfareService = require('./services/socialWelfareService');
 const TransportService = require('./services/transportService');
 const WomenService = require('./services/womenService');
+
+// Explicitly load Passport configuration
+try {
+  require('./config/passport');
+  console.log('Passport configuration loaded successfully');
+} catch (err) {
+  console.error('Failed to load Passport configuration:', err.message);
+}
 
 const app = express();
 
@@ -33,19 +38,22 @@ app.use((req, res, next) => {
 });
 app.use(cors({
   origin: 'http://localhost:5173',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
 
-// Route mounting
-app.use('/api/auth', authRoutes); // ✅ Google Sign-In route added safely
+// Initialize Passport
+app.use(passport.initialize());
+
+// Routes
 app.use('/api/agriculture', agricultureRoutes);
 app.use('/api/education', educationRoutes);
 app.use('/api/healthcare', healthcareRoutes);
 app.use('/api/social-welfare', socialWelfareRoutes);
 app.use('/api/transport', transportRoutes);
 app.use('/api/women', womenRoutes);
+app.use('/auth', authRoutes);
 
 // Root route
 app.get('/', (req, res) => {
@@ -97,3 +105,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+
