@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Dashboard from './pages/dashboard';
 import Application from './pages/application';
 import ProfileForm from './pages/profileform';
@@ -11,11 +11,9 @@ import SignupPage from './pages/signup';
 import Scheme from './pages/scheme';
 import Eligibility from './pages/eligibility';
 import AccessibilityDialog from './pages/accessibility';
-import Chatbot from './components/Chatbot'; 
+import Chatbot from './components/Chatbot';
 
-
-function App() 
-{
+function App() {
   const location = useLocation();
 
   const shouldShowSidebar = !['/', '/login', '/signup'].includes(location.pathname);
@@ -48,10 +46,9 @@ function App()
       {/* Accessibility Dialog - exclude landing */}
       {!isLandingPage && <AccessibilityDialog />}
 
-      {/* ✅ Chatbot - exclude landing */}
+      {/* Chatbot - exclude landing */}
       {!isLandingPage && <Chatbot />}
     </div>
   );
 }
-
 export default App;

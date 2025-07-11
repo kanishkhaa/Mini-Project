@@ -10,6 +10,7 @@ const healthcareRoutes = require('./routes/healthcare');
 const socialWelfareRoutes = require('./routes/socialwelfare');
 const transportRoutes = require('./routes/transport');
 const womenRoutes = require('./routes/women');
+const authRoutes = require('./routes/auth'); // ✅ Corrected to require
 
 // Services
 const AgricultureService = require('./services/agricultureService');
@@ -38,6 +39,7 @@ app.use(cors({
 }));
 
 // Route mounting
+app.use('/api/auth', authRoutes); // ✅ Google Sign-In route added safely
 app.use('/api/agriculture', agricultureRoutes);
 app.use('/api/education', educationRoutes);
 app.use('/api/healthcare', healthcareRoutes);
