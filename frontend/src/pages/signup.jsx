@@ -18,7 +18,7 @@ function Signup() {
       setMessage('Google signup successful!');
       // Redirect to dashboard or home page after a delay
       setTimeout(() => {
-        navigate('/dashboard'); // Adjust the route as per your app
+        navigate('/profileform'); // Adjust the route as per your app
       }, 2000);
     }
   }, [navigate]);
@@ -34,7 +34,7 @@ function Signup() {
       setMessage('Signup successful!');
       localStorage.setItem('token', res.data.token);
       setTimeout(() => {
-        navigate('/dashboard'); // Adjust the route as per your app
+        navigate('/profileform'); // Adjust the route as per your app
       }, 2000);
     } catch (err) {
       setMessage(err.response?.data?.error || 'Signup failed');

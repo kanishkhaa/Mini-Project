@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, CheckCircle } from 'lucide-react';
+import axios from 'axios';
 
 const ProfileForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -199,12 +200,28 @@ const ProfileForm = () => {
     setCurrentStep(prev => Math.max(prev - 1, 1));
   };
 
-  const handleSubmit = () => {
-    console.log('Form submitted:', formData);
-    setCurrentStep(5);
-    setTimeout(() => {
-      navigate('/dashboard');
-    }, 2000); // Redirect after 2 seconds to show success message
+  const handleSubmit = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        setErrors({ submit: 'Authentication token not found. Please log in again.' });
+        setTimeout(() => navigate('/login'), 2000);
+        return;
+      }
+      const response = await axios.post('http://localhost:3000/auth/profile', formData, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+      setCurrentStep(5);
+      setTimeout(() => {
+        navigate('/profile');
+      }, 2000);
+    } catch (err) {
+      console.error('Submit Profile Error:', err.message);
+      setErrors({ submit: err.response?.data?.error || 'Failed to save profile. Please try again.' });
+    }
   };
 
   const renderStepIndicator = () => {
@@ -719,7 +736,8 @@ const ProfileForm = () => {
       <CheckCircle className="mx-auto h-20 w-20 text-green-500 animate-bounce" />
       <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight">Form Submitted Successfully!</h2>
       <p className="text-gray-600 max-w-lg mx-auto text-lg">Thank you for completing the profile form. Your information has been submitted successfully.</p>
-      <p className="text-gray-500 text-sm">Redirecting to dashboard...</p>
+      <p className="text-gray-500 text-sm">Redirecting to profile...</p>
+      {errors.submit && <p className="text-red-500 text-sm">{errors.submit}</p>}
     </div>
   );
 

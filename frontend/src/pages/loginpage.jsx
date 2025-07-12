@@ -24,7 +24,7 @@ const LoginPage = () => {
       localStorage.setItem('token', token);
       setMessage('Google login successful!');
       setTimeout(() => {
-        navigate('/dashboard');
+        navigate('/profileform');
       }, 2000);
     } else if (error) {
       setMessage('Google login failed: ' + error);
@@ -68,7 +68,7 @@ const LoginPage = () => {
         localStorage.setItem('token', res.data.token);
         setMessage('Google login successful!');
         setTimeout(() => {
-          navigate('/dashboard');
+          navigate('/profileform');
         }, 2000);
       } else {
         setMessage(res.data.error || 'Google Sign-In failed');
@@ -104,7 +104,7 @@ const LoginPage = () => {
         localStorage.setItem('token', res.data.token);
         setMessage('Login successful!');
         setTimeout(() => {
-          navigate('/dashboard');
+          navigate('/profileform');
         }, 2000);
       } else {
         setMessage(res.data.error || 'Login failed');

@@ -1,42 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   User, MapPin, GraduationCap, Briefcase, Heart, Settings, Edit2, Phone, Mail, Calendar, 
   Shield, Award, FileText, Users, Home, DollarSign, Building, UserCheck, Target, 
   BookOpen, Zap, Download, Eye, RefreshCw, ChevronRight, Star, CheckCircle2
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const ProfilePage = () => {
   const [isEditing, setIsEditing] = useState(false);
+  const [userData, setUserData] = useState({});
+  const [userEmail, setUserEmail] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  // Sample user data - this would typically come from props or API
-  const userData = {
-    fullName: 'Rajesh Kumar Sharma',
-    fatherName: 'Suresh Kumar Sharma',
-    motherName: 'Sunita Sharma',
-    spouseName: 'Priya Sharma',
-    dateOfBirth: '1990-05-15',
-    age: '33',
-    gender: 'Male',
-    maritalStatus: 'Married',
-    phoneNumber: '9876543210',
-    pincode: '110001',
-    state: 'Delhi',
-    district: 'Central Delhi',
-    urbanRural: 'Urban',
-    educationLevel: 'Graduate',
-    occupation: 'Software Developer',
-    workSector: 'Private',
-    annualIncome: '5-10 Lakhs',
-    rationCardType: 'APL',
-    disability: '',
-    aadhaarLinked: 'Yes',
-    govtPreference: 'Both',
-    preferredSector: 'Employment',
-    benefitType: 'Training',
-    eligibilityAwareness: 'Partially Aware'
-  };
+  // Fetch profile data and user email on component mount
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          setError('Authentication token not found. Please log in.');
+          setTimeout(() => navigate('/login'), 2000);
+          return;
+        }
+        // Fetch profile data
+        const profileResponse = await axios.get('http://localhost:3000/auth/profile', {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+        setUserData(profileResponse.data || {});
+        
+        // Fetch user email
+        const userResponse = await axios.get('http://localhost:3000/auth/user', {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+        setUserEmail(userResponse.data.email || 'Not provided');
+      } catch (err) {
+        console.error('Fetch Profile Error:', err.message);
+        setError(err.response?.data?.error || 'Failed to fetch profile data. Please log in again.');
+        setTimeout(() => navigate('/login'), 2000);
+      }
+    };
+    fetchProfile();
+  }, [navigate]);
 
   const formatDate = (dateString) => {
+    if (!dateString) return 'Not provided';
     const date = new Date(dateString);
     return date.toLocaleDateString('en-IN', { 
       year: 'numeric', 
@@ -97,9 +110,18 @@ const ProfilePage = () => {
     return status === 'Married' ? Heart : User;
   };
 
+  const handleEditProfile = () => {
+    navigate('/profileform');
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-slate-50 to-blue-100/50">
       <div className="max-w-7xl mx-auto px-4 py-8">
+        {error && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-8">
+            {error}
+          </div>
+        )}
         {/* Header Section */}
         <div className="bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl border border-blue-100/50 overflow-hidden mb-8">
           <div className="bg-blue-400 px-8 py-12 text-white relative overflow-hidden">
@@ -115,21 +137,21 @@ const ProfilePage = () => {
                 </div>
                 <div>
                   <div className="flex items-center space-x-2 mb-2">
-                    <h1 className="text-3xl md:text-4xl font-bold">{userData.fullName}</h1>
+                    <h1 className="text-3xl md:text-4xl font-bold">{userData.fullName || 'Not provided'}</h1>
                     <CheckCircle2 className="h-6 w-6 text-emerald-300" />
                   </div>
                   <div className="flex items-center space-x-2 mb-3">
                     <Briefcase className="h-4 w-4 text-blue-200" />
-                    <p className="text-blue-100 text-lg">{userData.occupation}</p>
+                    <p className="text-blue-100 text-lg">{userData.occupation || 'Not provided'}</p>
                   </div>
                   <div className="flex items-center space-x-6 text-blue-100">
                     <div className="flex items-center space-x-2">
                       <MapPin className="h-4 w-4" />
-                      <span className="text-sm">{userData.district}, {userData.state}</span>
+                      <span className="text-sm">{userData.district || 'Not provided'}, {userData.state || 'Not provided'}</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Calendar className="h-4 w-4" />
-                      <span className="text-sm">Age {userData.age}</span>
+                      <span className="text-sm">Age {userData.age || 'Not provided'}</span>
                     </div>
                   </div>
                 </div>
@@ -137,7 +159,7 @@ const ProfilePage = () => {
               
               <div className="flex items-center space-x-3">
                 <button 
-                  onClick={() => setIsEditing(!isEditing)}
+                  onClick={handleEditProfile}
                   className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-6 py-3 rounded-2xl font-medium transition-all duration-300 flex items-center space-x-2 border border-white/10 hover:border-white/20"
                 >
                   <Edit2 className="h-4 w-4" />
@@ -155,21 +177,21 @@ const ProfilePage = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <StatCard 
             title="Annual Income" 
-            value={`₹${userData.annualIncome}`} 
+            value={`₹${userData.annualIncome || 'Not provided'}`} 
             bgColor="bg-gradient-to-br from-blue-100 to-blue-200" 
             textColor="text-blue-700"
             icon={DollarSign}
           />
           <StatCard 
             title="Work Sector" 
-            value={userData.workSector} 
+            value={userData.workSector || 'Not provided'} 
             bgColor="bg-gradient-to-br from-emerald-100 to-emerald-200" 
             textColor="text-emerald-700"
             icon={Building}
           />
           <StatCard 
             title="Education" 
-            value={userData.educationLevel} 
+            value={userData.educationLevel || 'Not provided'} 
             bgColor="bg-gradient-to-br from-violet-100 to-violet-200" 
             textColor="text-violet-700"
             icon={GraduationCap}
@@ -197,7 +219,7 @@ const ProfilePage = () => {
                   <InfoItem label="Spouse Name" value={userData.spouseName} icon={Heart} />
                 )}
                 <InfoItem label="Date of Birth" value={formatDate(userData.dateOfBirth)} icon={Calendar} />
-                <InfoItem label="Age" value={`${userData.age} years`} icon={UserCheck} />
+                <InfoItem label="Age" value={`${userData.age || 'Not provided'} years`} icon={UserCheck} />
                 <InfoItem label="Gender" value={userData.gender} icon={getGenderIcon(userData.gender)} />
                 <InfoItem label="Marital Status" value={userData.maritalStatus} icon={getMaritalIcon(userData.maritalStatus)} />
               </div>
@@ -207,7 +229,7 @@ const ProfilePage = () => {
             <ProfileCard icon={MapPin} title="Contact & Location">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <InfoItem label="Phone Number" value={userData.phoneNumber} icon={Phone} />
-                <InfoItem label="Email" value="rajesh.sharma@email.com" icon={Mail} />
+                <InfoItem label="Email" value={userEmail} icon={Mail} />
                 <InfoItem label="Pincode" value={userData.pincode} icon={MapPin} />
                 <InfoItem label="State" value={userData.state} icon={Home} />
                 <InfoItem label="District" value={userData.district} icon={MapPin} />
@@ -221,89 +243,52 @@ const ProfilePage = () => {
                 <InfoItem label="Education Level" value={userData.educationLevel} icon={GraduationCap} />
                 <InfoItem label="Occupation" value={userData.occupation} icon={Briefcase} />
                 <InfoItem label="Work Sector" value={userData.workSector} icon={Building} />
-                <InfoItem label="Annual Income" value={`₹${userData.annualIncome}`} icon={DollarSign} />
+                <InfoItem label="Annual Income" value={`₹${userData.annualIncome || 'Not provided'}`} icon={DollarSign} />
+                <InfoItem label="Ration Card Type" value={userData.rationCardType} icon={FileText} />
+                <InfoItem label="Disability" value={userData.disability} icon={Award} />
+                <InfoItem label="Aadhaar Linked" value={userData.aadhaarLinked} icon={Shield} />
+              </div>
+            </ProfileCard>
+
+            {/* Scheme Preferences */}
+            <ProfileCard icon={Target} title="Scheme Preferences">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <InfoItem label="Government Preference" value={userData.govtPreference} icon={BookOpen} />
+                <InfoItem label="Preferred Sector" value={userData.preferredSector} icon={Zap} />
+                <InfoItem label="Benefit Type" value={userData.benefitType} icon={Star} />
+                <InfoItem label="Eligibility Awareness" value={userData.eligibilityAwareness} icon={Eye} />
               </div>
             </ProfileCard>
           </div>
 
           {/* Right Column */}
           <div className="space-y-8">
-            {/* Social & Economic Details */}
-            <ProfileCard icon={Shield} title="Social & Economic">
+            {/* Actions */}
+            <ProfileCard icon={Zap} title="Quick Actions">
               <div className="space-y-4">
-                <InfoItem label="Ration Card Type" value={userData.rationCardType} icon={FileText} />
-                <InfoItem label="Disability" value={userData.disability || 'None'} icon={UserCheck} />
-                <InfoItem label="Aadhaar Linked" value={userData.aadhaarLinked} icon={Shield} />
-              </div>
-            </ProfileCard>
-
-            {/* Scheme Preferences */}
-            <ProfileCard icon={Award} title="Scheme Preferences">
-              <div className="space-y-4">
-                <InfoItem label="Government Preference" value={userData.govtPreference} icon={Star} />
-                <InfoItem label="Preferred Sector" value={userData.preferredSector} icon={Target} />
-                <InfoItem label="Benefit Type" value={userData.benefitType} icon={BookOpen} />
-                <InfoItem label="Eligibility Awareness" value={userData.eligibilityAwareness} icon={Zap} />
-              </div>
-            </ProfileCard>
-
-            {/* Action Panel */}
-            <div className="bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 rounded-2xl p-6 text-white shadow-xl border border-blue-400/20">
-              <h3 className="text-lg font-semibold mb-4 flex items-center">
-                <Award className="h-5 w-5 mr-2" />
-                Quick Actions
-              </h3>
-              <div className="space-y-3">
-                <button className="w-full bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white py-3 px-4 rounded-xl transition-all duration-300 text-left flex items-center justify-between group border border-white/10 hover:border-white/20">
+                <button className="w-full flex items-center justify-between bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 px-4 py-3 rounded-lg hover:bg-blue-200 transition-all duration-300">
                   <div className="flex items-center space-x-3">
-                    <Eye className="h-4 w-4" />
-                    <span>View Eligible Schemes</span>
-                  </div>
-                  <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
-                </button>
-                <button className="w-full bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white py-3 px-4 rounded-xl transition-all duration-300 text-left flex items-center justify-between group border border-white/10 hover:border-white/20">
-                  <div className="flex items-center space-x-3">
-                    <RefreshCw className="h-4 w-4" />
-                    <span>Update Information</span>
-                  </div>
-                  <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
-                </button>
-                <button className="w-full bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white py-3 px-4 rounded-xl transition-all duration-300 text-left flex items-center justify-between group border border-white/10 hover:border-white/20">
-                  <div className="flex items-center space-x-3">
-                    <Download className="h-4 w-4" />
+                    <Download className="h-5 w-5" />
                     <span>Download Profile</span>
                   </div>
-                  <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+                <button className="w-full flex items-center justify-between bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 px-4 py-3 rounded-lg hover:bg-blue-200 transition-all duration-300">
+                  <div className="flex items-center space-x-3">
+                    <RefreshCw className="h-5 w-5" />
+                    <span>Update Information</span>
+                  </div>
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+                <button className="w-full flex items-center justify-between bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 px-4 py-3 rounded-lg hover:bg-blue-200 transition-all duration-300">
+                  <div className="flex items-center space-x-3">
+                    <Star className="h-5 w-5" />
+                    <span>View Recommended Schemes</span>
+                  </div>
+                  <ChevronRight className="h-5 w-5" />
                 </button>
               </div>
-            </div>
-
-            {/* Profile Completion */}
-            <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-2xl p-6 border border-emerald-200/50">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-emerald-800 flex items-center">
-                  <CheckCircle2 className="h-5 w-5 mr-2" />
-                  Profile Completion
-                </h3>
-                <span className="text-2xl font-bold text-emerald-700">85%</span>
-              </div>
-              <div className="w-full bg-emerald-200 rounded-full h-3 mb-3">
-                <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 h-3 rounded-full" style={{width: '85%'}}></div>
-              </div>
-              <p className="text-sm text-emerald-700">
-                Add email and more details to complete your profile
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Footer */}
-        <div className="mt-12 text-center">
-          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-blue-100/50">
-            <p className="text-slate-500 text-sm flex items-center justify-center space-x-2">
-              <Calendar className="h-4 w-4" />
-              <span>Profile last updated on {formatDate(new Date().toISOString())}</span>
-            </p>
+            </ProfileCard>
           </div>
         </div>
       </div>
