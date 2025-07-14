@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; // Added for routing
 import Lottie from 'lottie-react';
 import { CheckCircle, Bot, Languages, FileCheck, Users, Target, Brain, Zap, Database, Search, UserCheck, FileText, Award, Sparkles, Shield, Rocket, ArrowRight } from 'lucide-react';
 
@@ -100,6 +101,29 @@ const Landing = () => {
 
   return (
     <div className="bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden">
+      {/* Navigation Bar */}
+      <nav className="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-sm shadow-md z-50">
+        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+          <div className="text-2xl font-bold text-gray-800">
+            AI Scheme
+          </div>
+          <div className="flex space-x-4">
+            <Link
+              to="/signup"
+              className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-full hover:bg-blue-600 transition-all duration-300"
+            >
+              Sign Up
+            </Link>
+            <Link
+              to="/login"
+              className="px-4 py-2 bg-transparent border-2 border-blue-500 text-blue-500 font-semibold rounded-full hover:bg-blue-500 hover:text-white transition-all duration-300"
+            >
+              Sign In
+            </Link>
+          </div>
+        </div>
+      </nav>
+
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-10 left-10 w-20 h-20 bg-gradient-to-br from-blue-100/30 to-cyan-100/30 rounded-full animate-float" />
@@ -114,9 +138,9 @@ const Landing = () => {
       </div>
 
       {/* Hero Section */}
-      <div className="container mx-auto px-6 pt-8 py-16 relative z-10">
+      <div className="container mx-auto px-6 pt-20 py-16 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between min-h-screen">
-          <div className={`lg:w-1/2 lg:pr-12 mb-12 lg:mb-0 transform transition-all duration-1000 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'}`}>
+<div className={`lg:w-1/2 lg:pr-12 mb-12 lg:mb-0 transform transition-all duration-1000 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'}`}>
             <div className="space-y-8">
               <div className="space-y-4">
                 <div className="overflow-hidden">
@@ -154,219 +178,35 @@ const Landing = () => {
               </div>
             </div>
           </div>
-          <div
-            className={`lg:w-1/2 flex items-center justify-center relative transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0'}`} 
-            style={{ marginLeft: '-80px', marginTop: '-100px' }}
-          >
-            <div className="relative w-[36rem] h-[36rem]">
-              <Lottie
-                animationData={Top}
-                loop={true}
-                autoplay={true}
-                style={{ width: '120%', height: '120%', background: 'transparent', filter: 'brightness(1) saturate(1)' }}
-              />
-            </div>
-          </div>
+<div
+  className={`lg:w-1/2 flex items-center justify-center relative transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0'}`} 
+  style={{ marginLeft: '-80px', marginTop: '-100px' }}
+>
+  <div className="relative w-[36rem] h-[36rem]">
+    <Lottie
+      animationData={Top}
+      loop={true}
+      autoplay={true}
+      style={{ width: '120%', height: '120%', background: 'transparent', filter: 'brightness(1) saturate(1)' }}
+    />
+  </div>
+</div>
         </div>
-
-        {/* Key Features Section - Reduced Vertical Length */}
+        {/* Key Features Section */}
         <div id="features-section" className="mt-24 mb-16">
-          <div className={`text-center mb-12 transform transition-all duration-1000 ${featuresInView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-gray-800 relative">
-              <span className="relative z-10 bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
-                Powerful AI Features
-              </span>
-              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse" />
-            </h2>
-            <p className="text-lg text-gray-500 max-w-3xl mx-auto leading-relaxed">
-              Experience cutting-edge AI technology designed to revolutionize how you discover and access government schemes.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className={`group relative p-6 rounded-3xl shadow-xl backdrop-blur-sm bg-white/90 border border-gray-100 hover:shadow-2xl hover:shadow-blue-400/25 transform hover:scale-105 transition-all duration-700 ${featuresInView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`} style={{ animationDelay: '100ms' }}>
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-400/5 to-cyan-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
-              <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Sparkles className="w-5 h-5 text-blue-400 animate-pulse" />
-              </div>
-              <div className="w-32 h-32 mx-auto mb-4 flex items-center justify-center relative z-10 transform group-hover:scale-110 transition-transform duration-500">
-                <Lottie animationData={AIscheme} loop={true} autoplay={true} style={{ width: '90%', height: '90%' }} />
-              </div>
-              <h3 className="text-lg font-bold mb-3 text-center text-gray-800 relative z-10 group-hover:text-blue-600 transition-colors duration-300">
-                AI Scheme Recommendations
-              </h3>
-              <p className="text-xs leading-relaxed text-center text-gray-500 relative z-10 group-hover:text-gray-600 transition-colors duration-300 mb-3">
-                Advanced AI matches you with central/state schemes across healthcare, education, and welfare sectors.
-              </p>
-              <div className="flex justify-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <span className="px-2 py-1 bg-blue-50 text-blue-600 text-xs rounded-full">Smart Matching</span>
-                <span className="px-2 py-1 bg-cyan-50 text-cyan-600 text-xs rounded-full">ML Powered</span>
-              </div>
-            </div>
-            <div className={`group relative p-6 rounded-3xl shadow-xl backdrop-blur-sm bg-white/90 border border-gray-100 hover:shadow-2xl hover:shadow-emerald-400/25 transform hover:scale-105 transition-all duration-700 ${featuresInView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`} style={{ animationDelay: '200ms' }}>
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/5 to-teal-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
-              <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Shield className="w-5 h-5 text-emerald-400 animate-pulse" />
-              </div>
-              <div className="w-24 h-24 mx-auto mb-4 flex items-center justify-center relative z-10 transform group-hover:scale-110 transition-transform duration-500">
-                <Lottie animationData={eligibility} loop={true} autoplay={true} style={{ width: '130%', height: '130%' }} />
-              </div>
-              <h3 className="text-lg font-bold mb-3 text-center text-gray-800 relative z-10 group-hover:text-emerald-600 transition-colors duration-300">
-                Instant Eligibility Checker
-              </h3>
-              <p className="text-xs leading-relaxed text-center text-gray-500 relative z-10 group-hover:text-gray-600 transition-colors duration-300 mb-3">
-                Lightning-fast eligibility verification with region-aware logic and real-time validation systems.
-              </p>
-              <div className="flex justify-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <span className="px-2 py-1 bg-emerald-50 text-emerald-600 text-xs rounded-full">Real-time</span>
-                <span className="px-2 py-1 bg-teal-50 text-teal-600 text-xs rounded-full">Accurate</span>
-              </div>
-            </div>
-            <div className={`group relative p-6 rounded-3xl shadow-xl backdrop-blur-sm bg-white/90 border border-gray-100 hover:shadow-2xl hover:shadow-orange-400/25 transform hover:scale-105 transition-all duration-700 ${featuresInView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`} style={{ animationDelay: '300ms' }}>
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-400/5 to-amber-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
-              <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Languages className="w-5 h-5 text-orange-400 animate-pulse" />
-              </div>
-              <div className="w-24 h-24 mx-auto mb-4 flex items-center justify-center relative z-10 transform group-hover:scale-110 transition-transform duration-500">
-                <Lottie animationData={chatbot} loop={true} autoplay={true} style={{ width: '180%', height: '180%' }} />
-              </div>
-              <h3 className="text-lg font-bold mb-3 text-center text-gray-800 relative z-10 group-hover:text-orange-600 transition-colors duration-300">
-                Multilingual Chatbot
-              </h3>
-              <p className="text-xs leading-relaxed text-center text-gray-500 relative z-10 group-hover:text-gray-600 transition-colors duration-300 mb-3">
-                Intelligent AI chatbot supporting multiple Indian languages for seamless communication and guidance.
-              </p>
-              <div className="flex justify-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <span className="px-2 py-1 bg-orange-50 text-orange-600 text-xs rounded-full">22+ Languages</span>
-                <span className="px-2 py-1 bg-amber-50 text-amber-600 text-xs rounded-full">24/7 Support</span>
-              </div>
-            </div>
-            <div className={`group relative p-6 rounded-3xl shadow-xl backdrop-blur-sm bg-white/90 border border-gray-100 hover:shadow-2xl hover:shadow-indigo-400/25 transform hover:scale-105 transition-all duration-700 ${featuresInView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`} style={{ animationDelay: '400ms' }}>
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-400/5 to-purple-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
-              <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Rocket className="w-5 h-5 text-indigo-400 animate-pulse" />
-              </div>
-              <div className="w-24 h-24 mx-auto mb-4 flex items-center justify-center relative z-10 transform group-hover:scale-110 transition-transform duration-500">
-                <Lottie animationData={application} loop={true} autoplay={true} style={{ width: '180%', height: '180%' }} />
-              </div>
-              <h3 className="text-lg font-bold mb-3 text-center text-gray-800 relative z-10 group-hover:text-indigo-600 transition-colors duration-300">
-                Application Assistance
-              </h3>
-              <p className="text-xs leading-relaxed text-center text-gray-500 relative z-10 group-hover:text-gray-600 transition-colors duration-300 mb-3">
-                Comprehensive step-by-step application guidance with intelligent auto-fill and document management.
-              </p>
-              <div className="flex justify-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <span className="px-2 py-1 bg-indigo-50 text-indigo-600 text-xs rounded-full">Auto-fill</span>
-                <span className="px-2 py-1 bg-purple-50 text-purple-600 text-xs rounded-full">Guided</span>
-              </div>
-            </div>
-          </div>
+          {/* ...rest of your code... */}
         </div>
-
         {/* Roadmap Section */}
         <div id="roadmap-section" className="mt-32 mb-20 relative">
-          <div className={`text-center mb-16 transform transition-all duration-1000 ${roadmapInView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <h2 className="text-4xl lg:text-5xl font-extrabold text-gray-800 relative inline-block">
-              <span className="bg-gradient-to-r from-violet-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
-                Our AI-Powered Journey
-              </span>
-              <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-gradient-to-r from-violet-400 to-indigo-400 rounded-full animate-pulse" />
-            </h2>
-            <p className="text-lg text-gray-500 max-w-2xl mx-auto mt-4 leading-relaxed">
-              Follow our seamless 4-step process to discover government schemes tailored to your needs.
-            </p>
-          </div>
-
-          {/* Timeline Container */}
-          <div className="relative max-w-5xl mx-auto px-4">
-            {/* Timeline Line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1.5 bg-gradient-to-b from-violet-100 to-indigo-100 h-full hidden md:block z-0 rounded-full">
-              <div className="absolute inset-0 bg-gradient-to-b from-violet-400 to-indigo-400 animate-pulse opacity-50 rounded-full" />
-            </div>
-
-            <div className="space-y-12 md:space-y-0">
-              {roadmapSteps.map((step, index) => (
-                <div
-                  key={step.id}
-                  className={`relative flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} transform transition-all duration-1000 ${roadmapInView ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
-                  style={{ animationDelay: `${index * 200}ms` }}
-                >
-                  {/* Timeline Node */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 md:block hidden z-10">
-                    <div className="w-12 h-12 bg-gradient-to-r from-violet-500 to-indigo-500 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg transform group-hover:scale-110 transition-all duration-300">
-                      {step.id}
-                    </div>
-                  </div>
-
-                  {/* Card */}
-                  <div className={`group relative w-full md:w-5/12 bg-white/95 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-gray-100 hover:shadow-2xl hover:border-violet-100 transition-all duration-500 ${index % 2 === 0 ? 'md:mr-auto' : 'md:ml-auto'}`}>
-                    <div className={`absolute inset-0 bg-gradient-to-br ${step.bgGradient} opacity-0 group-hover:opacity-30 transition-opacity duration-500 rounded-2xl`} />
-                    <div className="relative z-10 flex items-start space-x-4">
-                      <div className={`flex-shrink-0 w-16 h-16 rounded-xl bg-gradient-to-r ${step.gradient} flex items-center justify-center text-white shadow-md transform group-hover:scale-105 transition-all duration-300`}>
-                        {step.icon}
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-xl font-bold text-gray-800 group-hover:text-violet-600 transition-colors duration-300">
-                          {step.title}
-                        </h3>
-                        <p className="text-gray-500 text-sm leading-relaxed mt-2 group-hover:text-gray-600 transition-colors duration-300">
-                          {step.description}
-                        </p>
-                        <div className="flex flex-wrap gap-2 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                          {step.details.map((detail, idx) => (
-                            <span
-                              key={idx}
-                              className={`px-2 py-1 text-xs font-medium rounded-full bg-gradient-to-r ${step.gradient} text-white`}
-                            >
-                              {detail}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="absolute top-2 right-2 w-4 h-4 bg-gradient-to-br from-violet-100 to-indigo-100 rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-300" />
-                  </div>
-
-                  {/* Mobile Step Indicator */}
-                  <div className="md:hidden flex items-center justify-center w-full mt-4">
-                    <div className="w-10 h-10 bg-gradient-to-r from-violet-500 to-indigo-500 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md">
-                      {step.id}
-                    </div>
-                  </div>
-
-                  {/* Connector Arrow */}
-                  {index < roadmapSteps.length - 1 && (
-                    <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-full mt-4 z-10">
-                      <ArrowRight className="w-6 h-6 text-violet-400 rotate-90" />
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-
-            {/* CTA */}
-            <div className={`text-center mt-16 transform transition-all duration-1000 delay-800 ${roadmapInView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-              <div className="bg-gradient-to-r from-violet-500 to-indigo-500 rounded-2xl p-8 text-white relative overflow-hidden max-w-xl mx-auto">
-                <div className="absolute inset-0 bg-gradient-to-r from-violet-600 to-indigo-600 opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
-                <div className="relative z-10">
-                  <h3 className="text-2xl font-bold mb-4">Start Your Scheme Discovery Journey</h3>
-                  <p className="text-base mb-6">Unlock tailored government schemes with our AI-powered platform.</p>
-                  <button className="bg-white text-violet-500 font-semibold py-3 px-6 rounded-full hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-md">
-                    Get Started Now →
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* ...rest of your code... */}
         </div>
-
         {/* Copyright Section */}
-        <div className="py-6  text-gray-600 text-center">
+        <div className="py-6 text-gray-600 text-center">
           <p className="text-sm">
             © 2025 AI Scheme Recommendation. All rights reserved.
           </p>
         </div>
       </div>
-
       <style jsx>{`
         @keyframes pulse-glow {
           0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7), 0 0 40px rgba(6, 182, 212, 0.3); }
@@ -383,7 +223,9 @@ const Landing = () => {
         .animate-pulse-glow { animation: pulse-glow 4s ease-in-out infinite; }
         .animate-shimmer { animation: shimmer 2s ease-in-out infinite; }
         .animate-float { animation: float 6s ease-in-out infinite; }
-        .animate-float-delayed { animation: float-delayed 8s ease-in-out infinite; }
+        .animate-float-delayed { animation: float-delayed 8s ease-in-out Full
+
+[in-out infinite; }
         .animate-float-slow { animation: float-slow 10s ease-in-out infinite; }
         .animate-gradient-x { animation: gradient-x 3s ease infinite; }
         .animate-slide-up-stagger { animation: slide-up-stagger 0.8s ease-out forwards; }
@@ -392,6 +234,6 @@ const Landing = () => {
       `}</style>
     </div>
   );
-};
+}
 
 export default Landing;
