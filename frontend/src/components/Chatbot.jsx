@@ -4,7 +4,7 @@ import { Send, MessageCircle, X, Minimize2 } from 'lucide-react';
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { id: 1, text: "Hello, how can I help you today?", isBot: true }
+    { id: 1, text: "Hello, how can I help you with government schemes today?", isBot: true }
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isMinimized, setIsMinimized] = useState(false);
@@ -18,7 +18,7 @@ const Chatbot = () => {
     scrollToBottom();
   }, [messages]);
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (inputValue.trim()) {
       const newMessage = {
         id: messages.length + 1,
@@ -28,16 +28,41 @@ const Chatbot = () => {
       
       setMessages(prev => [...prev, newMessage]);
       setInputValue('');
-      
-      // Simulate bot response
-      setTimeout(() => {
-        const botResponse = {
+
+      try {
+        const response = await fetch('http://localhost:3000/api/chatbot', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ message: inputValue }),
+          credentials: 'include'
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+          const botResponse = {
+            id: messages.length + 2,
+            text: data.response,
+            isBot: true
+          };
+          setMessages(prev => [...prev, botResponse]);
+        } else {
+          const errorResponse = {
+            id: messages.length + 2,
+            text: 'Sorry, something went wrong. Please try again.',
+            isBot: true
+          };
+          setMessages(prev => [...prev, errorResponse]);
+        }
+      } catch (error) {
+        const errorResponse = {
           id: messages.length + 2,
-          text: "Thank you for your message. I'm here to help you with any questions you may have.",
+          text: 'Error connecting to the server. Please check your connection.',
           isBot: true
         };
-        setMessages(prev => [...prev, botResponse]);
-      }, 1000);
+        setMessages(prev => [...prev, errorResponse]);
+      }
     }
   };
 
@@ -69,7 +94,7 @@ const Chatbot = () => {
         <div className="bg-blue-50 border-b border-gray-200 p-4 rounded-t-lg flex items-center justify-between flex-shrink-0">
           <div className="flex items-center space-x-3">
             <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
-            <h3 className="font-semibold text-gray-800">Chat Assistant</h3>
+            <h3 className="font-semibold text-gray-800">Government Schemes Assistant</h3>
           </div>
           <div className="flex items-center space-x-2">
             <button
@@ -89,7 +114,7 @@ const Chatbot = () => {
 
         {!isMinimized && (
           <>
-            {/* Messages - This will take remaining space */}
+            {/* Messages */}
             <div className="flex-1 overflow-y-auto p-4 space-y-4 min-h-0">
               {messages.map((message) => (
                 <div
@@ -110,7 +135,7 @@ const Chatbot = () => {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Input - Fixed at bottom */}
+            {/* Input */}
             <div className="border-t border-gray-200 p-4 flex-shrink-0">
               <div className="flex space-x-3">
                 <input
@@ -118,7 +143,7 @@ const Chatbot = () => {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  placeholder="Type your message here..."
+                  placeholder="Ask about government schemes..."
                   className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-sm"
                 />
                 <button

@@ -10,6 +10,7 @@ const healthcareRoutes = require('./routes/healthcare');
 const socialWelfareRoutes = require('./routes/socialWelfare');
 const transportRoutes = require('./routes/transport');
 const womenRoutes = require('./routes/women');
+const chatbotRoutes = require('./routes/chatbot');
 const AgricultureService = require('./services/agricultureService');
 const EducationService = require('./services/educationService');
 const HealthcareService = require('./services/healthcareService');
@@ -53,6 +54,7 @@ app.use('/api/healthcare', healthcareRoutes);
 app.use('/api/social-welfare', socialWelfareRoutes);
 app.use('/api/transport', transportRoutes);
 app.use('/api/women', womenRoutes);
+app.use('/api/chatbot', chatbotRoutes);
 app.use('/auth', authRoutes);
 
 // Root route
@@ -105,5 +107,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
-
