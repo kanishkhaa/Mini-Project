@@ -70,12 +70,66 @@ app.get('/', (req, res) => {
 app.get('/api/all', async (req, res) => {
   try {
     const [agriculture, education, healthcare, socialWelfare, transport, women] = await Promise.all([
-      AgricultureService.getAllData().then(data => data.flatMap(doc => doc.agriculture_schemes || [])),
-      EducationService.getAllData().then(data => data.flatMap(doc => doc.education_schemes || [])),
-      HealthcareService.getAllData().then(data => data.flatMap(doc => doc.healthcare_schemes || [])),
-      SocialWelfareService.getAllData().then(data => data.flatMap(doc => doc.social_welfare_schemes || [])),
-      TransportService.getAllData().then(data => data.flatMap(doc => doc.transport_and_infrastructure_schemes || [])),
-      WomenService.getAllData().then(data => data.flatMap(doc => doc.women_schemes || [])),
+      AgricultureService.getAllData()
+        .then(data => {
+          const schemes = data.flatMap(doc => doc.agriculture_schemes || []);
+          console.log('Agriculture schemes:', schemes.length, schemes.map(s => s.scheme_name));
+          return schemes;
+        })
+        .catch(err => {
+          console.error('AgricultureService error:', err.message);
+          return [];
+        }),
+      EducationService.getAllData()
+        .then(data => {
+          const schemes = data.flatMap(doc => doc.education_schemes || []);
+          console.log('Education schemes:', schemes.length, schemes.map(s => s.scheme_name));
+          return schemes;
+        })
+        .catch(err => {
+          console.error('EducationService error:', err.message);
+          return [];
+        }),
+      HealthcareService.getAllData()
+        .then(data => {
+          const schemes = data.flatMap(doc => doc.healthcare_schemes || []);
+          console.log('Healthcare schemes:', schemes.length, schemes.map(s => s.scheme_name));
+          return schemes;
+        })
+        .catch(err => {
+          console.error('HealthcareService error:', err.message);
+          return [];
+        }),
+      SocialWelfareService.getAllData()
+        .then(data => {
+          const schemes = data.flatMap(doc => doc.social_welfare_schemes || []);
+          console.log('Social Welfare schemes:', schemes.length, schemes.map(s => s.scheme_name));
+          return schemes;
+        })
+        .catch(err => {
+          console.error('SocialWelfareService error:', err.message);
+          return [];
+        }),
+      TransportService.getAllData()
+        .then(data => {
+          const schemes = data.flatMap(doc => doc.transport_and_infrastructure_schemes || []);
+          console.log('Transport schemes:', schemes.length, schemes.map(s => s.scheme_name));
+          return schemes;
+        })
+        .catch(err => {
+          console.error('TransportService error:', err.message);
+          return [];
+        }),
+      WomenService.getAllData()
+        .then(data => {
+          const schemes = data.flatMap(doc => doc.women_schemes || []);
+          console.log('Women schemes:', schemes.length, schemes.map(s => s.scheme_name));
+          return schemes;
+        })
+        .catch(err => {
+          console.error('WomenService error:', err.message);
+          return [];
+        }),
     ]);
 
     const allSchemes = [
@@ -87,7 +141,7 @@ app.get('/api/all', async (req, res) => {
       ...women
     ];
 
-    console.log('Combined schemes:', allSchemes.length);
+    console.log('Total combined schemes:', allSchemes.length, allSchemes.map(s => s.scheme_name));
     res.json(allSchemes);
   } catch (err) {
     console.error('Error fetching all schemes:', err.message);
