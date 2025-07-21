@@ -1,45 +1,49 @@
-const AgricultureService = require('./agricultureService');
 const EducationService = require('./educationService');
-const HealthcareService = require('./healthcareService');
-const SocialWelfareService = require('./socialWelfareService');
-const TransportService = require('./transportService');
 const WomenService = require('./womenService');
+const AgricultureService = require('./agricultureService');
+const HealthcareService = require('./healthcareService');
+const TransportService = require('./transportService');
+const SocialWelfareService = require('./socialWelfareService');
 
 class ChatbotService {
-  static async getRelevantSchemes(query) {
+  static async getAllRelevantSchemes(query) {
     try {
       const keywords = query.toLowerCase().split(/\s+/);
-      const categories = ['education', 'healthcare', 'agriculture', 'transport', 'women'];
-
-      // Fetch all schemes from all categories
-      const [agriculture, education, healthcare, socialWelfare, transport, women] = await Promise.all([
-        AgricultureService.getAllData().then(data => data.flatMap(doc => doc.agriculture_schemes || [])),
-        EducationService.getAllData().then(data => data.flatMap(doc => doc.education_schemes || [])),
-        HealthcareService.getAllData().then(data => data.flatMap(doc => doc.healthcare_schemes || [])),
-        SocialWelfareService.getAllData().then(data => data.flatMap(doc => doc.social_welfare_schemes || [])),
-        TransportService.getAllData().then(data => data.flatMap(doc => doc.transport_and_infrastructure_schemes || [])),
-        WomenService.getAllData().then(data => data.flatMap(doc => doc.women_schemes || []))
+      const [educationData, womenData, agricultureData, healthcareData, transportData, socialWelfareData] = await Promise.all([
+        EducationService.getAllData(),
+        WomenService.getAllData(),
+        AgricultureService.getAllData(),
+        HealthcareService.getAllData(),
+        TransportService.getAllData(),
+        SocialWelfareService.getAllData()
       ]);
 
       const allSchemes = [
-        ...agriculture.map(s => ({ ...s, category: 'agriculture' })),
-        ...education.map(s => ({ ...s, category: 'education' })),
-        ...healthcare.map(s => ({ ...s, category: 'healthcare' })),
-        ...socialWelfare.map(s => ({ ...s, category: 'socialWelfare' })),
-        ...transport.map(s => ({ ...s, category: 'transport' })),
-        ...women.map(s => ({ ...s, category: 'women' }))
+        ...educationData.flatMap(doc => doc.education_schemes || []),
+        ...womenData.flatMap(doc => doc.women_schemes || []),
+        ...agricultureData.flatMap(doc => doc.agriculture_schemes || []),
+        ...healthcareData.flatMap(doc => doc.healthcare_schemes || []),
+        ...transportData.flatMap(doc => doc.transport_schemes || []),
+        ...socialWelfareData.flatMap(doc => doc.social_welfare_schemes || [])
       ];
 
-      // Simple keyword-based filtering
-      const relevantSchemes = allSchemes.filter(scheme => {
-        const schemeText = `${scheme.name || ''} ${scheme.description || ''}`.toLowerCase();
-        return keywords.some(keyword => schemeText.includes(keyword)) || 
-               categories.some(category => query.toLowerCase().includes(category));
-      });
+      // Prioritize exact scheme name match
+      const exactMatch = allSchemes.find(scheme =>
+        scheme.scheme_name.toLowerCase() === query || scheme.scheme_name.toLowerCase().includes(query)
+      );
+      if (exactMatch) return [exactMatch];
 
-      return relevantSchemes.slice(0, 5); // Limit to 5 schemes for brevity
+      // Fall back to top 3 relevant schemes
+      return allSchemes
+        .filter(scheme =>
+          keywords.some(keyword =>
+            scheme.scheme_name?.toLowerCase().includes(keyword) ||
+            scheme.description?.toLowerCase().includes(keyword)
+          )
+        )
+        .slice(0, 3);
     } catch (error) {
-      console.error('Error fetching relevant schemes:', error.message);
+      console.error('Error fetching all relevant schemes:', error.message);
       return [];
     }
   }

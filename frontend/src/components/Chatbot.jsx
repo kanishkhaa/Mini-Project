@@ -25,7 +25,7 @@ const Chatbot = () => {
         text: inputValue,
         isBot: false
       };
-      
+
       setMessages(prev => [...prev, newMessage]);
       setInputValue('');
 
@@ -90,7 +90,6 @@ const Chatbot = () => {
       <div className={`bg-white rounded-lg shadow-xl border border-gray-200 transition-all duration-300 flex flex-col ${
         isMinimized ? 'w-80 h-16' : 'w-[480px] h-[680px]'
       }`}>
-        {/* Header */}
         <div className="bg-blue-50 border-b border-gray-200 p-4 rounded-t-lg flex items-center justify-between flex-shrink-0">
           <div className="flex items-center space-x-3">
             <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
@@ -114,28 +113,70 @@ const Chatbot = () => {
 
         {!isMinimized && (
           <>
-            {/* Messages */}
             <div className="flex-1 overflow-y-auto p-4 space-y-4 min-h-0">
-              {messages.map((message) => (
-                <div
-                  key={message.id}
-                  className={`flex ${message.isBot ? 'justify-start' : 'justify-end'}`}
-                >
-                  <div
-                    className={`max-w-sm px-4 py-3 rounded-lg ${
-                      message.isBot
-                        ? 'bg-gray-100 text-gray-800 rounded-bl-sm'
-                        : 'bg-blue-600 text-white rounded-br-sm'
-                    }`}
-                  >
-                    <p className="text-xs leading-relaxed">{message.text}</p>
+              {messages.length === 1 ? (
+                <div className="text-center text-gray-500 space-y-3">
+                  <p className="text-sm">Start by asking about a scheme:</p>
+                  <div className="flex flex-col items-center space-y-2">
+                    <button
+                      onClick={() => setInputValue('Tell me about the Prime Minister’s Special Scholarship Scheme') && handleSend()}
+                      className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors"
+                    >
+                      Tell me about the Prime Minister’s Special Scholarship Scheme
+                    </button>
+                    <button
+                      onClick={() => setInputValue('What are the benefits of Swami Vivekananda Single Girl Child Fellowship?') && handleSend()}
+                      className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors"
+                    >
+                      What are the benefits of Swami Vivekananda Single Girl Child Fellowship?
+                    </button>
+                    <button
+                      onClick={() => setInputValue('How do I apply for the Scheme for OBC Students of Andaman and Nicobar Islands?') && handleSend()}
+                      className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors"
+                    >
+                      How do I apply for the Scheme for OBC Students of Andaman and Nicobar Islands?
+                    </button>
+                    <button
+                      onClick={() => setInputValue('What are the eligibility criteria for CBSE Merit Scholarship?') && handleSend()}
+                      className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors"
+                    >
+                      What are the eligibility criteria for CBSE Merit Scholarship?
+                    </button>
                   </div>
                 </div>
-              ))}
+              ) : (
+                messages.map((message) => (
+                  <div
+                    key={message.id}
+                    className={`flex ${message.isBot ? 'justify-start' : 'justify-end'}`}
+                  >
+                    <div
+                      className={`max-w-sm px-4 py-3 rounded-lg whitespace-pre-wrap ${
+                        message.isBot
+                          ? 'bg-gray-100 text-gray-800 rounded-bl-sm'
+                          : 'bg-blue-600 text-white rounded-br-sm'
+                      }`}
+                      dangerouslySetInnerHTML={{
+                        __html: message.text
+                          .replace(/^##+\s?/gm, '')
+                          .replace(/🎓\s?Scheme Name: (.*)/g, '<span class="block text-base font-semibold text-blue-800 mb-1">🎓 Scheme Name: $1</span>')
+                          .replace(/(🎯\s?Objectives)/g, '<span class="block font-semibold text-gray-800 mt-3 mb-1">$1</span>')
+                          .replace(/(💰\s?Benefits)/g, '<span class="block font-semibold text-gray-800 mt-3 mb-1">$1</span>')
+                          .replace(/(✅\s?Eligibility Criteria)/g, '<span class="block font-semibold text-gray-800 mt-3 mb-1">$1</span>')
+                          .replace(/(📝\s?Application Process)/g, '<span class="block font-semibold text-gray-800 mt-3 mb-1">$1</span>')
+                          .replace(/(📄\s?Documents Required)/g, '<span class="block font-semibold text-gray-800 mt-3 mb-1">$1</span>')
+                          .replace(/(🔗\s?Official Links)/g, '<span class="block font-semibold text-gray-800 mt-3 mb-1">$1</span>')
+                          .replace(/👉\s?(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" class="text-blue-600 underline">$1</a>')
+                          .replace(/^-\s?(.*)/gm, '<li class="list-disc list-inside text-sm text-gray-700">$1</li>')
+                          .replace(/<br>/g, '<br class="mb-1" />')
+                      }}
+                    />
+                  </div>
+                ))
+              )}
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Input */}
             <div className="border-t border-gray-200 p-4 flex-shrink-0">
               <div className="flex space-x-3">
                 <input
