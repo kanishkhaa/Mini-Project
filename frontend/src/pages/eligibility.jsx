@@ -193,7 +193,7 @@ const EligibilityChecker = () => {
             <div className="relative mt-4 max-w-2xl mx-auto">
               <div className="relative group">
                 <div className="absolute left-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                  <Search className="text-sky-500 group-hover:text-sky-600 transition-colors duration-300" size={20} />
+                  <Search className="text-sky-500 group-hover:text-sky-800 transition-colors duration-300" size={20} />
                 </div>
                 <input
                   type="text"
@@ -209,9 +209,10 @@ const EligibilityChecker = () => {
                     <div
                       key={index}
                       onClick={() => handleSchemeSelect(scheme)}
-                      className="p-4 hover:bg-sky-50 cursor-pointer border-b border-sky-100 last:border-b-0 transition-all duration-200 text-gray-800 font-medium text-left"
+                      className="px-4 py-3 hover:bg-sky-50 cursor-pointer border-b border-sky-100 last:border-b-0 transition-all duration-200 text-gray-800 font-medium text-left flex items-center space-x-2"
                     >
-                      {scheme.scheme_name || 'Unnamed Scheme'}
+                      <div className="w-2 h-2 bg-sky-500 rounded-full animate-scaleIn"></div>
+                      <span>{scheme.scheme_name || 'Unnamed Scheme'}</span>
                     </div>
                   ))}
                 </div>
@@ -232,18 +233,18 @@ const EligibilityChecker = () => {
               <div className="relative">
                 <div className="relative group">
                   <div className="absolute left-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                    <Search className="text-sky-500 group-hover:text-sky-600 transition-colors duration-300 animate-pulseIcon" size={24} />
+                    <Search className="text-sky-500 group-hover:text-sky-800 transition-colors duration-300" size={20} />
                   </div>
                   <input
                     type="text"
                     value={searchValue}
                     onChange={(e) => setSearchValue(e.target.value)}
                     placeholder="Search for schemes..."
-                    className="w-full pl-12 pr-4 py-4 border-2 border-sky-200 rounded-xl focus:border-sky-500 focus:outline-none transition-all duration-300 bg-white/90 shadow-lg hover:shadow-xl font-medium text-gray-800 placeholder-gray-400 text-lg backdrop-blur-sm"
+                    className="w-full pl-12 pr-4 py-4 border-2 border-sky-200 rounded-xl focus:border-sky-500 focus:outline-none transition-all duration-300 bg-white shadow-lg hover:shadow-xl font-medium text-gray-800 placeholder-gray-400"
                   />
                 </div>
                 {searchValue && filteredSchemes.length > 0 && !showResult && !showQuestions && (
-                  <div className="absolute top-full left-0 right-0 mt-3 bg-white/95 border-2 border-sky-200 rounded-xl shadow-2xl z-50 animate-slideUp backdrop-blur-sm max-h-78 overflow-y-auto scrollbar-custom">
+                  <div className="absolute top-full left-0 right-0 mt-3 bg-white/95 border-2 border-sky-200 rounded-xl shadow-2xl z-50 animate-slideUp backdrop-blur-sm max-h-80 overflow-y-auto scrollbar-custom">
                     {filteredSchemes.map((scheme, index) => (
                       <div
                         key={index}
@@ -325,7 +326,7 @@ const EligibilityChecker = () => {
                 <button
                   onClick={handlePreviousQuestion}
                   disabled={currentQuestionIndex === 0}
-                  className="flex-1 bg-gradient-to-r from-gray-500 to-gray-600 text-white py-3 px-6 rounded-xl hover:from-gray-600 hover:to-gray-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all duration-300 font-semibold shadow-md hover:shadow-lg flex items-center justify-center space-x-2"
+                  className="flex-1 bg-gradient-to-r from-gray-500 to-gray-600 text-white py-3 px-6 rounded-xl hover:from-gray-600 hover:to-gray-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all duration-300 font-semibold shadow-md hover:from-gray-600 hover:to-gray-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all duration-300 font-semibold shadow-md hover:shadow-lg flex items-center justify-center space-x-2"
                 >
                   <ChevronLeft size={20} />
                   <span>Previous</span>
@@ -352,7 +353,7 @@ const EligibilityChecker = () => {
 
           {showResult && (
             <div className="fixed inset-0 backdrop-blur-md bg-gray-900/20 flex items-center justify-center p-4 z-50">
-              <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl ml-78 p-8 max-w-md w-full animate-bounceIn border border-gray-200/50">
+              <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8 max-w-md w-full animate-bounceIn border ml-78 border-gray-200/50">
                 <div className="text-center">
                   {isEligible ? (
                     <>
@@ -480,10 +481,6 @@ const EligibilityChecker = () => {
 
         .animate-bounceIn {
           animation: bounceIn 0.6s ease-out;
-        }
-
-        .animate-pulseIcon {
-          animation: pulseIcon 2s infinite ease-in-out;
         }
 
         .animate-float {
